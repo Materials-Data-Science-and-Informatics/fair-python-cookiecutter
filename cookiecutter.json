@@ -1,0 +1,32 @@
+{
+  "project_name": "IAS9 Python App",
+  "__project_slug": "{{ cookiecutter.project_name | slugify() }}",
+  "__project_package": "{{ cookiecutter.project_name | slugify(separator='_') }}",
+
+  "_project_gh_org": "Materials-Data-Science-and-Informatics",
+  "__project_gh_name": "{{ cookiecutter._project_gh_org }}/{{ cookiecutter.__project_slug }}",
+  "__project_repo": "https://github.com/{{ cookiecutter.__project_gh_name }}",
+
+  "project_version": "0.1.0",
+  "project_description": "TODO: A meaningful one-sentence description.",
+  "project_keywords": "TODO list keywords separated by spaces",
+
+  "copyright_year": "{% now 'local', '%Y' %}",
+  "copyright_holder": "Forschungszentrum Jülich GmbH - Institute Materials Data Science and Informatics (IAS9) - Stefan Sandfeld (s.sandfeld@fz-juelich.de)",
+  "__project_copyright": "Copyright (c) {{ cookiecutter.copyright_year }} {{ cookiecutter.copyright_holder }}",
+  "project_license_spdx": [
+    "MIT",
+    "Unlicense"
+  ],
+
+  "author_last_name": "Doe",
+  "author_first_name": "Jane",
+  "author_email": "{{ cookiecutter.author_first_name[0].lower() }}.{{ cookiecutter.author_last_name.lower() }}@fz-juelich.de",
+  "author_orcid": "TODO-ADDY-OURO-RCID",
+  "__author_orcid_url": "https://orcid.org/{{ cookiecutter.author_orcid }}",
+
+  "demo_code": [
+    "yes",
+    "no"
+  ]
+}

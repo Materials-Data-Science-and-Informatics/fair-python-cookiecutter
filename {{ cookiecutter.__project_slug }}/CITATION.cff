@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+type: software
+message: If you use this software, please cite it using this metadata.
+
+title: {{ cookiecutter.project_name }}
+version: {{ cookiecutter.project_version }}
+abstract: {{ cookiecutter.project_description }}
+repository-code: {{ cookiecutter.__project_repo }}
+license: {{ cookiecutter.project_license_spdx }}
+keywords: {{ cookiecutter.project_keywords.split() | jsonify }}
+
+authors:
+  - family-names: {{ cookiecutter.author_last_name }}
+    given-names: {{ cookiecutter.author_first_name }}
+    email: {{ cookiecutter.author_email }}
+    orcid: "{{ cookiecutter.__author_orcid_url }}"

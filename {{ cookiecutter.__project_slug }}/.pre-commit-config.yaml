@@ -1,0 +1,57 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+    - id: check-symlinks
+    - id: trailing-whitespace
+    - id: end-of-file-fixer
+    - id: mixed-line-ending
+      args: [--fix=lf]
+    - id: check-yaml
+    - id: check-toml
+    - id: check-json
+    - id: check-ast
+    - id: debug-statements
+    - id: check-merge-conflict
+    - id: check-shebang-scripts-are-executable
+    - id: check-added-large-files
+      args: [--maxkb=10000]
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: '0.22.0'
+    hooks:
+    - id: check-github-workflows
+  - repo: https://github.com/pycqa/isort
+    rev: '5.12.0'
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]
+  - repo: https://github.com/ambv/black
+    rev: '23.1.0'
+    hooks:
+      - id: black
+  - repo: https://github.com/pycqa/flake8
+    rev: '6.0.0'
+    hooks:
+      - id: flake8
+        additional_dependencies: [Flake8-pyproject,flake8-docstrings]
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v1.1.1'
+    hooks:
+      - id: mypy
+        args: [--no-strict-optional, --ignore-missing-imports]
+        # NOTE: you might need to add some deps here:
+        additional_dependencies: []
+  - repo: https://github.com/citation-file-format/cff-converter-python
+    rev: '44e8fc9'
+    hooks:
+      - id: validate-cff
+
+  - repo: local
+    hooks:
+      - id: codemetapy
+        name: codemetapy
+        language: system
+        entry: codemetapy -O codemeta.json
+        files: ^pyproject.toml$

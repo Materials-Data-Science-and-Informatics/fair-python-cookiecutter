@@ -1,0 +1,83 @@
+[tool.poetry]
+name = "{{ cookiecutter.__project_slug }}"
+version = "{{ cookiecutter.project_version }}"
+description = "{{ cookiecutter.project_description }}"
+authors = ["{{ cookiecutter.author_first_name }} {{ cookiecutter.author_last_name }} <{{ cookiecutter.author_email }}>"]
+license = "{{ cookiecutter.project_license_spdx }}"
+
+readme = "README.md"
+repository = "{{ cookiecutter.__project_repo }}"
+homepage = "{{ cookiecutter.__project_repo }}"
+documentation = "{{ cookiecutter.__project_repo }}"
+
+keywords = {{ cookiecutter.project_keywords.split() | jsonify }}
+classifiers = [
+    # TODO: update the classifier strings
+    # (see https://pypi.org/classifiers/)
+    "Operating System :: POSIX :: Linux",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+]
+
+packages = [{include = "{{ cookiecutter.__project_package }}"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.18.1"
+pre-commit = "^3.1.1"
+pytest = "^7.2.2"
+pytest-cov = "^4.0.0"
+hypothesis = "^6.68.2"
+pdoc = "^13.0.0"
+codemetapy = "^2.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# NOTE: You can run the following with "poetry poe TASK"
+[tool.poe.tasks]
+init-dev = { shell = "git init && pre-commit install" }
+lint = "pre-commit run --all-files"
+test = "pytest"
+docs = "pdoc -o docs {{ cookiecutter.__project_package }}"
+
+# Tool Configurations
+# -------------------
+
+[tool.pytest.ini_options]
+addopts = "--cov-report=term-missing:skip-covered"
+filterwarnings = [
+# Example:
+# "ignore::DeprecationWarning:importlib_metadata.*"
+]
+
+[tool.coverage.run]
+source = ["{{ cookiecutter.__project_package }}"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if TYPE_CHECKING:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+
+[tool.flake8]
+ignore = ["W503", "D100", "D101", "D102", "D103", "D104", "D105", "D106", "D107"]
+per-file-ignores = [
+# Example:
+# "__init__.py:F401",
+]
+max-line-length = 88
+count = true
