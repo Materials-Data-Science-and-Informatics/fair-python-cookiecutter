@@ -1,0 +1,6 @@
+- id: update-codemeta
+  name: update-codemeta
+  language: python
+  entry: update-codemeta codemeta.json
+  files: ^pyproject.toml$
+  additional_dependencies: ["codemetapy==2.4.1"]

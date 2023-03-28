@@ -6,7 +6,6 @@ repos:
     hooks:
     - id: check-symlinks
     - id: trailing-whitespace
-    - id: end-of-file-fixer
     - id: mixed-line-ending
       args: [--fix=lf]
     - id: check-yaml
@@ -47,11 +46,16 @@ repos:
     rev: '44e8fc9'
     hooks:
       - id: validate-cff
+  - repo: https://github.com/fsfe/reuse-tool
+    rev: 'v1.1.2'
+    hooks:
+      - id: reuse
 
   - repo: local
     hooks:
-      - id: codemetapy
-        name: codemetapy
-        language: system
-        entry: codemetapy -O codemeta.json
+      - id: update-codemeta
+        name: update-codemeta
+        language: python
+        additional_dependencies: ["codemetapy==2.4.1"]
+        entry: update-codemeta codemeta.json
         files: ^pyproject.toml$

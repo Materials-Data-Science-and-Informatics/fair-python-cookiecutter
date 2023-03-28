@@ -1,0 +1,16 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: {{ cookiecutter.__project_slug }}
+Upstream-Contact: {{ cookiecutter.__author_name_email }}
+Source: {{ cookiecutter.__project_repo }}
+
+Files: .gitignore pyproject.toml poetry.lock .pre-commit-config.yaml codemeta.json CITATION.cff README.md
+Copyright: {{ cookiecutter.copyright_year }} {{ cookiecutter.copyright_holder }}
+License: CC0-1.0
+
+Files: scripts/update-codemeta/*
+Copyright: 2023 Forschungszentrum Jülich GmbH - Institute for Materials and Data Science - Stefan Sandfeld <s.sandfeld@fz-juelich.de>
+License: MIT
+
+Files: {{ cookiecutter.__project_package }}/* tests/*
+Copyright: {{ cookiecutter.copyright_year }} {{ cookiecutter.copyright_holder }}
+License: {{ cookiecutter.project_license_spdx }}

@@ -2,7 +2,7 @@
 name = "{{ cookiecutter.__project_slug }}"
 version = "{{ cookiecutter.project_version }}"
 description = "{{ cookiecutter.project_description }}"
-authors = ["{{ cookiecutter.author_first_name }} {{ cookiecutter.author_last_name }} <{{ cookiecutter.author_email }}>"]
+authors = ["{{ cookiecutter.__author_name_email }}"]
 license = "{{ cookiecutter.project_license_spdx }}"
 
 readme = "README.md"
@@ -24,15 +24,39 @@ packages = [{include = "{{ cookiecutter.__project_package }}"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+{%- if "cli" in cookiecutter.init_skel.lower() %}
+typer = "^0.7.0"
+{%- endif %}
+{%- if "api" in cookiecutter.init_skel.lower() %}
+fastapi = "^0.95.0"
+uvicorn = "^0.21.1"
+{%- endif %}
 
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.18.1"
 pre-commit = "^3.1.1"
+update-codemeta = { path = "./scripts/update-codemeta" }
+licensecheck = "^2023.1.1"
 pytest = "^7.2.2"
 pytest-cov = "^4.0.0"
 hypothesis = "^6.68.2"
+pipx = "^1.2.0"
+{%- if "api" in cookiecutter.init_skel.lower() %}
+httpx = "^0.23.3"
+{%- endif %}
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
 pdoc = "^13.0.0"
-codemetapy = "^2.4.0"
+
+[tool.poetry.scripts]
+# put your script entrypoints here
+# some-script = 'module.submodule:some_object'
+{%- if "cli" in cookiecutter.init_skel.lower() %}
+{{ cookiecutter.__project_slug }}-cli = '{{ cookiecutter.__project_package }}.cli:app'
+{%- endif %}
 
 [build-system]
 requires = ["poetry-core"]
@@ -41,9 +65,10 @@ build-backend = "poetry.core.masonry.api"
 # NOTE: You can run the following with "poetry poe TASK"
 [tool.poe.tasks]
 init-dev = { shell = "git init && pre-commit install" }
-lint = "pre-commit run --all-files"
-test = "pytest"
+lint = "pre-commit run"  # pass --all-files to check everything
+test = "pytest"  # pass --cov to also collect coverage info
 docs = "pdoc -o docs {{ cookiecutter.__project_package }}"
+licensecheck = "licensecheck"  # run this when you add new deps
 
 # Tool Configurations
 # -------------------
@@ -81,3 +106,8 @@ per-file-ignores = [
 ]
 max-line-length = 88
 count = true
+
+[tool.licensecheck]
+using = "poetry"
+fail_licenses = ["gpl"]
+# format = "json"
