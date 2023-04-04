@@ -10,15 +10,17 @@
   "__project_repo": "https://github.com/{{ cookiecutter.__project_gh_name }}",
 
   "project_version": "0.1.0",
-  "project_description": "TODO: A meaningful one-sentence description.",
+  "project_description": "TODO - A meaningful one-sentence description.",
   "project_keywords": "TODO list keywords separated by spaces",
 
-  "_fzj_ias9_str": "Forschungszentrum Jülich GmbH - Institute for Materials Data Science and Informatics (IAS9)",
+  "_org_str": "Forschungszentrum Jülich GmbH - Institute for Materials Data Science and Informatics (IAS9)",
+  "_org_rep_str": "Stefan Sandfeld <s.sandfeld@fz-juelich.de>",
 
   "copyright_year": "{% now 'local', '%Y' %}",
-  "copyright_holder": "{{ cookiecutter._fzj_ias9_str }} - Stefan Sandfeld <s.sandfeld@fz-juelich.de>",
+  "copyright_holder": "{{ cookiecutter._org_str }} - {{ cookiecutter._org_rep_str }}",
 
-  "__project_copyright": "Copyright (c) {{ cookiecutter.copyright_year }} {{ cookiecutter.copyright_holder }}",
+  "__copyright_text": "{{ cookiecutter.copyright_year }} {{ cookiecutter.copyright_holder }}",
+  "__copyright_line": "SPDX-FileCopyrightText: © {{ cookiecutter.__copyright_text }}",
 
   "project_license_spdx": [
     "MIT",
@@ -34,7 +36,7 @@
   "author_first_name": "Jane",
   "author_email": "{{ cookiecutter.author_first_name[0].lower() }}.{{ cookiecutter.author_last_name.lower() }}@fz-juelich.de",
   "author_orcid": "TODO-ADDY-OURO-RCID",
-  "author_affiliation": "{{ cookiecutter._fzj_ias9_str }}",
+  "author_affiliation": "{{ cookiecutter._org_str }}",
 
   "__author_name_email": "{{ cookiecutter.author_first_name }} {{ cookiecutter.author_last_name }} <{{ cookiecutter.author_email }}>",
   "__author_orcid_url": "https://orcid.org/{{ cookiecutter.author_orcid }}",

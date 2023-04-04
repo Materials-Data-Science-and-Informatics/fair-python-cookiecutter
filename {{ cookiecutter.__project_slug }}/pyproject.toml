@@ -64,7 +64,7 @@ build-backend = "poetry.core.masonry.api"
 
 # NOTE: You can run the following with "poetry poe TASK"
 [tool.poe.tasks]
-init-dev = { shell = "git init -b main && pre-commit install" }
+init-dev = { shell = "git init && git checkout -b main && pre-commit install" }
 lint = "pre-commit run"  # pass --all-files to check everything
 test = "pytest"  # pass --cov to also collect coverage info
 docs = "pdoc -o docs {{ cookiecutter.__project_package }}"

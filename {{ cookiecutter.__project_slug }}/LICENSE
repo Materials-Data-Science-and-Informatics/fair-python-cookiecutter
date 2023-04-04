@@ -1,7 +1,7 @@
 {% if cookiecutter.project_license_spdx == 'MIT' -%}
 MIT License
 
-{{ cookiecutter.__project_copyright }}
+Copyright (c) {{ cookiecutter.__copyright_text }}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

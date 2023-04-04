@@ -1,4 +1,7 @@
-"""Hook to set extra variables in cookiecutter jinja context."""
+"""Set extra vars in cookiecutter jinja context before project generation.
+
+Trick: Abuses docstring to run jinja command inside a comment to update ctx
+"""
 
 """
 {{

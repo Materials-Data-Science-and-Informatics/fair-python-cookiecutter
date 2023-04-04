@@ -1,0 +1,43 @@
+name: Publish on PyPI
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  test:
+    uses: "./.github/workflows/ci.yml"
+  deploy:
+    name: "Publish to PyPI"
+    needs: [test]  # require tests to pass before deploy runs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v2
+        with:
+          path: .venv
+{%- raw %}
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+{%- endraw %}
+      - name: Install dependencies (if no cache found)
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
+      - name: Build and publish to TestPypi
+        run: |
+          poetry build
+{%- raw %}
+          poetry config pypi-token.pypi ${{ secrets.PYPI_TOKEN }}
+{%- endraw %}
+          poetry publish
+

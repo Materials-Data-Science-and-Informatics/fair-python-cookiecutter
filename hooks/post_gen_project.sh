@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
+# Finalization of project template
+
+# create gitlab issue templates by stripping metadata from GH issue templates
+for file in .github/ISSUE_TEMPLATE/*; do
+    cat $file | awk -v x=0 '
+    {
+        if ( x > 1 )
+            { print }
+        if ( $1 ~ /^---/)
+            { x++; }
+    }' > .gitlab/issue_templates/$(basename $file)
+done
 
 # ----
 # update lockfile for enabled app demo code deps
@@ -25,8 +37,5 @@ poetry run poe lint update-codemeta --files pyproject.toml  # to create codemeta
 # create first commit
 git add .
 poetry run git commit -m "first commit - generated project from cookiecutter template"
-
-# add upstream repository
-git remote add origin "git@github.com:{{ cookiecutter.__project_gh_name }}.git"
 
 exit 0  # <- uncomment for debugging (keep output dir even in case of errors)
