@@ -2,10 +2,6 @@ name: CI
 
 on: [push, pull_request, workflow_call]
 
-env:
-  enable_codecov: false   # prepare repository and set to 'true' to enable
-  enable_gh_pages: false  # prepare repository and set to 'true' to enable
-
 jobs:
 
   linting:
@@ -50,39 +46,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: 'poetry'
 
+      # needed because we use git in the tests:
+      - run: git config --global user.email "you@example.com"
+      - run: git config --global user.name "Your Name"
+      # install and run tests
       - run: poetry install
-      - run: poetry run poe test --cov --cov-report=xml
+      - run: poetry run poe test -s
 
-      - name: CodeCov
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.8'
-        uses: codecov/codecov-action@v3
-        with:
-          fail_ci_if_error: true
-          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-
-  docs:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install poetry
-        run: pipx install poetry
-
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          cache: 'poetry'
-
-      - run: poetry install --with docs
-      - run: poetry run poe docs
-
-      # see https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-first-deployment-with-github_token
-      # to do inital setup of the gh-pages branch
-      - name: Deploy docs to gh-pages
-        if: env.enable_gh_pages == 'true'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
