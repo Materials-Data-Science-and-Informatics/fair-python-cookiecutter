@@ -32,3 +32,20 @@ Furthermore, it provides:
 
 Run `cookiecutter URL_OF_THIS_REPOSITORY` and
 follow the instructions to generate a new Python project.
+
+If you use the template a lot, you might want to pre-configure some fields
+in your `~/.cookiecutterrc`, e.g.:
+
+```yaml
+default_context:
+  __org_name: "Your Institution"
+  __org_mail_suffix: "your-institution.org"
+  __org_rep: "Your Boss <your.boss@your-institution.org>"
+  __org_gh: "Your-Github-Organization"
+
+  author_last_name: "Lastname"
+  author_first_name: "Firstname"
+  author_orcid: "0000-0000-1234-5678"
+
+```
+

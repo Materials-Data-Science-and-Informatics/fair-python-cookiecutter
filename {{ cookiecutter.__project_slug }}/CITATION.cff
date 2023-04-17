@@ -5,7 +5,7 @@ message: If you use this software, please cite it using this metadata.
 title: "{{ cookiecutter.project_name }}"
 version: "{{ cookiecutter.project_version }}"
 abstract: "{{ cookiecutter.project_description }}"
-repository-code: "{{ cookiecutter.__project_repo }}"
+repository-code: "{{ cookiecutter.__project_gh_repo }}"
 license: "{{ cookiecutter.project_license_spdx }}"
 keywords: {{ cookiecutter.project_keywords.split() | jsonify }}
 

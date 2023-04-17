@@ -9,14 +9,14 @@
 ](https://app.codecov.io/gh/{{ cookiecutter.__project_gh_name }})
 [
 ![Docs](https://img.shields.io/badge/read-docs-success)
-](https://{{ cookiecutter._project_gh_org|lower }}.github.io/metador-core/{{ cookiecutter.__project_slug }})
+](https://{{ cookiecutter.project_gh_org|lower }}.github.io/metador-core/{{ cookiecutter.__project_slug }})
 
 {{ cookiecutter.project_description }}
 
 ## :warning: Meta: Project Setup Instructions :construction:
 
 This is a Python project bootstrapped from the
-[ias9-python-cookiecutter](https://jugit.fz-juelich.de/ias-9/metador/ias9-dev-general/ias9-python-cookiecutter)
+[fair-python-cookiecutter](https://jugit.fz-juelich.de/ias-9/metador/ias9-dev-general/ias9-python-cookiecutter)
 template.
 
 To get started, complete following steps:
@@ -59,29 +59,11 @@ In order to contribute, please open a pull request to the `dev` branch.
 Make sure that your changes are sufficiently tested,
 the documentation is up-to-date and all automatic CI pipelines succeed.
 
-## [Authors and Contributors](./AUTHORS.md)
+## Authors and Contributors
+
+**:construction: TODO: list authors and contributors**
 
 ## Acknowledgements
 
-**:construction: TODO: check funder acknowledgements
+**:construction: TODO: relevant organizational acknowledgements (employers, funders)**
 
-{% set funders = cookiecutter.project_funders.lower().split() %}
-<div>
-{% if "fzj_ias9" in funders %}
-<img style="vertical-align: middle;" alt="FZJ Logo" src="{{ cookiecutter.logo_fzj_url }}" width=30% height=30% />
-{% endif %}
-{% if "hmc" in funders %}
-&nbsp;&nbsp;
-<img style="vertical-align: middle;" alt="HMC Logo" src="{{ cookiecutter.logo_hmc_url }}" width=50% height=50% />
-{% endif %}
-</div>
-<br />
-{% if "fzj_ias9" in funders %}
-This project was developed at the Institute for Materials Data Science and Informatics
-(IAS-9) of the Jülich Research Center.
-{% endif %}
-{% if "hmc" in funders %}
-It was funded by the Helmholtz Metadata Collaboration (HMC),
-an incubator-platform of the Helmholtz Association within the framework of the
-Information and Data Science strategic initiative.
-{% endif %}

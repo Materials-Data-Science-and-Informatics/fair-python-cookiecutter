@@ -3,7 +3,7 @@ Upstream-Name: fair-python-cookiecutter
 Upstream-Contact: Anton Pirogov <a.pirogov@fz-juelich.de>
 Source: https://jugit.fz-juelich.de/ias-9/metador/ias9-dev-general/fair-python-cookiecutter
 
-Files: .gitignore README.md pyproject.toml poetry.lock .flake8
+Files: .gitignore pyproject.toml poetry.lock .pre-commit-config.yaml codemeta.json CITATION.cff README.md .gitlab-ci.yml .gitlab/* .github/*
 Copyright: $YEAR $NAME <$CONTACT>
 License: Unlicense
 

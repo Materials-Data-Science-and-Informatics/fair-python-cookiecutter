@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: {{ cookiecutter.__project_slug }}
 Upstream-Contact: {{ cookiecutter.__author_name_email }}
-Source: {{ cookiecutter.__project_repo }}
+Source: {{ cookiecutter.__project_gh_repo }}
 
 Files: scripts/update-codemeta/*
 Copyright: 2023 Forschungszentrum Jülich GmbH - Institute for Materials and Data Science - Stefan Sandfeld <s.sandfeld@fz-juelich.de>

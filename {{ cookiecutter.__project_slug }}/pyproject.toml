@@ -6,9 +6,9 @@ authors = ["{{ cookiecutter.__author_name_email }}"]
 license = "{{ cookiecutter.project_license_spdx }}"
 
 readme = "README.md"
-repository = "{{ cookiecutter.__project_repo }}"
-homepage = "{{ cookiecutter.__project_repo }}"
-documentation = "{{ cookiecutter.__project_repo }}"
+repository = "{{ cookiecutter.__project_gh_repo }}"
+homepage = "{{ cookiecutter.__project_gh_repo }}"
+documentation = "{{ cookiecutter.__project_gh_repo }}"
 
 keywords = {{ cookiecutter.project_keywords.split() | jsonify }}
 classifiers = [

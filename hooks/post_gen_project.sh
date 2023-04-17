@@ -38,4 +38,4 @@ poetry run poe lint update-codemeta --files pyproject.toml  # to create codemeta
 git add .
 poetry run git commit -m "first commit - generated project from cookiecutter template"
 
-exit 0  # <- uncomment for debugging (keep output dir even in case of errors)
+# exit 0  # <- uncomment for debugging (keep output dir even in case of errors)

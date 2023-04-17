@@ -56,6 +56,6 @@ repos:
       - id: update-codemeta
         name: update-codemeta
         language: python
-        additional_dependencies: ["codemetapy==2.4.1"]
+        additional_dependencies: ["rdflib==6.3.1", "codemetapy==2.4.1"]
         entry: update-codemeta codemeta.json
         files: ^pyproject.toml$
