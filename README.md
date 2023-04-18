@@ -1,28 +1,33 @@
 # FAIR Python project cookiecutter template
 
-An opinionated template to kickstart a modern Python project with FAIR metadata.
+An opinionated [cookiecutter](https://cookiecutter.readthedocs.io/en/stable/) template
+to kickstart a modern Python project with [FAIR](https://www.go-fair.org/fair-principles/) metadata.
+
 
 ## Features
 
-This cookiecutter sets up a skeleton for a FAIR modern Python project,
-based on:
+This cookiecutter sets up a skeleton for project that includes
+* initial `CITATION.cff`, `codemeta.json` and `.reuse/dep5` metadata for citation and license information
+* basic CI pipelines and issue templates for both GitHub and GitLab
+* *Optional:* simple demo code (CLI with `typer` / backend API with `fastapi`)
 
-* `poetry` for packaging
-* `pdoc` for generating developer documentation
+Best practices for modern Python development are implemented by using:
+* the [`src` layout](https://browniebroke.com/blog/convert-existing-poetry-to-src-layout/) to avoid many common problems
+* `poetry` for dependency management and packaging
 * `pytest` for unit testing
 * `hypothesis` for property-based testing
 * `pre-commit` to orchestrate linters and formatters
 * `black` for formatting
 * `flake8` for linting
 * `mypy` for editor-independent type-checking
-* `reuse` for file-level licensing and REUSE-compliance checking
-* `cffconvert` to check `CITATION.cff`
+* `pdoc` for generating developer documentation
 
-Furthermore, it provides:
+Metadata best practices for FAIR software are implemented using:
+* `cffconvert` to check the `CITATION.cff` (citation metadata)
+* `codemetapy` to generate a `codemeta.json` (software metadata)
+* `reuse` to check [REUSE-compliance](https://reuse.software/spec/) (granular copyright and license metadata)
+* `licensecheck` to scan for possible license incompatibilities in your dependencies
 
-* basic CI pipelines and issue templates for both GitHub and GitLab
-* initial `CITATION.cff`, `codemeta.json` and `.reuse/dep5` metadata
-* *Optional:* demo code (CLI with `typer` / backend API with `fastapi`)
 
 ## Requirements
 
@@ -30,10 +35,9 @@ Furthermore, it provides:
 
 ## Usage
 
-Run `cookiecutter URL_OF_THIS_REPOSITORY` and
-follow the instructions to generate a new Python project.
+Simply run `cookiecutter URL_OF_THIS_REPOSITORY` to generate a new Python project.
 
-If you use the template a lot, you might want to pre-configure some fields
+If you use the template a lot, you might want to pre-configure some template variables
 in your `~/.cookiecutterrc`, e.g.:
 
 ```yaml
@@ -46,6 +50,5 @@ default_context:
   author_last_name: "Lastname"
   author_first_name: "Firstname"
   author_orcid: "0000-0000-1234-5678"
-
 ```
 

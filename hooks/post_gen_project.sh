@@ -19,11 +19,11 @@ poetry lock --no-update
 # {% endif %}
 # remove unneeded demo code
 # {% if "cli" not in cookiecutter.init_skel.lower() %}
-rm {{ cookiecutter.__project_package }}/cli.py
+rm src/{{ cookiecutter.__project_package }}/cli.py
 rm tests/test_cli.py
 # {% endif %}
 # {% if "api" not in cookiecutter.init_skel.lower() %}
-rm {{ cookiecutter.__project_package }}/api.py
+rm src/{{ cookiecutter.__project_package }}/api.py
 rm tests/test_api.py
 # {% endif %}
 # ----

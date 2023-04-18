@@ -7,10 +7,10 @@ Files: scripts/update-codemeta/*
 Copyright: 2023 Forschungszentrum Jülich GmbH - Institute for Materials and Data Science - Stefan Sandfeld <s.sandfeld@fz-juelich.de>
 License: MIT
 
-Files: .gitignore pyproject.toml poetry.lock .pre-commit-config.yaml codemeta.json CITATION.cff README.md .gitlab-ci.yml .gitlab/* .github/*
+Files: .gitignore pyproject.toml poetry.lock .pre-commit-config.yaml codemeta.json CITATION.cff README.md RELEASE_NOTES.md .gitlab-ci.yml .gitlab/* .github/*
 Copyright: {{ cookiecutter.__copyright_text }}
 License: CC0-1.0
 
-Files: {{ cookiecutter.__project_package }}/* tests/*
+Files: src/{{ cookiecutter.__project_package }}/* tests/*
 Copyright: {{ cookiecutter.__copyright_text }}
 License: {{ cookiecutter.project_license_spdx }}

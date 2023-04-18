@@ -44,8 +44,8 @@ def test_cookiecutter(gen):
     dir = gen()
     sanity_check_project(dir)
     # should NOT have the code files
-    assert not (dir / "my_amazing_app/api.py").is_file()
-    assert not (dir / "my_amazing_app/cli.py").is_file()
+    assert not (dir / "src/my_amazing_app/api.py").is_file()
+    assert not (dir / "src/my_amazing_app/cli.py").is_file()
     assert not (dir / "tests/test_api.py").is_file()
     assert not (dir / "tests/test_cli.py").is_file()
     # and the expected license (MIT)
@@ -57,8 +57,8 @@ def test_cookiecutter(gen):
     dir = gen(config_file="./tests/proj1.yaml")
     sanity_check_project(dir)
     # should have the code files
-    assert (dir / "my_amazing_app/api.py").is_file()
-    assert (dir / "my_amazing_app/cli.py").is_file()
+    assert (dir / "src/my_amazing_app/api.py").is_file()
+    assert (dir / "src/my_amazing_app/cli.py").is_file()
     assert (dir / "tests/test_api.py").is_file()
     assert (dir / "tests/test_cli.py").is_file()
     # and the expected license (Unlicense)

@@ -20,7 +20,7 @@ classifiers = [
     "Intended Audience :: Developers",
 ]
 
-packages = [{include = "{{ cookiecutter.__project_package }}"}]
+packages = [{include = "{{ cookiecutter.__project_package }}", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -74,6 +74,7 @@ licensecheck = "licensecheck"  # run this when you add new deps
 # -------------------
 
 [tool.pytest.ini_options]
+pythonpath = ["src"]
 addopts = "--cov-report=term-missing:skip-covered"
 filterwarnings = [
 # Example:
