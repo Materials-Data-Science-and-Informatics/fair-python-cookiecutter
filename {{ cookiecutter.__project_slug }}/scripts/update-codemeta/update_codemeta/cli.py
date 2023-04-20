@@ -33,7 +33,10 @@ with importlib.resources.open_text(__package__, context_file) as c:
 
 def localize_codemeta_context(json):
     """Prevent rdflib external context resolution by adding it from a file."""
-    if set(json["@context"]) != codemeta_context:
+    ctx = set(json.get("@context") or [])
+    if not ctx:
+        return json  # probably empty or not codemeta, nothing to do
+    if ctx != codemeta_context:
         raise RuntimeError(f"Unexpected codemeta context: {json['@context']}")
     ret = dict(json)
     ret.update({"@context": cached_context})
