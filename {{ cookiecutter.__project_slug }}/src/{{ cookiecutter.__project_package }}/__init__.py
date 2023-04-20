@@ -1,3 +1,4 @@
+"""Top level module of the project."""
 from importlib.metadata import version
 from typing import Final
 

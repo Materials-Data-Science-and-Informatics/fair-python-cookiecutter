@@ -55,6 +55,8 @@ run-pre-commit:
   <<: *prepare-env
   script:
     - poetry run poe lint --all-files
+    - pipx install safety
+    - safety check --disable-telemetry --short-report pyproject.toml
 
 # ----
 

@@ -1,0 +1,128 @@
+# basic configuration:
+site_name: "{{ cookiecutter.__project_slug }}"
+site_description: "{{ cookiecutter.project_version }}"
+site_url: "{{ cookiecutter.__project_gh_pages }}"
+repo_url: "{{ cookiecutter.__project_gh_repo }}"
+edit_uri: "blob/master/docs/"
+repo_name: "{{ cookiecutter.__project_gh_name }}"
+
+# navigation structure (TOC + respective markdown files):
+nav:
+  - Home:
+    - Overview: index.md
+    - Changelog: changelog.md
+    - Credits: credits.md
+    - License: license.md
+  - Usage:
+    - API: reference/              # auto-generated (from Python docstrings)
+    - Test Coverage Report: coverage.md # cov report (pytest --cov --cov-report html)
+  - Development:
+    - Contributing: contributing.md
+    - Code of Conduct: code_of_conduct.md
+
+extra:
+  # social links in footer:
+  social:
+    - icon: 'fontawesome/brands/github'
+      link: '{{ cookiecutter.__org_gh_url }}'
+    - icon: 'fontawesome/solid/globe'
+      link: '{{ cookiecutter.__org_homepage }}'
+
+  # versioned docs: https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/
+  version:
+    provider: mike
+
+  # optimization for offline usage:
+  use_directory_urls: !ENV [OFFLINE, false]
+
+theme:
+  # See here for customization guide: https://squidfunk.github.io/mkdocs-material/setup/
+  name: "material"
+  custom_dir: "docs/overrides"
+
+  features:
+  - content.action.edit
+  - content.action.view
+  # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#adding-annotations
+  - content.code.annotate
+  # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/
+  - header.autohide
+  # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/
+  - navigation.footer
+  - navigation.instant
+  - navigation.tabs
+  - navigation.tabs.sticky
+  - navigation.tracking
+  - navigation.top
+  # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/
+  - search.highlight
+  - search.suggest
+
+  # light/dark mode toggle: https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+extra_css:
+  # list of extra CSS files to override and configure defaults:
+  - css/style.css
+
+markdown_extensions:
+  # Enable permalink to sections:
+  - toc:
+      permalink: true
+  # Setting HTML/CSS attributes: https://python-markdown.github.io/extensions/attr_list/
+  - attr_list
+  # Various boxes: https://squidfunk.github.io/mkdocs-material/reference/admonitions/
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  # smart links: https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/
+  - pymdownx.magiclink
+  # Strikethrough markup: https://facelessuser.github.io/pymdown-extensions/extensions/tilde/
+  - pymdownx.tilde
+  # Auto-Unicode for common symbols: https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/
+  - pymdownx.smartsymbols
+  # Github-style task list: https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#tasklist
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  # Tabbed boxes: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/
+  - pymdownx.tabbed:
+      alternate_style: true
+  # Inlining markdown: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
+  - pymdownx.snippets:
+      check_paths: true
+  # Icons and Emoji: https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+plugins:
+  # default search box (must be listed if plugins are added)
+  - search
+  # embed coverage report: https://pawamoy.github.io/mkdocs-coverage/
+  - coverage
+  # execute code (e.g. generate diagrams): https://pawamoy.github.io/markdown-exec/
+  - markdown-exec
+  # automatic API docs: https://mkdocstrings.github.io/recipes/#automatic-code-reference-pages
+  - gen-files:
+      scripts:
+      - docs/scripts/gen_ref_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - section-index
+  - mkdocstrings
+  # https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/#built-in-offline-plugin
+  # To allow building for offline usage, e.g. with: OFFLINE=true mkdocs build
+  - offline:
+      enabled: !ENV [OFFLINE, false]
+
+strict: true

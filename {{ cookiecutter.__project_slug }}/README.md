@@ -2,14 +2,14 @@
 
 ![Project status](https://img.shields.io/badge/project%20status-alpha-%23ff8000)
 [
+![Docs](https://img.shields.io/badge/read-docs-success)
+]({{ cookiecutter.__project_gh_pages }})
+[
 ![Test](https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.__project_gh_name }}/ci.yml?branch=main&label=test)
 ](https://github.com/{{ cookiecutter.__project_gh_name }}/actions?query=workflow:test)
 [
 ![Coverage](https://img.shields.io/codecov/c/gh/{{ cookiecutter.__project_gh_name }})
 ](https://app.codecov.io/gh/{{ cookiecutter.__project_gh_name }})
-[
-![Docs](https://img.shields.io/badge/read-docs-success)
-](https://{{ cookiecutter.project_gh_org|lower }}.github.io/metador-core/{{ cookiecutter.__project_slug }})
 
 {{ cookiecutter.project_description }}
 

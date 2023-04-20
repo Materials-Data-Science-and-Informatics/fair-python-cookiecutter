@@ -35,12 +35,11 @@ uvicorn = "^0.21.1"
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.18.1"
 pre-commit = "^3.1.1"
-update-codemeta = { path = "./scripts/update-codemeta" }
-licensecheck = "^2023.1.1"
 pytest = "^7.2.2"
 pytest-cov = "^4.0.0"
 hypothesis = "^6.68.2"
-pipx = "^1.2.0"
+update-codemeta = { path = "./scripts/update-codemeta" }
+licensecheck = "^2023.1.1"
 {%- if "api" in cookiecutter.init_skel.lower() %}
 httpx = "^0.23.3"
 {%- endif %}
@@ -49,7 +48,18 @@ httpx = "^0.23.3"
 optional = true
 
 [tool.poetry.group.docs.dependencies]
-pdoc = "^13.0.0"
+mkdocs = "^1.4.2"
+mkdocstrings = {extras = ["python"], version = "^0.21.2"}
+mkdocs-material = "^9.1.6"
+mkdocs-gen-files = "^0.4.0"
+mkdocs-literate-nav = "^0.6.0"
+mkdocs-section-index = "^0.3.5"
+mkdocs-macros-plugin = "^0.7.0"
+markdown-include = "^0.8.1"
+pymdown-extensions = "^9.11"
+markdown-exec = {extras = ["ansi"], version = "^1.6.0"}
+mkdocs-coverage = "^0.2.7"
+mike = "^1.1.2"
 
 [tool.poetry.scripts]
 # put your script entrypoints here
@@ -67,7 +77,7 @@ build-backend = "poetry.core.masonry.api"
 init-dev = { shell = "git init && git checkout -b main && pre-commit install" }
 lint = "pre-commit run"  # pass --all-files to check everything
 test = "pytest"  # pass --cov to also collect coverage info
-docs = "pdoc -o docs {{ cookiecutter.__project_package }}"
+docs = "mkdocs build"  # run this to generate local documentation
 licensecheck = "licensecheck"  # run this when you add new deps
 
 # Tool Configurations
@@ -107,6 +117,9 @@ per-file-ignores = [
 ]
 max-line-length = 88
 count = true
+
+[tool.bandit]
+exclude_dirs = ["tests", "scripts"]
 
 [tool.licensecheck]
 using = "poetry"

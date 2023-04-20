@@ -58,6 +58,8 @@ jobs:
 
       - run: poetry install
       - run: poetry run poe test --cov --cov-report=xml
+      - run: pipx install safety
+      - run: safety check -r pyproject.toml
 
       - name: CodeCov
         if: env.enable_codecov == 'true' && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.8'

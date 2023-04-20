@@ -26,6 +26,8 @@ jobs:
 
       - run: poetry install
       - run: poetry run poe lint --all-files
+      - run: pipx install safety
+      - run: safety check --disable-telemetry --short-report pyproject.toml
 
   test:
     needs: linting

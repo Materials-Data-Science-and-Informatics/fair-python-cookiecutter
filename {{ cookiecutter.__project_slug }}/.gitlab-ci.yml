@@ -45,20 +45,21 @@ cache: &global_cache
 # ----
 
 # Generate docs and expose as Gitlab job artifact, so that it can be downloaded.
-# (If Gitlab pages is enabled on the instance, better serve the documentation there!)
+# If Gitlab Pages is enabled on your instance, better serve the documentation there.
+# In that case, you should use `mike` to provide documentaion for each tagged version.
 # See https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html#access-the-latest-job-artifacts-by-url
+# and https://stackoverflow.com/a/72481235
 make-docs:
   image: python:latest
   stage: deploy
   <<: *prepare-env
   script:
     - poetry install --with docs
-    - poetry run poe docs
-    # - anybadge -l download -v docs > docs-badge.svg
+    - poetry run poe test --cov --cov-report=html  # generate coverage report (included in docs)
+    - OFFLINE=true poetry run poe docs     # generate docs
   artifacts:
     paths:
-      - docs/
-      # - docs-badge.svg
+      - site/
 
 # Run pre-commit, just to make sure the developers did not mess up.
 # It uses its own cache for its isolated environments (location: PRE_COMMIT_HOME).
@@ -68,6 +69,8 @@ run-pre-commit:
   <<: *prepare-env
   script:
     - poetry run poe lint --all-files
+    - pipx install safety
+    - safety check -r pyproject.toml
 
 # ----
 

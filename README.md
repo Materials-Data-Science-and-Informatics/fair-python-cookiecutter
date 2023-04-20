@@ -18,9 +18,12 @@ Best practices for modern Python development are implemented by using:
 * `hypothesis` for property-based testing
 * `pre-commit` to orchestrate linters and formatters
 * `black` for formatting
-* `flake8` for linting
+* `autoflake` for removing unused imports
+* `flake8` for linting (using various linter plugins)
+* `bandit` for checking security issues in the code
 * `mypy` for editor-independent type-checking
-* `pdoc` for generating developer documentation
+* `mkdocs` for generating documentation
+* `safety` for checking security issues in the current dependencies
 
 Metadata best practices for FAIR software are implemented using:
 * `cffconvert` to check the `CITATION.cff` (citation metadata)
