@@ -11,7 +11,7 @@ repos:
     - id: mixed-line-ending
       args: [--fix=lf]
     - id: check-yaml
-      exclude: "mkdocs.yml"
+      exclude: 'mkdocs.yml'
     - id: check-toml
     - id: check-json
     - id: check-ast
@@ -28,7 +28,7 @@ repos:
     rev: '5.12.0'
     hooks:
       - id: isort
-        args: ["--profile", "black"]
+        args: ['--profile', 'black']
   - repo: https://github.com/ambv/black
     rev: '23.1.0'
     hooks:
@@ -59,8 +59,8 @@ repos:
     rev: '1.7.5'
     hooks:
     - id: bandit
-      args: ["-q", "-c", "pyproject.toml"]
-      additional_dependencies: [ ".[toml]" ]
+      args: ['-q', '-c', 'pyproject.toml']
+      additional_dependencies: [ '.[toml]' ]
 
   # Metadata
   - repo: https://github.com/citation-file-format/cff-converter-python
@@ -71,11 +71,9 @@ repos:
     rev: 'v1.1.2'
     hooks:
       - id: reuse
-  - repo: local
+
+  - repo: https://github.com/Materials-Data-Science-and-Informatics/dev-utils
+    rev: 'v0.1.0'
     hooks:
       - id: update-codemeta
-        name: update-codemeta
-        language: python
-        additional_dependencies: ["rdflib==6.3.1", "codemetapy==2.4.1"]
-        entry: update-codemeta codemeta.json
         files: ^pyproject.toml$

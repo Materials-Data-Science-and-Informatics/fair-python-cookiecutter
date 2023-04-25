@@ -55,7 +55,6 @@ make-docs:
   <<: *prepare-env
   script:
     - poetry install --with docs
-    - poetry run poe test --cov --cov-report=html  # generate coverage report (included in docs)
     - OFFLINE=true poetry run poe docs     # generate docs
   artifacts:
     paths:

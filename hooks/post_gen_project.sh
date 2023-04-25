@@ -13,10 +13,6 @@ for file in .github/ISSUE_TEMPLATE/*; do
 done
 
 # ----
-# update lockfile for enabled app demo code deps
-# {% if cookiecutter.init_skel.lower() != "-" %}
-poetry lock --no-update
-# {% endif %}
 # remove unneeded demo code
 # {% if "cli" not in cookiecutter.init_skel.lower() %}
 rm src/{{ cookiecutter.__project_package }}/cli.py
@@ -29,7 +25,8 @@ rm tests/test_api.py
 # ----
 
 # finalize repo setup
-poetry install --only dev  # to get pre-commit
+git init
+poetry install
 poetry run poe init-dev  # init git repo + register pre-commit
 poetry run pipx run reuse download --all  # get license files for REUSE compliance
 poetry run poe lint update-codemeta --files pyproject.toml  # to create codemeta.json
@@ -37,5 +34,6 @@ poetry run poe lint update-codemeta --files pyproject.toml  # to create codemeta
 # create first commit
 git add .
 poetry run git commit -m "first commit - generated project from cookiecutter template"
+git branch -M main
 
 # exit 0  # <- uncomment for debugging (keep output dir even in case of errors)

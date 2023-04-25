@@ -1,9 +1,9 @@
 # basic configuration:
 site_name: "{{ cookiecutter.__project_slug }}"
-site_description: "{{ cookiecutter.project_version }}"
+site_description: "{{ cookiecutter.project_description }}"
 site_url: "{{ cookiecutter.__project_gh_pages }}"
 repo_url: "{{ cookiecutter.__project_gh_repo }}"
-edit_uri: "blob/master/docs/"
+edit_uri: "blob/main/docs/"
 repo_name: "{{ cookiecutter.__project_gh_name }}"
 
 # navigation structure (TOC + respective markdown files):
@@ -14,11 +14,12 @@ nav:
     - Credits: credits.md
     - License: license.md
   - Usage:
+    - Quickstart: quickstart.md
     - API: reference/              # auto-generated (from Python docstrings)
-    - Test Coverage Report: coverage.md # cov report (pytest --cov --cov-report html)
   - Development:
-    - Contributing: contributing.md
+    - How To Contribute: contributing.md
     - Code of Conduct: code_of_conduct.md
+    - Coverage Report: coverage.md # cov report (pytest --cov --cov-report html)
 
 extra:
   # social links in footer:
@@ -86,7 +87,8 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   # smart links: https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/
-  - pymdownx.magiclink
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
   # Strikethrough markup: https://facelessuser.github.io/pymdown-extensions/extensions/tilde/
   - pymdownx.tilde
   # Auto-Unicode for common symbols: https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/
@@ -124,5 +126,10 @@ plugins:
   # To allow building for offline usage, e.g. with: OFFLINE=true mkdocs build
   - offline:
       enabled: !ENV [OFFLINE, false]
+  # to make multi-version docs work right
+  - mike
+
+hooks:
+  - docs/scripts/coverage_status.py
 
 strict: true

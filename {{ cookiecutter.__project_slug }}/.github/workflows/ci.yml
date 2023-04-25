@@ -2,10 +2,6 @@ name: CI
 
 on: [push, pull_request, workflow_call]
 
-env:
-  enable_codecov: false   # prepare repository and set to 'true' to enable
-  enable_gh_pages: false  # prepare repository and set to 'true' to enable
-
 jobs:
 
   linting:
@@ -57,18 +53,9 @@ jobs:
           cache: 'poetry'
 
       - run: poetry install
-      - run: poetry run poe test --cov --cov-report=xml
+      - run: poetry run poe test
       - run: pipx install safety
       - run: safety check -r pyproject.toml
-
-      - name: CodeCov
-        if: env.enable_codecov == 'true' && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.8'
-        uses: codecov/codecov-action@v3
-        with:
-          fail_ci_if_error: true
-{%- raw %}
-          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-{%- endraw %}
 
   docs:
     needs: test
@@ -85,16 +72,25 @@ jobs:
           python-version: '3.10'
           cache: 'poetry'
 
-      - run: poetry install --with docs
-      - run: poetry run poe docs
+      - name: Install project with mkdocs and plugins
+        run: poetry install --with docs
 
-      # see https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-first-deployment-with-github_token
-      # to do inital setup of the gh-pages branch
-      - name: Deploy docs to gh-pages
-        if: env.enable_gh_pages == 'true'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-{%- raw %}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-{%- endraw %}
-          publish_dir: ./docs
+      - name: Configure Git user
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Initialize or check out the GH Pages branch
+        shell: bash
+        run: |
+          if git fetch origin gh-pages:gh-pages
+          then
+            echo "Checked out existing gh-pages branch."
+          else
+            echo "Creating new gh-pages branch and initializing mike."
+            poetry run mike deploy -u main latest
+            poetry run mike set-default latest
+          fi
+
+      - name: Generate documentation for current branch
+        run: poetry run mike deploy -u --push $(echo ${GITHUB_REF#refs/heads/})
