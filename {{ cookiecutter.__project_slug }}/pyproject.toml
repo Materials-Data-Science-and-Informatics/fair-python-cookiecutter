@@ -60,6 +60,7 @@ markdown-exec = {extras = ["ansi"], version = "^1.6.0"}
 mkdocs-coverage = "^0.2.7"
 mike = "^1.1.2"
 anybadge = "^1.14.0"
+interrogate = "^1.5.0"
 
 [tool.poetry.scripts]
 # put your script entrypoints here
@@ -110,13 +111,14 @@ exclude_lines = [
 ]
 
 [tool.flake8]
-ignore = ["W503", "D100", "D101", "D102", "D103", "D104", "D105", "D106", "D107"]
-per-file-ignores = [
-# Example:
-# "__init__.py:F401",
-]
+ignore = ["W503"]
 max-line-length = 88
-count = true
+
+[tool.pydocstyle]
+convention = "google"
+
+[tool.interrogate]
+fail-under = 95
 
 [tool.bandit]
 exclude_dirs = ["tests", "scripts"]

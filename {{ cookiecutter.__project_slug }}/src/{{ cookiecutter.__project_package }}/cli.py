@@ -16,6 +16,7 @@ app.add_typer(say, name="say")
 
 @app.command()
 def calc(op: CalcOperation, x: int, y: int):
+    """Compute the result of applying an operation on x and y."""
     result: int = calculate(op, x, y)
     typer.echo(f"Result: {result}")
 
@@ -25,11 +26,13 @@ def calc(op: CalcOperation, x: int, y: int):
 
 @say.command()
 def hello(name: str):
+    """Greet a person."""
     print(f"Hello {name}")
 
 
 @say.command()
 def goodbye(name: str, formal: bool = False):
+    """Say goodbye to a person."""
     if formal:
         print(f"Goodbye {name}. Have a good day.")
     else:

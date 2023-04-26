@@ -19,7 +19,9 @@ Best practices for modern Python development are implemented by using:
 * `pre-commit` to orchestrate linters and formatters
 * `black` for formatting
 * `autoflake` for removing unused imports
-* `flake8` for linting (using various linter plugins)
+* `flake8` for general linting (using various linter plugins)
+* `pydocstyle` for checking docstring conventions
+* `interrogate` to compute docstring coverage
 * `bandit` for checking security issues in the code
 * `mypy` for editor-independent type-checking
 * `mkdocs` for generating documentation

@@ -1,5 +1,4 @@
-"""
-Core functionality of {{ cookiecutter.__project_slug }}.
+"""Core functionality of {{ cookiecutter.__project_slug }}.
 
 This module can be used directly, or the functionality can be
 exposed using some other interface, such as CLI, GUI or an API.

@@ -1,3 +1,4 @@
+"""Mkdocs hook to run tests with coverage collection and generate a badge."""
 import logging
 from io import StringIO
 from pathlib import Path
@@ -5,6 +6,8 @@ from pathlib import Path
 import anybadge
 import pytest
 from coverage import Coverage
+from interrogate import badge_gen
+from interrogate.coverage import InterrogateCoverage
 
 log = logging.getLogger("mkdocs")
 
@@ -30,7 +33,7 @@ def on_pre_build(config):
     cov = Coverage()
     cov.load()
     cov_percent = int(cov.report(file=StringIO()))
-    log.info(f"Total Coverage: {cov_percent}%, generating badge.")
+    log.info(f"Test Coverage: {cov_percent}%, generating badge.")
 
     badge = anybadge.Badge(
         "coverage",
@@ -40,7 +43,12 @@ def on_pre_build(config):
         thresholds=badge_colors,
     )
 
-    badge_svg = Path("docs/coverage.svg")
+    badge_svg = Path("docs/coverage_badge.svg")
     if badge_svg.is_file():
         badge_svg.unlink()
     badge.write_badge(badge_svg)
+
+    # generates a docs coverage badge in docs/interrogate_badge.svg
+    doc_cov = InterrogateCoverage(paths=["src"]).get_coverage()
+    log.info(f"Docs Coverage: {doc_cov.perc_covered}%, generating badge.")
+    badge_gen.create("docs", doc_cov)

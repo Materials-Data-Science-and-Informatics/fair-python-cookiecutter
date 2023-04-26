@@ -3,11 +3,14 @@
 ![Docs](https://img.shields.io/badge/read-docs-success)
 ]({{ cookiecutter.__project_gh_pages }})
 [
-![Tests](https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.__project_gh_name }}/ci.yml?branch=main&label=tests)
+![CI](https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.__project_gh_name }}/ci.yml?branch=main&label=ci)
 ](https://github.com/{{ cookiecutter.__project_gh_name }}/actions/workflows/ci.yml)
 [
-![Coverage]({{ cookiecutter.__project_gh_pages }}/main/coverage.svg)
+![Test Coverage]({{ cookiecutter.__project_gh_pages }}/main/coverage_badge.svg)
 ]({{ cookiecutter.__project_gh_pages }}/main/coverage)
+[
+![Docs Coverage]({{ cookiecutter.__project_gh_pages }}/main/interrogate_badge.svg)
+]({{ cookiecutter.__project_gh_pages }})
 
 <!-- --8<-- [start:abstract] -->
 # {{ cookiecutter.project_name }}
