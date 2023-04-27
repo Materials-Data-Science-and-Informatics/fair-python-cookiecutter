@@ -28,6 +28,7 @@ rm tests/test_api.py
 git init
 poetry install
 poetry run poe init-dev  # init git repo + register pre-commit
+poetry run pip install pipx  # install pipx into venv without adding it as dep
 poetry run pipx run reuse download --all  # get license files for REUSE compliance
 poetry run poe lint update-codemeta --files pyproject.toml  # to create codemeta.json
 
