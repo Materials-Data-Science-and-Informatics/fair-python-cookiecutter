@@ -60,6 +60,7 @@ jobs:
   docs:
     needs: test
     runs-on: ubuntu-latest
+    permissions: write-all
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3

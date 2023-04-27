@@ -207,37 +207,54 @@ hand-crafted inputs.
 
 ### Documentation
 
-We use [`mkdocs`](https://www.mkdocs.org/) to generate the project documentation website.
+We use [`mkdocs`](https://www.mkdocs.org/) with the popular
+[`mkdocs-material`](https://squidfunk.github.io/mkdocs-material/)
+theme to generate the project documentation website, which provides both **user and
+developer documentation**.
 
-`mkdocs` is configured mostly via the `mkdocs.yml` file and is prepared so that you
+`mkdocs` is configured in the `mkdocs.yml` file, which is prepared so that you
 
-* never have to duplicate sections from files in other places (such as `README.md`)
-* get fully automatic API documentation pages from your Python docstrings
-* get your detailed test coverage report included into the website as well
+* have **no need to duplicate sections** from files in other places (such as `README.md`)
+* get fully **automatic API documentation** pages from your Python docstrings
+* get your detailed **test coverage report included** into the website as well
 
 The first point is important, because avoiding duplication means avoiding errors
 whenever you update your text or examples.
-
 The second point is convenient, because you do not have to remember to manually add a page
 for a module or function by hand.
-
 The third point is a nice feature to have, because otherwise you might be dependent on
 external services such as [CodeCov](https://about.codecov.io/)
 to store and present this information for you.
 
 On top of `mkdocs` we use [`mike`](https://github.com/jimporter/mike) to generate and
 manage documentation for different versions of your software. Your software changes and
-improves, your documentation hopefully does too - but if users for a reason have to use an
-outdated version, they should be able to find information for the exact version they use.
+improves over time, and your documentation hopefully does too. But if users for a reason
+have to use an outdated version, they should be able to find information for the exact
+version they use.
 
-You can generate documentation locally using `mkdocs` directly or by invoking `mike`,
-but you never *have* to. The provided CI pipelines will generate the documentation
-for your latest version as well as every released version and deploy them to the
-`gh-pages` branch.
+#### Building the documentation
+
 
 If you use GitHub, all you need to do to get a nice project website is to enable
 [GitHub Pages] for your repository. So there is no need to use additional service
 providers such as [readthedocs](https://readthedocs.org/).
+
+The provided CI pipelines will generate the documentation for your latest version as well
+as every released version and deploy them to the `gh-pages` branch whenever you push new
+commits to your `main` branch. This means that your automatic API documentation will
+always be up to date.
+
+If you are working on other parts of the documentation and want to have a local preview
+before you commit changes, or for some other reasons need a local copy, you can generate
+documentation locally:
+
+```
+poetry install --with docs
+poetry run poe docs
+```
+
+Run `mkdocs serve` to browse your local documentation copy
+ `https://localhost:8000` in your browser.
 
 
 ### CI Pipelines

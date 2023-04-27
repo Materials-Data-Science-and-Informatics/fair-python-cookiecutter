@@ -125,5 +125,3 @@ exclude_dirs = ["tests", "scripts"]
 
 [tool.licensecheck]
 using = "poetry"
-fail_licenses = ["gpl"]
-# format = "json"
