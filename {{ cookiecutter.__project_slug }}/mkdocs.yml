@@ -18,6 +18,7 @@ nav:
     - API: reference/              # auto-generated (from Python docstrings)
   - Development:
     - How To Contribute: contributing.md
+    - Developer Guide: dev_guide.md
     - Code of Conduct: code_of_conduct.md
     - Coverage Report: coverage.md # cov report (pytest --cov --cov-report html)
 

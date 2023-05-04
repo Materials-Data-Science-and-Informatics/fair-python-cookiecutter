@@ -9,6 +9,13 @@ from {{ cookiecutter.__project_package }}.cli import app
 runner = CliRunner()
 
 
+def test_calc_addition():
+    result = runner.invoke(app, ["calc", "add", "20", "22"])
+
+    assert result.exit_code == 0
+    assert result.stdout.strip() == "Result: 42"
+
+
 person_names = ["Jane", "John"]
 
 

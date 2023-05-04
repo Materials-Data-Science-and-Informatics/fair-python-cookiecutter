@@ -1,6 +1,9 @@
 # don't add custom python shell scratchpad file
 scratch*.py
 
+# generated badges
+docs/*_badge.svg
+
 # don't add vscode stuff
 .vscode
 

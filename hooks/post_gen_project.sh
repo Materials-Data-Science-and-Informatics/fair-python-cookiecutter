@@ -34,7 +34,11 @@ poetry run poe lint update-codemeta --files pyproject.toml  # to create codemeta
 
 # create first commit
 git add .
-poetry run git commit -m "first commit - generated project from cookiecutter template"
+poetry run git commit \
+    -m "generated project using fair-python-cookiecutter" \
+    -m "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
+
+# make sure that the default branch is called 'main'
 git branch -M main
 
 # exit 0  # <- uncomment for debugging (keep output dir even in case of errors)

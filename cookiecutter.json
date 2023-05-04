@@ -48,5 +48,5 @@
     "cli+api"
   ],
 
-  "_copy_without_render": ["docs/overrides"]
+  "_copy_without_render": ["docs/overrides", ".github"]
 }

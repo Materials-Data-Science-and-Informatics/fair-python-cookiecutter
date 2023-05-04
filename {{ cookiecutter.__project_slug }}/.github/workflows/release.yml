@@ -1,0 +1,63 @@
+name: Release
+# Release a new version to different targets in suitable ways
+
+on:
+  workflow_call:  # called from ci.yml
+    inputs:
+      to_github:
+        description: "Create a Github Release (repository snapshot)"
+        type: boolean
+        default: true
+
+      to_test_pypi:
+        description: "Publish to Test PyPI."
+        type: boolean
+        default: false
+
+      to_pypi:
+        description: "Publish to PyPI."
+        type: boolean
+        default: false
+
+
+jobs:
+
+  github:
+    if: inputs.to_github
+    name: Create a Github Release (repository snapshot)
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write  # needed for creating a GH Release
+    steps:
+      - uses: actions/checkout@v3
+      - uses: softprops/action-gh-release@v1
+
+  pypi:
+    if: inputs.to_pypi || inputs.to_test_pypi
+    name: Publish to PyPI (and/or compatible repositories)
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # needed for "trusted publishing" protocol
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install poetry
+        run: pipx install poetry
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: "poetry"
+
+      - name: Build the distribution package
+        run: poetry build
+
+      - name: Publish package to TestPyPI
+        if: inputs.to_test_pypi
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+
+      - name: Publish package to PyPI
+        if: inputs.to_pypi
+        uses: pypa/gh-action-pypi-publish@release/v1

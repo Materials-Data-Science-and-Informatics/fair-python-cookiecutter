@@ -18,18 +18,18 @@
 ----
 **:warning: TODO: Complete project setup :construction:**
 
-This is a Python project bootstrapped from the
-[fair-python-cookiecutter](https://jugit.fz-juelich.de/ias-9/metador/ias9-dev-general/ias9-python-cookiecutter)
+This is a Python project generated from the
+[fair-python-cookiecutter](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter)
 template.
 
 To finalize the project setup, please complete the following steps:
 
 - [ ] Inspect the generated project files and adjust them as needed
-- [ ] Check that everything works for local development
-- [ ] Add your remote repository and push to it
-- [ ] Wait and check that the CI runs successfully
-- [ ] Enable Github pages for the repository (from `gh-pages` branch)
-- [ ] Take care of the TODOs in the files
+- [ ] Take care of the TODOs in some of the files
+- [ ] Check that everything works for you locally
+- [ ] Create and add an empty remote repository (GitHub/GitLab) and push to it
+- [ ] Wait and check that the CI pipeline runs successfully
+- [ ] Enable Github Pages for the repository (from `gh-pages` branch)
 - [ ] Remove this section
 ----
 
@@ -72,7 +72,7 @@ in the [repository]({{ cookiecutter.__project_gh_repo }}/blob/main/CITATION.cff)
 ## Acknowledgements
 
 We kindly thank all
-[authors and contributors]({{ cookiecutter.__project_gh_pages }}/main/credits).
+[authors and contributors]({{ cookiecutter.__project_gh_pages }}/latest/credits).
 
 **:construction: TODO: relevant organizational acknowledgements (employers, funders)**
 

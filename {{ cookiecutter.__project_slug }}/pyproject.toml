@@ -20,7 +20,18 @@ classifiers = [
     "Intended Audience :: Developers",
 ]
 
+# the Python packages that will be included in a built distribution:
 packages = [{include = "{{ cookiecutter.__project_package }}", from = "src"}]
+
+# always include basic info for humans and core metadata in the distribution,
+# include files related to test and documentation only in sdist:
+include = [
+  "*.md", "LICENSE", "LICENSES", ".reuse/dep5", "CITATION.cff", "codemeta.json",
+  "mkdocs.yml", "docs", "tests", # NOTE: temporary workaround (codemetapy bug)
+  # { path = "mkdocs.yml", format = "sdist" },
+  # { path = "docs", format = "sdist" },
+  # { path = "tests", format = "sdist" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
