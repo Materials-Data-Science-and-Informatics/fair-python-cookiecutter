@@ -4,10 +4,10 @@ default_context:
   __org_rep: "Stefan Sandfeld <s.sandfeld@fz-juelich.de>"
   __org_gh: "Materials-Data-Science-and-Informatics"
 
-  project_name: "My Amazing App"
+  project_name: "  My Amazing App  "
 
   project_version: "0.1.2"
-  project_description: "An amazing application."
+  project_description: "  An amazing application.  "
   project_keywords: "awesome amazing fair"
 
   project_license_spdx: "Unlicense"

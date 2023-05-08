@@ -13,7 +13,7 @@
 ]({{ cookiecutter.__project_gh_pages }})
 
 <!-- --8<-- [start:abstract] -->
-# {{ cookiecutter.project_name }}
+# {{ cookiecutter.project_name.strip() }}
 
 ----
 **:warning: TODO: Complete project setup :construction:**
@@ -33,7 +33,7 @@ To finalize the project setup, please complete the following steps:
 - [ ] Remove this section
 ----
 
-{{ cookiecutter.project_description }}
+{{ cookiecutter.project_description.strip() }}
 
 **:construction: TODO: Write a paragraph summarizing what this project is about.**
 
