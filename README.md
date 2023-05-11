@@ -97,4 +97,6 @@ containing more information about the structure and features of the generated pr
 Feel free to either remove it, or keep (and possibly adjust) it as extended technical
 project documentation for yourself and other future project contributors.
 
+<!--
 You can find a live version of a freshly initialized project [here](TODO).
+-->
