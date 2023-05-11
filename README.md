@@ -1,8 +1,14 @@
-# FAIR Python project cookiecutter template
+[
+![Docs](https://img.shields.io/badge/read-docs-success)
+](https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter)
+[
+![CI](https://img.shields.io/github/actions/workflow/status/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/ci.yml?branch=main&label=ci)
+](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/actions/workflows/ci.yml)
 
-An opinionated [cookiecutter](https://cookiecutter.readthedocs.io/en/stable/) template
-to kickstart a modern best-practice Python project
-with [FAIR](https://www.go-fair.org/fair-principles/) metadata.
+<!-- --8<-- [start:abstract] -->
+# fair-python-cookiecutter
+
+An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata.
 
 ## Overview
 
@@ -31,7 +37,6 @@ To save you some time navigating all of that advice and figuring out how to appl
 practice, we did the work for you and provide you with this template!
 You can use it as is, adapt it, or at least get some inspiration for your projects.
 
-
 ## Main Features
 
 This template sets up a skeleton for a Python project that:
@@ -58,6 +63,9 @@ software metadata and make it more [FAIR](https://www.go-fair.org/fair-principle
 Also see [this paper](https://doi.org/10.48550/arXiv.1905.08674) for an overview and
 recommendations on the state of software citation in academic practice.
 
+<!-- --8<-- [end:abstract] -->
+
+<!-- --8<-- [start:quickstart] -->
 
 ## Getting Started
 
@@ -91,12 +99,39 @@ default_context:
 This information will then be already pre-filled when you use the template,
 saving you some time and possibly avoiding possible mistakes from manual typing.
 
-The generated repository will include a copy of the
-[developer guide](./{{ cookiecutter.__project_slug }}/docs/dev_guide.md),
+The generated repository will include a copy of a [developer guide](./dev_guide.md),
 containing more information about the structure and features of the generated project.
 Feel free to either remove it, or keep (and possibly adjust) it as extended technical
 project documentation for yourself and other future project contributors.
 
-<!--
-You can find a live version of a freshly initialized project [here](TODO).
--->
+<!-- --8<-- [end:quickstart] -->
+
+<!-- --8<-- [start:citation] -->
+
+## How to Cite
+
+If you want to cite this project in your scientific work,
+please use the [citation file](https://citation-file-format.github.io/)
+in the [repository](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/blob/main/CITATION.cff).
+
+<!-- --8<-- [end:citation] -->
+<!-- --8<-- [start:acknowledgements] -->
+
+## Acknowledgements
+
+We kindly thank all
+[authors and contributors](https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter/latest/credits).
+
+<div>
+<img style="vertical-align: middle;" alt="HMC Logo" src="https://github.com/Materials-Data-Science-and-Informatics/Logos/raw/main/HMC/HMC_Logo_M.png" width=50% height=50% />
+&nbsp;&nbsp;
+<img style="vertical-align: middle;" alt="FZJ Logo" src="https://github.com/Materials-Data-Science-and-Informatics/Logos/raw/main/FZJ/FZJ.png" width=30% height=30% />
+</div>
+<br />
+
+This project was developed at the Institute for Materials Data Science and Informatics
+(IAS-9) of the Jülich Research Center and funded by the Helmholtz Metadata Collaboration
+(HMC), an incubator-platform of the Helmholtz Association within the framework of the
+Information and Data Science strategic initiative.
+
+<!-- --8<-- [end:acknowledgements] -->

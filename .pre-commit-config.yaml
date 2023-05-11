@@ -1,7 +1,10 @@
+exclude: "^{{ cookiecutter.*"  # <-- added
+# ---- copy from template below ----
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
-exclude: "^{{ cookiecutter.*"
 repos:
+
+  # Various general + format-specific helpers
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
@@ -10,6 +13,7 @@ repos:
     - id: mixed-line-ending
       args: [--fix=lf]
     - id: check-yaml
+      exclude: 'mkdocs.yml'
     - id: check-toml
     - id: check-json
     - id: check-ast
@@ -26,16 +30,36 @@ repos:
     rev: '5.12.0'
     hooks:
       - id: isort
-        args: ["--profile", "black"]
+        args: ['--profile', 'black']
   - repo: https://github.com/ambv/black
     rev: '23.1.0'
     hooks:
       - id: black
+  - repo: https://github.com/PyCQA/autoflake
+    rev: v2.1.1
+    hooks:
+    -   id: autoflake
+
+  # Quality
   - repo: https://github.com/pycqa/flake8
     rev: '6.0.0'
     hooks:
       - id: flake8
-        additional_dependencies: [Flake8-pyproject,flake8-docstrings]
+        additional_dependencies:
+          - Flake8-pyproject==1.2.3
+          - flake8-bugbear==23.3.23
+          - dlint==0.14.1
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: '6.3.0'
+    hooks:
+      - id: pydocstyle
+        additional_dependencies: ["tomli==2.0.1"]
+        files: "^src/"
+  - repo: https://github.com/econchick/interrogate
+    rev: "1.5.0"
+    hooks:
+      - id: interrogate
+        files: "^src/"
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: 'v1.1.1'
     hooks:
@@ -43,6 +67,14 @@ repos:
         args: [--no-strict-optional, --ignore-missing-imports]
         # NOTE: you might need to add some deps here:
         additional_dependencies: []
+  - repo: https://github.com/PyCQA/bandit
+    rev: '1.7.5'
+    hooks:
+    - id: bandit
+      args: ['-q', '-c', 'pyproject.toml']
+      additional_dependencies: [ '.[toml]' ]
+
+  # Metadata
   - repo: https://github.com/citation-file-format/cff-converter-python
     rev: '44e8fc9'
     hooks:
@@ -52,11 +84,8 @@ repos:
     hooks:
       - id: reuse
 
-  # - repo: local
-  #   hooks:
-  #     - id: update-codemeta
-  #       name: update-codemeta
-  #       language: python
-  #       additional_dependencies: ["codemetapy==2.4.1"]
-  #       entry: update-codemeta codemeta.json
-  #       files: ^pyproject.toml$
+  - repo: https://github.com/Materials-Data-Science-and-Informatics/dev-utils
+    rev: 'v0.1.0'
+    hooks:
+      - id: update-codemeta
+        files: ^pyproject.toml$

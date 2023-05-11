@@ -1,0 +1,58 @@
+{
+    "@context": [
+        "https://doi.org/10.5063/schema/codemeta-2.0",
+        "https://w3id.org/software-iodata",
+        "https://raw.githubusercontent.com/jantman/repostatus.org/master/badges/latest/ontology.jsonld",
+        "https://schema.org",
+        "https://w3id.org/software-types"
+    ],
+    "@type": "SoftwareSourceCode",
+    "audience": [
+        {
+            "@type": "Audience",
+            "audienceType": "Science/Research"
+        },
+        {
+            "@type": "Audience",
+            "audienceType": "Developers"
+        }
+    ],
+    "author": [
+        {
+            "@type": "Person",
+            "email": "a.pirogov@fz-juelich.de",
+            "familyName": "Pirogov",
+            "givenName": "Anton"
+        }
+    ],
+    "codeRepository": "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter",
+    "description": "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata. ",
+    "identifier": "fair-python-cookiecutter",
+    "keywords": [
+        "cookiecutter",
+        "fair",
+        "metadata",
+        "python",
+        "template"
+    ],
+    "license": "http://spdx.org/licenses/MIT",
+    "name": "fair-python-cookiecutter",
+    "runtimePlatform": "Python 3",
+    "softwareRequirements": [
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "cookiecutter",
+            "name": "cookiecutter",
+            "runtimePlatform": "Python 3",
+            "version": "^2.1.1"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "python",
+            "name": "python",
+            "runtimePlatform": "Python 3",
+            "version": "^3.8"
+        }
+    ],
+    "version": "0.1.0"
+}

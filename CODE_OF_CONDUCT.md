@@ -1,0 +1,1 @@
+{{ cookiecutter.__project_slug }}/CODE_OF_CONDUCT.md

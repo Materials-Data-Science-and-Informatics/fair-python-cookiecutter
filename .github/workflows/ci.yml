@@ -147,4 +147,4 @@ jobs:
     with:
       to_github: true
       to_test_pypi: false
-      to_pypi: true
+      to_pypi: false
