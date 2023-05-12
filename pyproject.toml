@@ -68,5 +68,12 @@ docs = "mkdocs build"  # run this to generate local documentation
 [tool.pytest.ini_options]
 addopts = "--ignore='{{ cookiecutter.__project_slug }}'"
 
+[tool.flake8]
+ignore = ["W503"]
+max-line-length = 88
+
+[tool.pydocstyle]
+convention = "google"
+
 [tool.bandit]
-# section must exist
+exclude_dirs = ["tests"]

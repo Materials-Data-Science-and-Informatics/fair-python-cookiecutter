@@ -6,10 +6,10 @@ from cookiecutter.main import cookiecutter
 
 def sanity_check_project(proj_path):
     """Sanity-check a generated project (linters, tests, doc generation)."""
-    subprocess.check_call("poetry install --with docs", cwd=proj_path, shell=True)
-    subprocess.check_call("poetry run poe lint --all-files", cwd=proj_path, shell=True)
-    subprocess.check_call("poetry run poe test", cwd=proj_path, shell=True)
-    subprocess.check_call("poetry run poe docs", cwd=proj_path, shell=True)
+    subprocess.check_call("poetry install --with docs".split(), cwd=proj_path)
+    subprocess.check_call("poetry run poe lint --all-files".split(), cwd=proj_path)
+    subprocess.check_call("poetry run poe test".split(), cwd=proj_path)
+    subprocess.check_call("poetry run poe docs".split(), cwd=proj_path)
 
 
 @pytest.fixture
