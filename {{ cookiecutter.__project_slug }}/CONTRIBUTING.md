@@ -51,7 +51,7 @@ Common tasks are accessible via [poe](https://github.com/nat-n/poethepoet):
 
 * Use `poetry run poe docs` to generate local documentation
 
-In order to contribute code, please open a pull request to the `dev` branch.
+In order to contribute code, please open a pull request.
 
 Before opening the PR, please make sure that your changes
 
