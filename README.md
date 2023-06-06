@@ -79,8 +79,8 @@ To generate a new Python project from this template, run:
 ```
 cookiecutter https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter
 ```
-This will spawn an interactive prompt, where you have to provide some information and select 
-a starting skeleton for your software project. Don't worry, you can always adapt this 
+This will spawn an interactive prompt, where you have to provide some information and select
+a starting skeleton for your software project. Don't worry, you can always adapt this
 information later on by hand. After this cookiecutter will initate your software project.
 
 If you intend to use the template a lot, e.g. if you want to use (an adaptation of)
