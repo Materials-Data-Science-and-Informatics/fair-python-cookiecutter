@@ -44,7 +44,7 @@
             "identifier": "cookiecutter",
             "name": "cookiecutter",
             "runtimePlatform": "Python 3",
-            "version": "^2.1.2"
+            "version": "^2.1.1"
         },
         {
             "@type": "SoftwareApplication",
