@@ -26,7 +26,7 @@ rm tests/test_api.py
 
 # finalize repo setup
 git init
-poetry install
+poetry install --with docs
 poetry run poe init-dev  # init git repo + register pre-commit
 poetry run pip install pipx  # install pipx into venv without adding it as dep
 poetry run pipx run reuse download --all  # get license files for REUSE compliance

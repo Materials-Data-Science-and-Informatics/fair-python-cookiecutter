@@ -10,11 +10,11 @@
     "audience": [
         {
             "@type": "Audience",
-            "audienceType": "Science/Research"
+            "audienceType": "Developers"
         },
         {
             "@type": "Audience",
-            "audienceType": "Developers"
+            "audienceType": "Science/Research"
         }
     ],
     "author": [
@@ -44,7 +44,7 @@
             "identifier": "cookiecutter",
             "name": "cookiecutter",
             "runtimePlatform": "Python 3",
-            "version": "^2.1.1"
+            "version": "^2.1.2"
         },
         {
             "@type": "SoftwareApplication",

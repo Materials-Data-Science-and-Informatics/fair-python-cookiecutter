@@ -6,23 +6,21 @@ from pathlib import Path
 import anybadge
 import pytest
 from coverage import Coverage
-from interrogate import badge_gen
-from interrogate.coverage import InterrogateCoverage
 
 log = logging.getLogger("mkdocs")
 
 
 badge_colors = {
-    20: "red",
-    40: "orange",
-    60: "yellow",
-    80: "greenyellow",
-    90: "green",
+    20.0: "red",
+    40.0: "orange",
+    60.0: "yellow",
+    80.0: "greenyellow",
+    90.0: "green",
 }
 """Colors for overall coverage percentage (0-100)."""
 
 
-def on_pre_build(config):
+def on_pre_build(_config):
     """Generate coverage report if it is missing and create a badge."""
     if not Path("htmlcov").is_dir() or not Path(".coverage").is_file():
         log.info("Missing htmlcov or .coverage, running pytest to collect.")
@@ -47,8 +45,3 @@ def on_pre_build(config):
     if badge_svg.is_file():
         badge_svg.unlink()
     badge.write_badge(badge_svg)
-
-    # generates a docs coverage badge in docs/interrogate_badge.svg
-    doc_cov = InterrogateCoverage(paths=["src"]).get_coverage()
-    log.info(f"Docs Coverage: {doc_cov.perc_covered}%, generating badge.")
-    badge_gen.create("docs", doc_cov)

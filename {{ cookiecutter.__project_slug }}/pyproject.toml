@@ -15,7 +15,6 @@ classifiers = [
     # TODO: update the classifier strings
     # (see https://pypi.org/classifiers/)
     "Operating System :: POSIX :: Linux",
-    "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
     "Intended Audience :: Developers",
 ]
@@ -27,10 +26,9 @@ packages = [{include = "{{ cookiecutter.__project_package }}", from = "src"}]
 # include files related to test and documentation only in sdist:
 include = [
   "*.md", "LICENSE", "LICENSES", ".reuse/dep5", "CITATION.cff", "codemeta.json",
-  "mkdocs.yml", "docs", "tests", # NOTE: temporary workaround (codemetapy bug)
-  # { path = "mkdocs.yml", format = "sdist" },
-  # { path = "docs", format = "sdist" },
-  # { path = "tests", format = "sdist" },
+  { path = "mkdocs.yml", format = "sdist" },
+  { path = "docs", format = "sdist" },
+  { path = "tests", format = "sdist" },
 ]
 
 [tool.poetry.dependencies]
@@ -71,7 +69,6 @@ markdown-exec = {extras = ["ansi"], version = "^1.6.0"}
 mkdocs-coverage = "^0.2.7"
 mike = "^1.1.2"
 anybadge = "^1.14.0"
-interrogate = "^1.5.0"
 black = "^23.3.0"
 
 [tool.poetry.scripts]
@@ -128,9 +125,6 @@ max-line-length = 88
 
 [tool.pydocstyle]
 convention = "google"
-
-[tool.interrogate]
-fail-under = 95
 
 [tool.bandit]
 exclude_dirs = ["tests", "scripts"]

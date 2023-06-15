@@ -1,4 +1,3 @@
-![Project status](https://img.shields.io/badge/project%20status-alpha-%23ff8000)
 [
 ![Docs](https://img.shields.io/badge/read-docs-success)
 ]({{ cookiecutter.__project_gh_pages }})
@@ -8,9 +7,6 @@
 [
 ![Test Coverage]({{ cookiecutter.__project_gh_pages }}/main/coverage_badge.svg)
 ]({{ cookiecutter.__project_gh_pages }}/main/coverage)
-[
-![Docs Coverage]({{ cookiecutter.__project_gh_pages }}/main/interrogate_badge.svg)
-]({{ cookiecutter.__project_gh_pages }})
 
 <!-- --8<-- [start:abstract] -->
 # {{ cookiecutter.project_name.strip() }}

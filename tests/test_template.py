@@ -1,15 +1,31 @@
 import subprocess
+import sys
 
 import pytest
+from cookiecutter.exceptions import CookiecutterException
 from cookiecutter.main import cookiecutter
 
 
 def sanity_check_project(proj_path):
     """Sanity-check a generated project (linters, tests, doc generation)."""
-    subprocess.check_call("poetry install --with docs".split(), cwd=proj_path)
-    subprocess.check_call("poetry run poe lint --all-files".split(), cwd=proj_path)
-    subprocess.check_call("poetry run poe test".split(), cwd=proj_path)
-    subprocess.check_call("poetry run poe docs".split(), cwd=proj_path)
+    try:
+        subprocess.check_output(
+            "poetry install --with docs".split(), cwd=proj_path, stderr=subprocess.PIPE
+        )
+        subprocess.check_output(
+            "poetry run poe lint --all-files".split(),
+            cwd=proj_path,
+            stderr=subprocess.PIPE,
+        )
+        subprocess.check_output(
+            "poetry run poe test".split(), cwd=proj_path, stderr=subprocess.PIPE
+        )
+        subprocess.check_output(
+            "poetry run poe docs".split(), cwd=proj_path, stderr=subprocess.PIPE
+        )
+    except subprocess.CalledProcessError as e:
+        print("exit code: {}".format(e.returncode))
+        print("stderr: {}".format(e.stderr.decode(sys.getfilesystemencoding())))
 
 
 @pytest.fixture
@@ -23,9 +39,25 @@ def gen(tmp_path_factory):
 
     def gen_project(**cc_args):
         out_dir = tmp_path_factory.mktemp("gen_proj")
+        out_dir_raw = tmp_path_factory.mktemp("gen_proj_raw")
 
-        # actual project generation
-        cookiecutter(template="./", no_input=True, output_dir=out_dir, **cc_args)
+        # NOTE: once 2.1.2 is out with keep_project_on_failure,
+        # this can be simplified
+        # instantiate without hooks (for debugging)
+        cookiecutter(
+            template="./",
+            no_input=True,
+            output_dir=out_dir_raw,
+            accept_hooks=False,
+            **cc_args,
+        )
+
+        # actual project generation (with hooks)
+        try:
+            cookiecutter(template="./", no_input=True, output_dir=out_dir, **cc_args)
+        except CookiecutterException as e:
+            print(f"DEBUG DIR (without hook evaluation): {out_dir_raw}")
+            raise e
 
         # should be unique directory
         paths = list(out_dir.iterdir())
