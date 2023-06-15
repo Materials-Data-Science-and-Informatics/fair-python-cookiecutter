@@ -487,6 +487,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#configuring-the-template" class="md-nav__link">
+    Configuring the Template
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -596,6 +603,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#configuring-the-template" class="md-nav__link">
+    Configuring the Template
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -630,15 +644,25 @@
   <h1>Quickstart</h1>
 
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<p>First, make sure that you have a recent version of cookiecutter (<code>cookiecutter&gt;=2.1</code>).
+<p>First, make sure that you have a recent version of
+<a href="https://www.cookiecutter.io/">cookiecutter</a> (<code>cookiecutter&gt;=2.1</code>).
 This template does not work with older versions, because they lack some needed features.</p>
 <p>To install <code>cookiecutter</code>, you can run <code>pip install cookiecutter</code>.</p>
 <p>To generate a new Python project from this template, run:</p>
-<div class="highlight"><pre><span></span><code>cookiecutter https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter
+<div class="highlight"><pre><span></span><code>cookiecutter<span class="w"> </span>https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter
 </code></pre></div>
+<p>This will spawn an interactive prompt, where you have to provide some information and select
+a starting skeleton for your software project. Don't worry, you can always adapt this
+information later on by hand. After this cookiecutter will initate your software project.</p>
+<p>The generated repository will include a copy of a <a href="../dev_guide/">developer guide</a>,
+containing more information about the structure and features of the generated project.
+Feel free to either remove it, or keep (and possibly adjust) it as extended technical
+project documentation for yourself and other future project contributors.</p>
+<h2 id="configuring-the-template">Configuring the Template<a class="headerlink" href="#configuring-the-template" title="Permanent link">&para;</a></h2>
 <p>If you intend to use the template a lot, e.g. if you want to use (an adaptation of)
 this template as the default way to start a Python project for yourself and/or others,
-you might want to configure some template variables in your <code>~/.cookiecutterrc</code>, e.g.:</p>
+you might want to configure some template variables in your <code>~/.cookiecutterrc</code>.
+Here is an example cookiecutter configuration:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">default_context</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">__org_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Your</span><span class="nv"> </span><span class="s">Institution&quot;</span>
 <span class="w">  </span><span class="nt">__org_mail_suffix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;your-institution.org&quot;</span>
@@ -649,12 +673,8 @@ you might want to configure some template variables in your <code>~/.cookiecutte
 <span class="w">  </span><span class="nt">author_first_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Firstname&quot;</span>
 <span class="w">  </span><span class="nt">author_orcid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0000-0000-1234-5678&quot;</span>
 </code></pre></div>
-<p>This information will then be already pre-filled when you use the template,
+<p>This information will be already pre-filled when you use the template,
 saving you some time and possibly avoiding possible mistakes from manual typing.</p>
-<p>The generated repository will include a copy of a <a href="../dev_guide/">developer guide</a>,
-containing more information about the structure and features of the generated project.
-Feel free to either remove it, or keep (and possibly adjust) it as extended technical
-project documentation for yourself and other future project contributors.</p>
 
 
 
