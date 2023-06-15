@@ -1,0 +1,44 @@
+name: Deploy the demo repository
+
+on: [workflow_dispatch, workflow_call]
+
+jobs:
+  deploy:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout template repo
+      uses: actions/checkout@v3
+      with:
+        path: fair-python-cookiecutter
+
+    - name: Prepare SSH
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_DEPLOY_KEY }}
+
+    - name: Prepare git
+      run: |
+        git config --global user.email "deploy-fair-python-cookiecutter@example.com"
+        git config --global user.name "Deployment Bot"
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+
+    - name: Install poetry
+      run: pipx install poetry
+
+    - name: Install cookiecutter
+      run: pip install cookiecutter==2.1.1
+
+    - name: Instantiate demo repository
+      run: |
+        cookiecutter ./fair-python-cookiecutter --no-input --config-file=./fair-python-cookiecutter/tests/demo.yaml
+
+    - name: Deploy generated repository
+      run: |
+        cd fair-python-cookiecutter-demo
+        git remote add origin git@github.com:Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo.git
+        git push -f --set-upstream origin main

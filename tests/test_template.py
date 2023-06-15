@@ -86,7 +86,7 @@ def test_cookiecutter(gen):
 
     # ----
     # generate with all demo code and different license
-    dir = gen(config_file="./tests/proj1.yaml")
+    dir = gen(config_file="./tests/demo.yaml")
     sanity_check_project(dir)
     # should have the code files
     assert (dir / "src/my_amazing_app/api.py").is_file()

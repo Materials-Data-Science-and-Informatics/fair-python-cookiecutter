@@ -4,16 +4,16 @@ default_context:
   __org_rep: "Stefan Sandfeld <s.sandfeld@fz-juelich.de>"
   __org_gh: "Materials-Data-Science-and-Informatics"
 
-  project_name: "  My Amazing App  "
+  project_name: "  FAIR Python Cookiecutter Demo  "
 
   project_version: "0.1.2"
-  project_description: "  An amazing application.  "
-  project_keywords: "awesome amazing fair"
+  project_description: "  Demo repository bootstrapped from the FAIR Python Cookiecutter template.  "
+  project_keywords: "fair python cookiecutter template"
 
   project_license_spdx: "Unlicense"
 
-  author_last_name: "Researcher"
-  author_first_name: "Famous"
+  author_last_name: "Doe"
+  author_first_name: "Jane"
   author_orcid: "0123-4567-8910-1112"
 
   init_skel: "cli+api"
