@@ -69,20 +69,33 @@ recommendations on the state of software citation in academic practice.
 
 ## Getting Started
 
-First, make sure that you have a recent version of cookiecutter (`cookiecutter>=2.1`).
+First, make sure that you have a recent version of
+[cookiecutter](https://www.cookiecutter.io/) (`cookiecutter>=2.1`).
 This template does not work with older versions, because they lack some needed features.
 
 To install `cookiecutter`, you can run `pip install cookiecutter`.
 
 To generate a new Python project from this template, run:
 
-```
+```bash
 cookiecutter https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter
 ```
 
+This will spawn an interactive prompt, where you have to provide some information and select
+a starting skeleton for your software project. Don't worry, you can always adapt this
+information later on by hand. After this cookiecutter will initate your software project.
+
+The generated repository will include a copy of a [developer guide](./dev_guide.md),
+containing more information about the structure and features of the generated project.
+Feel free to either remove it, or keep (and possibly adjust) it as extended technical
+project documentation for yourself and other future project contributors.
+
+## Configuring the Template
+
 If you intend to use the template a lot, e.g. if you want to use (an adaptation of)
 this template as the default way to start a Python project for yourself and/or others,
-you might want to configure some template variables in your `~/.cookiecutterrc`, e.g.:
+you might want to configure some template variables in your `~/.cookiecutterrc`.
+Here is an example cookiecutter configuration:
 
 ```yaml
 default_context:
@@ -96,13 +109,8 @@ default_context:
   author_orcid: "0000-0000-1234-5678"
 ```
 
-This information will then be already pre-filled when you use the template,
+This information will be already pre-filled when you use the template,
 saving you some time and possibly avoiding possible mistakes from manual typing.
-
-The generated repository will include a copy of a [developer guide](./dev_guide.md),
-containing more information about the structure and features of the generated project.
-Feel free to either remove it, or keep (and possibly adjust) it as extended technical
-project documentation for yourself and other future project contributors.
 
 <!-- --8<-- [end:quickstart] -->
 
