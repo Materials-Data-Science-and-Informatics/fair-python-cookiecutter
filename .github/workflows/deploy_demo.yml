@@ -1,4 +1,6 @@
 name: Deploy the demo repository
+# TODO: could use current version tag of template to match the demo
+# and think how to preserve old branches / docs
 
 on: [workflow_dispatch, workflow_call]
 
@@ -16,9 +18,11 @@ jobs:
     - name: Prepare SSH
       uses: webfactory/ssh-agent@v0.7.0
       with:
+        # NOTE: generated private key, stored repo secret
+        # (matching public key is registered Deployment Key in target Github repo)
         ssh-private-key: ${{ secrets.SSH_DEPLOY_KEY }}
 
-    - name: Prepare git
+    - name: Set git author
       run: |
         git config --global user.email "deploy-fair-python-cookiecutter@example.com"
         git config --global user.name "Deployment Bot"
