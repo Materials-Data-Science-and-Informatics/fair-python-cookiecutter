@@ -71,13 +71,16 @@ def gen(tmp_path_factory):
     return gen_project
 
 
+DEMO_PROJ_SLUG = "fair_python_cookiecutter_demo"
+
+
 def test_cookiecutter(gen):
     # generate with default values
     dir = gen()
     sanity_check_project(dir)
     # should NOT have the code files
-    assert not (dir / "src/my_amazing_app/api.py").is_file()
-    assert not (dir / "src/my_amazing_app/cli.py").is_file()
+    assert not (dir / f"src/{DEMO_PROJ_SLUG}api.py").is_file()
+    assert not (dir / f"src/{DEMO_PROJ_SLUG}/cli.py").is_file()
     assert not (dir / "tests/test_api.py").is_file()
     assert not (dir / "tests/test_cli.py").is_file()
     # and the expected license (MIT)
@@ -89,8 +92,8 @@ def test_cookiecutter(gen):
     dir = gen(config_file="./tests/demo.yaml")
     sanity_check_project(dir)
     # should have the code files
-    assert (dir / "src/my_amazing_app/api.py").is_file()
-    assert (dir / "src/my_amazing_app/cli.py").is_file()
+    assert (dir / f"src/{DEMO_PROJ_SLUG}/api.py").is_file()
+    assert (dir / f"src/{DEMO_PROJ_SLUG}/cli.py").is_file()
     assert (dir / "tests/test_api.py").is_file()
     assert (dir / "tests/test_cli.py").is_file()
     # and the expected license (Unlicense)

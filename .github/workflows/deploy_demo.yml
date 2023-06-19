@@ -1,6 +1,4 @@
 name: Deploy the demo repository
-# TODO: could use current version tag of template to match the demo
-# and think how to preserve old branches / docs
 
 on: [workflow_dispatch, workflow_call]
 
@@ -37,9 +35,19 @@ jobs:
     - name: Install cookiecutter
       run: pip install cookiecutter==2.1.1
 
-    - name: Instantiate demo repository
+    - name: Prepare cookiecutter configuration
       run: |
-        cookiecutter ./fair-python-cookiecutter --no-input --config-file=./fair-python-cookiecutter/tests/demo.yaml
+        TEMPLATE_VERSION=$(grep -e "^version" ./fair-python-cookiecutter/pyproject.toml | sed 's/^.*=//')
+        echo "extracted template version:" $TEMPLATE_VERSION
+        SED_CMD_PREF='s/\(^.*version:\).*/\1'
+        SED_CMD="${SED_CMD_PREF}${TEMPLATE_VERSION}/"
+        echo "running sed to insert version:" $SED_CMD
+        sed "$SED_CMD" ./fair-python-cookiecutter/tests/demo.yaml > cconf.yaml
+        echo "resulting repo cookiecutter configuration:"
+        cat cconf.yaml
+
+    - name: Instantiate demo repository
+      run: cookiecutter ./fair-python-cookiecutter --no-input --config-file=cconf.yaml
 
     - name: Deploy generated repository
       run: |

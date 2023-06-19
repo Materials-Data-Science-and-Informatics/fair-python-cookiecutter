@@ -10,11 +10,11 @@
     "audience": [
         {
             "@type": "Audience",
-            "audienceType": "Developers"
+            "audienceType": "Science/Research"
         },
         {
             "@type": "Audience",
-            "audienceType": "Science/Research"
+            "audienceType": "Developers"
         }
     ],
     "author": [
@@ -54,5 +54,5 @@
             "version": "^3.8"
         }
     ],
-    "version": "0.1.0"
+    "version": "0.1.1"
 }

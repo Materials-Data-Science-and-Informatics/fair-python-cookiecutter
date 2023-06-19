@@ -85,7 +85,10 @@ This will spawn an interactive prompt, where you have to provide some informatio
 a starting skeleton for your software project. Don't worry, you can always adapt this
 information later on by hand. After this cookiecutter will initate your software project.
 
-The generated repository will include a copy of a [developer guide](./dev_guide.md),
+You can find a demo repository generated from this template
+[here](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo).
+
+Your new project repository will also include a copy of a [developer guide](./dev_guide.md),
 containing more information about the structure and features of the generated project.
 Feel free to either remove it, or keep (and possibly adjust) it as extended technical
 project documentation for yourself and other future project contributors.

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fair-python-cookiecutter"
-version = "0.1.0"
+version = "0.1.1"
 description = "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata. "
 authors = ["Anton Pirogov <a.pirogov@fz-juelich.de>"]
 license = "MIT"
