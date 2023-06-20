@@ -20,7 +20,7 @@ badge_colors = {
 """Colors for overall coverage percentage (0-100)."""
 
 
-def on_pre_build(_config):
+def on_pre_build(config):  # noqa
     """Generate coverage report if it is missing and create a badge."""
     if not Path("htmlcov").is_dir() or not Path(".coverage").is_file():
         log.info("Missing htmlcov or .coverage, running pytest to collect.")
