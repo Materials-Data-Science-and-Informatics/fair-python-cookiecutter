@@ -88,9 +88,9 @@ jobs:
 
         git push -f --set-upstream origin $CI_BRANCH
 
-    # - name: Push tag
-    #   # TODO: uncomment once it works
-    #   # if: startswith(github.ref, 'refs/tags/v')
-    #   run: |
-    #     cd fair-python-cookiecutter-demo
-    #     # git tag "v$FAIR_TEMPLATE_VERSION"
+    - name: Push tag (to trigger release workflow in demo)
+      if: startswith(github.ref, 'refs/tags/v')
+      run: |
+        cd fair-python-cookiecutter-demo
+        git tag "v$FAIR_TEMPLATE_VERSION"
+        git push --tags origin $CI_BRANCH
