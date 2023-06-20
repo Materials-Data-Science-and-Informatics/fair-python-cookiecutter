@@ -4,30 +4,60 @@ on: [workflow_dispatch, workflow_call]
 
 jobs:
   deploy:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+
     runs-on: ubuntu-latest
     steps:
 
-    - name: Checkout template repo
-      uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
       with:
-        path: fair-python-cookiecutter
+        python-version: "3.10"
 
-    - name: Prepare SSH
+    - name: Set git author (needed for commits)
+      run: |
+        git config --global user.email "deploy-fair-python-cookiecutter@example.com"
+        git config --global user.name "Deployment Bot"
+
+    - name: Prepare SSH (needed for remote push)
       uses: webfactory/ssh-agent@v0.7.0
       with:
         # NOTE: generated private key, stored repo secret
         # (matching public key is registered Deployment Key in target Github repo)
         ssh-private-key: ${{ secrets.SSH_DEPLOY_KEY }}
 
-    - name: Set git author
-      run: |
-        git config --global user.email "deploy-fair-python-cookiecutter@example.com"
-        git config --global user.name "Deployment Bot"
+    # ----
 
-    - uses: actions/setup-python@v4
+    - name: Checkout template repo
+      uses: actions/checkout@v3
       with:
-        python-version: "3.10"
+        path: fair-python-cookiecutter
+
+    - name: Get current template version
+      run: |
+        TEMPLATE_DIR="./fair-python-cookiecutter"
+
+        QUOTED_VERSION=$(grep -e "^version" $TEMPLATE_DIR/pyproject.toml | sed 's/^.*=//')
+        TEMPLATE_VERSION=$(echo "$QUOTED_VERSION" | sed 's/"//g' | xargs)
+        echo "extracted template version:" $TEMPLATE_VERSION
+
+        echo "FAIR_TEMPLATE_DIR=$TEMPLATE_DIR" >> "$GITHUB_ENV"
+        echo "FAIR_TEMPLATE_VERSION=$TEMPLATE_VERSION" >> "$GITHUB_ENV"
+
+    - name: Prepare demo repository cookiecutter config
+      run: |
+        SED_CMD_PREF='s/\(^.*version:\).*/\1'
+        SED_CMD="${SED_CMD_PREF} \"${FAIR_TEMPLATE_VERSION}\"/"
+        TEMPLATE_CONFIG=cconf.yaml
+
+        echo "running sed to insert version:" $SED_CMD
+        sed "$SED_CMD" $FAIR_TEMPLATE_DIR/tests/demo.yaml > $TEMPLATE_CONFIG
+
+        echo "resulting repo cookiecutter configuration:"
+        cat $TEMPLATE_CONFIG
+
+        echo "FAIR_TEMPLATE_CONFIG=$TEMPLATE_CONFIG" >> "$GITHUB_ENV"
+
+    # ----
 
     - name: Install poetry
       run: pipx install poetry
@@ -35,22 +65,32 @@ jobs:
     - name: Install cookiecutter
       run: pip install cookiecutter==2.1.1
 
-    - name: Prepare cookiecutter configuration
-      run: |
-        TEMPLATE_VERSION=$(grep -e "^version" ./fair-python-cookiecutter/pyproject.toml | sed 's/^.*=//')
-        echo "extracted template version:" $TEMPLATE_VERSION
-        SED_CMD_PREF='s/\(^.*version:\).*/\1'
-        SED_CMD="${SED_CMD_PREF}${TEMPLATE_VERSION}/"
-        echo "running sed to insert version:" $SED_CMD
-        sed "$SED_CMD" ./fair-python-cookiecutter/tests/demo.yaml > cconf.yaml
-        echo "resulting repo cookiecutter configuration:"
-        cat cconf.yaml
-
     - name: Instantiate demo repository
-      run: cookiecutter ./fair-python-cookiecutter --no-input --config-file=cconf.yaml
+      run: cookiecutter $FAIR_TEMPLATE_DIR --no-input --config-file=$FAIR_TEMPLATE_CONFIG
+
+    # ----
+
+    - name: Get branch triggering the workflow
+      run: |
+        BRANCH="$(echo ${GITHUB_REF##*/})"
+        echo "ci branch:" $BRANCH
+        echo "CI_BRANCH=$BRANCH" >> "$GITHUB_ENV"
 
     - name: Deploy generated repository
       run: |
         cd fair-python-cookiecutter-demo
         git remote add origin git@github.com:Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo.git
-        git push -f --set-upstream origin main
+
+        if [ "$CI_BRANCH" != "main" ]; then
+          git branch -m main $CI_BRANCH
+          git status
+        fi
+
+        git push -f --set-upstream origin $CI_BRANCH
+
+    # - name: Push tag
+    #   # TODO: uncomment once it works
+    #   # if: startswith(github.ref, 'refs/tags/v')
+    #   run: |
+    #     cd fair-python-cookiecutter-demo
+    #     # git tag "v$FAIR_TEMPLATE_VERSION"
