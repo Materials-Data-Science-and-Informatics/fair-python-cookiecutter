@@ -10,23 +10,27 @@
     "audience": [
         {
             "@type": "Audience",
-            "audienceType": "Science/Research"
+            "audienceType": "Developers"
         },
         {
             "@type": "Audience",
-            "audienceType": "Developers"
+            "audienceType": "Science/Research"
         }
     ],
     "author": [
         {
+            "@id": "https://orcid.org/0000-0002-5077-7497",
             "@type": "Person",
-            "email": "a.pirogov@fz-juelich.de",
+            "affiliation": {
+                "@type": "Organization",
+                "legalName": "Forschungszentrum Jülich GmbH - Institute for Materials Data Science and Informatics (IAS9)"
+            },
             "familyName": "Pirogov",
             "givenName": "Anton"
         }
     ],
     "codeRepository": "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter",
-    "description": "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata. ",
+    "description": "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata.",
     "identifier": "fair-python-cookiecutter",
     "keywords": [
         "cookiecutter",
@@ -54,5 +58,6 @@
             "version": "^3.8"
         }
     ],
+    "url": "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter",
     "version": "0.1.1"
 }

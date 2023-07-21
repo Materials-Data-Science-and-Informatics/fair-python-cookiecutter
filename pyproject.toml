@@ -1,26 +1,23 @@
 [tool.poetry]
+# ---- managed by somesy, see .somesy.toml ----
 name = "fair-python-cookiecutter"
 version = "0.1.1"
-description = "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata. "
+description = "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata."
 authors = ["Anton Pirogov <a.pirogov@fz-juelich.de>"]
+maintainers = ["Anton Pirogov <a.pirogov@fz-juelich.de>"]
 license = "MIT"
 
-readme = "README.md"
+keywords = ["fair", "metadata", "python", "cookiecutter", "template"]
 repository = "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
 homepage = "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
 documentation = "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
+# ---- managed by somesy, see .somesy.toml ----
 
-keywords = [
-    "fair",
-    "metadata",
-    "python",
-    "cookiecutter",
-    "template"
-]
 classifiers = [
     "Intended Audience :: Science/Research",
     "Intended Audience :: Developers",
 ]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"

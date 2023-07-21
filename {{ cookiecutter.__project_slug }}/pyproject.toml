@@ -1,16 +1,58 @@
-[tool.poetry]
+# NOTE: this repository uses the tool somesy to help you easily maintain
+# and synchronize all the high-level project metadata across multiple files.
+# To see which other metadata can be added, check out the somesy documentation
+# https://materials-data-science-and-informatics.github.io/somesy/main/
+[tool.somesy.project]
 name = "{{ cookiecutter.__project_slug }}"
 version = "{{ cookiecutter.project_version }}"
 description = "{{ cookiecutter.project_description }}"
-authors = ["{{ cookiecutter.__author_name_email }}"]
 license = "{{ cookiecutter.project_license_spdx }}"
 
-readme = "README.md"
+keywords = {{ cookiecutter.project_keywords.split() | jsonify }}
 repository = "{{ cookiecutter.__project_gh_repo }}"
 homepage = "{{ cookiecutter.__project_gh_pages }}"
 documentation = "{{ cookiecutter.__project_gh_pages }}"
 
+[[tool.somesy.project.people]]
+given-names = "{{ cookiecutter.author_first_name }}"
+family-names = "{{ cookiecutter.author_last_name }}"
+email = "{{ cookiecutter.author_email }}"
+orcid = "{{ cookiecutter.__author_orcid_url }}"
+author = true
+maintainer = true
+
+# You also can add more authors, maintainers or contributors here:
+# [[tool.somesy.project.people]]
+# given-names = "Another"
+# family-names = "Contributor"
+# email = "contributor@email.com"
+# orcid = "https://orcid.org/0123-4567-8910-1112"
+# ...
+
+[tool.somesy.config]
+verbose = true
+
+[tool.poetry]
+# ---- DO NOT EDIT - core project metadata managed by somesy  ----
+# to update, edit values in [tool.somesy.project] section
+# and run somesy: poetry run somesy
+name = "{{ cookiecutter.__project_slug }}"
+version = "{{ cookiecutter.project_version }}"
+description = "{{ cookiecutter.project_description }}"
+license = "{{ cookiecutter.project_license_spdx }}"
+
+authors = ["{{ cookiecutter.__author_name_email }}"]
+maintainers = ["{{ cookiecutter.__author_name_email }}"]
+
 keywords = {{ cookiecutter.project_keywords.split() | jsonify }}
+repository = "{{ cookiecutter.__project_gh_repo }}"
+homepage = "{{ cookiecutter.__project_gh_pages }}"
+documentation = "{{ cookiecutter.__project_gh_pages }}"
+# ----------------------------------------------------------------
+
+# Python- and Poetry-specific metadata
+# ------------------------------------
+readme = "README.md"
 classifiers = [
     # TODO: update the classifier strings
     # (see https://pypi.org/classifiers/)
@@ -92,7 +134,6 @@ licensecheck = "licensecheck"  # run this when you add new deps
 
 # Tool Configurations
 # -------------------
-
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 addopts = "--cov-report=term-missing:skip-covered"

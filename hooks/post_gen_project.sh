@@ -24,13 +24,25 @@ rm tests/test_api.py
 # {% endif %}
 # ----
 
+
 # finalize repo setup
 git init
 poetry install --with docs
 poetry run poe init-dev  # init git repo + register pre-commit
 poetry run pip install pipx  # install pipx into venv without adding it as dep
 poetry run pipx run reuse download --all  # get license files for REUSE compliance
-poetry run poe lint update-codemeta --files pyproject.toml  # to create codemeta.json
+
+# ----
+# if we use somesy, CITATION.cff + codemeta.json is created automatically
+rm CITATION.cff  # using somesy -> will be created from pyproject.toml
+if [ -f "CITATION.cff" ]; then
+    # not using somesy -> create a minimal codemeta.json based on the CITATION.cff
+    # (avoiding the buggy codemetapy pyproject.toml parsing)
+    pipx run cffconvert -i CITATION.cff -f codemeta -o codemeta.json
+fi
+# ----
+# use somesy to create CITATION.cff + codemeta.json
+poetry run poe lint somesy --files pyproject.toml
 
 # create first commit
 git add .

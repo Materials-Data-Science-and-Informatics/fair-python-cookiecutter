@@ -1,0 +1,29 @@
+[project]
+name = "fair-python-cookiecutter"
+version = "0.1.1"
+description = "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata. "
+
+license = "MIT"
+keywords = [
+    "fair",
+    "metadata",
+    "python",
+    "cookiecutter",
+    "template",
+]
+
+repository = "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
+homepage = "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
+documentation = "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
+
+[[project.people]]
+given-names = "Anton"
+family-names = "Pirogov"
+email = "a.pirogov@fz-juelich.de"
+orcid = "https://orcid.org/0000-0002-5077-7497"
+
+author = true
+maintainer = true
+
+[config]
+verbose = true

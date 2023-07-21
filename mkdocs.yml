@@ -1,6 +1,6 @@
 # basic configuration:
 site_name: "fair-python-cookiecutter"
-site_description: "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata. "
+site_description: "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata."
 site_url: "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
 repo_url: "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
 edit_uri: "blob/main/docs/"
