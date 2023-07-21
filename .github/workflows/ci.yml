@@ -138,8 +138,8 @@ jobs:
 # ----
 
   deploy_demo:
-    # needs: docs  # TODO: uncomment when feature works
-    # if: startswith(github.ref, 'refs/tags/v')
+    needs: docs
+    if: startswith(github.ref, 'refs/tags/v')
     secrets: inherit
     uses: "./.github/workflows/deploy_demo.yml"
 
