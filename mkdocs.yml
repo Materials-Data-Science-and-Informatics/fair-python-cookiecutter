@@ -6,6 +6,7 @@ repo_url: "https://github.com/Materials-Data-Science-and-Informatics/fair-python
 edit_uri: "blob/main/docs/"
 repo_name: "Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
 docs_dir: "{{ cookiecutter.__project_slug }}/docs"
+watch: ["README.md"]
 
 # navigation structure (TOC + respective markdown files):
 nav:

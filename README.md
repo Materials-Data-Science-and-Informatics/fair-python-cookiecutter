@@ -117,6 +117,40 @@ default_context:
 This information will be already pre-filled when you use the template,
 saving you some time and possibly avoiding possible mistakes from manual typing.
 
+## Modifying the Template
+
+If you want to adjust it to your needs and likings (e.g. add, remove or substitute certain
+tools), you probably want to
+[fork](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/fork)
+it to get your own copy. Then you can do the desired changes and use the URL of your
+template repository instead of this one to kickstart your projects.
+
+However, if you think that your changes are of general interest and would improve this
+template, consider to get in touch
+and [contribute](https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter/main/contributing/)!
+
+In any case we are very happy to know about any similar or derivative templates, e.g. for
+more specific use-cases or based on other tool preferences.
+
+## Reusing Parts of the Template
+
+If you already have an existing project where you would like to introduce things you like
+from this template, there are two main ways to do so:
+
+1. move your code into a fresh repository based on this template
+2. use parts of the template in your existing project structure
+
+If your project currently has no sophisticated setup of tools or strong preferences about
+them, option 1 might be the simplest way to adopt the template. Your code then needs to be
+moved into the `YOUR_PROJECT/src` subdirectory.
+
+On the other hand, if you already have a working setup that you do not wish to replace
+completely, you can take a look at
+
+* the `.pre-commit-config.yaml` file to adopt some of the quality assurance tools listed there
+* the CI pipelines defined in `.github/workflows` or `.gitlab-ci.yml` for automated tests and releases
+* the `mkdocs.yml` and `docs/` subdirectory to see how the project website works
+
 <!-- --8<-- [end:quickstart] -->
 
 <!-- --8<-- [start:citation] -->

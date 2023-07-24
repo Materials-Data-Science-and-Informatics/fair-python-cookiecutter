@@ -126,7 +126,7 @@ build-backend = "poetry.core.masonry.api"
 
 # NOTE: You can run the following with "poetry poe TASK"
 [tool.poe.tasks]
-init-dev = { shell = "pre-commit install" }
+init-dev = "pre-commit install"  # run once after clone to enable various tools
 lint = "pre-commit run"  # pass --all-files to check everything
 test = "pytest"  # pass --cov to also collect coverage info
 docs = "mkdocs build"  # run this to generate local documentation
