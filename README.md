@@ -10,6 +10,9 @@
 
 An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata.
 
+*Check out a demo repository generated from this template
+:point_right: [here](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo)*
+
 ## Overview
 
 Are you a **researcher** or **research software engineer**?
@@ -85,13 +88,12 @@ This will spawn an interactive prompt, where you have to provide some informatio
 a starting skeleton for your software project. Don't worry, you can always adapt this
 information later on by hand. After this cookiecutter will initate your software project.
 
-You can find a demo repository generated from this template
-[here](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo).
-
 Your new project repository will also include a copy of a [developer guide](./dev_guide.md),
 containing more information about the structure and features of the generated project.
 Feel free to either remove it, or keep (and possibly adjust) it as extended technical
 project documentation for yourself and other future project contributors.
+
+You can find a demo repository generated from this template [here](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo).
 
 ## Configuring the Template
 
