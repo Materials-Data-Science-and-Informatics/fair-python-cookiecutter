@@ -73,6 +73,9 @@ jobs:
     - name: Get branch triggering the workflow
       run: |
         BRANCH="$(echo ${GITHUB_REF##*/})"
+        if [[ $BRANCH == v*.*.* ]]; then
+          BRANCH=main  # tagged release -> main branch
+        fi
         echo "ci branch:" $BRANCH
         echo "CI_BRANCH=$BRANCH" >> "$GITHUB_ENV"
 
@@ -82,6 +85,7 @@ jobs:
         git remote add origin git@github.com:Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo.git
 
         if [ "$CI_BRANCH" != "main" ]; then
+          # rename branch to desired target
           git branch -m main $CI_BRANCH
           git status
         fi
