@@ -1046,8 +1046,12 @@ For most Python projects, using PyPI is the recommended primary distribution met
 workflow that is both more secure and convenient to use than other authorization methods.</p>
 <p>Before the project can be released to PyPI or Test PyPI the first time,
 first a <a href="https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/">pending publisher</a>
-must be added in the PyPI account of the main project maintainer, using
-<code>release.yml</code> as the requested <em>workflow name</em>.</p>
+must be added in the PyPI account of the main project maintainer, <strong>using
+<code>release.yml</code> as the requested <em>workflow name</em></strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is important to use the correct workflow name, otherwise the workflow will fail!</p>
+</div>
 <p>Once this is done, set the corresponding option (<code>to_pypi</code> / <code>to_test_pypi</code>) to <code>true</code>
 in the <code>publish</code> job in <code>ci.yml</code> to enable the corresponding publication target.</p>
 <p>If the old and less secure token-based authentication method is needed or
