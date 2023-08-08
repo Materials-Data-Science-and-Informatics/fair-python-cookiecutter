@@ -340,8 +340,11 @@ workflow that is both more secure and convenient to use than other authorization
 
 Before the project can be released to PyPI or Test PyPI the first time,
 first a [pending publisher](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/)
-must be added in the PyPI account of the main project maintainer, using
-`release.yml` as the requested *workflow name*.
+must be added in the PyPI account of the main project maintainer, **using
+`release.yml` as the requested _workflow name_**.
+
+!!! note
+    It is important to use the correct workflow name, otherwise the workflow will fail!
 
 Once this is done, set the corresponding option (`to_pypi` / `to_test_pypi`) to `true`
 in the `publish` job in `ci.yml` to enable the corresponding publication target.
