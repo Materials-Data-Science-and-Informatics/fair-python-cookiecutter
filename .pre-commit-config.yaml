@@ -65,7 +65,7 @@ repos:
       - id: reuse
 
   - repo: https://github.com/Materials-Data-Science-and-Informatics/somesy
-    rev: "e8bf980" # "0.1.0" TODO: set to tag once released
+    rev: 'v0.1.0'
     hooks:
       - id: somesy
 
