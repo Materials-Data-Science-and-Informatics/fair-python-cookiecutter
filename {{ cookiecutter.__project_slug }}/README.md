@@ -40,6 +40,8 @@ To finalize the project setup, please complete the following steps:
 
 **:construction: TODO: check that the installation instructions work**
 
+This project works with Python > 3.8.
+
 ```
 $ pip install git+ssh://git@github.com:{{ cookiecutter.__project_gh_name }}.git
 ```
@@ -50,6 +52,14 @@ $ pip install git+ssh://git@github.com:{{ cookiecutter.__project_gh_name }}.git
 **:construction: TODO: provide a minimal working example**
 
 <!-- --8<-- [end:quickstart] -->
+
+## Troubleshooting
+
+### When I try installing the package, I get an `IndexError: list index out of range`
+
+Make sure you have `pip` > 21.2 (see `pip --version`), older versions have a bug causing
+this problem. If the installed version is older, you can upgrade it with
+`pip install --upgrade pip` and then try again to install the package.
 
 **You can find more information on using and contributing to this repository in the
 [documentation]({{ cookiecutter.__project_gh_pages }}/main).**

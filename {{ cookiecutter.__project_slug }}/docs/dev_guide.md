@@ -329,8 +329,11 @@ a snapshot of the repository as a download. This requires no additional configur
 See [here](https://github.com/softprops/action-gh-release)
 for information on how the Github release can be customized.
 
-Note that this release target is mostly for demonstration purposes.
-For most Python projects, using PyPI is the recommended primary distribution method.
+!!! note
+    The Github Release can be used to trigger automated software publication of your
+    released versions to
+    [Zenodo](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content),
+    based on the metadata provided in the `CITATION.cff` file.
 
 #### PyPI (and compatible package indices)
 
