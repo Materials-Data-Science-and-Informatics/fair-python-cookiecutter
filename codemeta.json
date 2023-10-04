@@ -10,11 +10,11 @@
     "audience": [
         {
             "@type": "Audience",
-            "audienceType": "Science/Research"
+            "audienceType": "Developers"
         },
         {
             "@type": "Audience",
-            "audienceType": "Developers"
+            "audienceType": "Science/Research"
         }
     ],
     "author": [
@@ -40,8 +40,15 @@
         "template"
     ],
     "license": "http://spdx.org/licenses/MIT",
+    "maintainer": {
+        "@type": "Person",
+        "email": "a.pirogov@fz-juelich.de",
+        "familyName": "Pirogov",
+        "givenName": "Anton"
+    },
     "name": "fair-python-cookiecutter",
     "runtimePlatform": "Python 3",
+    "softwareHelp": "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter",
     "softwareRequirements": [
         {
             "@type": "SoftwareApplication",

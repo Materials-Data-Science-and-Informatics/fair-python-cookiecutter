@@ -33,12 +33,12 @@ jobs:
         run: pip install poethepoet pre-commit safety
 
       # NOTE: using custom cache, to include pre-commit linters + deps
-      # - uses: actions/cache@v3
-      #   with:
-      #     path: |
-      #       ~/.cache/pre-commit
-      #       ~/.cache/pip
-      #     key: ${{ hashFiles('.pre-commit-config.yaml') }}-pre-commit
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pre-commit
+            ~/.cache/pip
+          key: ${{ hashFiles('.pre-commit-config.yaml') }}-pre-commit
 
       - name: Check that all static analysis tools run without errors
         run: poetry run poe lint --all-files
