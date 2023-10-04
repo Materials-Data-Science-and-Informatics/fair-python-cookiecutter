@@ -1038,8 +1038,13 @@ configured by adapting the corresponding actions in <code>.github/workflows/rele
 a snapshot of the repository as a download. This requires no additional configuration.</p>
 <p>See <a href="https://github.com/softprops/action-gh-release">here</a>
 for information on how the Github release can be customized.</p>
-<p>Note that this release target is mostly for demonstration purposes.
-For most Python projects, using PyPI is the recommended primary distribution method.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Github Release can be used to trigger automated software publication of your
+released versions to
+<a href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content">Zenodo</a>,
+based on the metadata provided in the <code>CITATION.cff</code> file.</p>
+</div>
 <h4 id="pypi-and-compatible-package-indices">PyPI (and compatible package indices)<a class="headerlink" href="#pypi-and-compatible-package-indices" title="Permanent link">&para;</a></h4>
 <p>For releases to PyPI and Test PyPI the project uses the new
 <a href="https://blog.pypi.org/posts/2023-04-20-introducing-trusted-publishers/">Trusted Publishers</a>
