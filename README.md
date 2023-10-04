@@ -10,6 +10,10 @@
 
 An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata.
 
+<!-- NOTE: For technical reasons, it is much easier to use GitHub
+     for hosting the mindmap than adding it to the repository -->
+![FAIR Software Mindmap](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/assets/371708/1eba8eaf-663f-4475-b6ce-39fac1a183b5)
+
 *Check out a demo repository generated from this template
 :point_right: [here](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo)*
 
@@ -49,11 +53,12 @@ This template sets up a skeleton for a Python project that:
 * helps following best practices for code and metadata quality
 * contains detailed documentation on how to work with it
 
-It is built to help you adopting good development practices
+It is built to help you adopting good practices
 and follow recommendations such as:
 
 * [DLR Software Engineering Guidelines](https://rse.dlr.de/guidelines/00_dlr-se-guidelines_en.html)
 * [OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/en/criteria/0)
+* [Netherlands eScience Center](https://fair-software.eu)
 * innumerable other resources that can be found online
 
 Furthermore, it implements emerging standards with the goal to improve
