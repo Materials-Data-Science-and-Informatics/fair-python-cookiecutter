@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata. ">
+        <meta name="description" content="An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata.">
       
       
       
@@ -494,6 +494,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#modifying-the-template" class="md-nav__link">
+    Modifying the Template
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reusing-parts-of-the-template" class="md-nav__link">
+    Reusing Parts of the Template
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -610,6 +624,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#modifying-the-template" class="md-nav__link">
+    Modifying the Template
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reusing-parts-of-the-template" class="md-nav__link">
+    Reusing Parts of the Template
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -654,12 +682,12 @@ This template does not work with older versions, because they lack some needed f
 <p>This will spawn an interactive prompt, where you have to provide some information and select
 a starting skeleton for your software project. Don't worry, you can always adapt this
 information later on by hand. After this cookiecutter will initate your software project.</p>
-<p>You can find a demo repository generated from this template
-<a href="https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo">here</a>.</p>
-<p>Your new project repository will also include a copy of a <a href="../dev_guide/">developer guide</a>,
+<p>Your new project repository will also include a copy of a
+<a href="https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter-demo/latest/dev_guide">developer guide</a>,
 containing more information about the structure and features of the generated project.
 Feel free to either remove it, or keep (and possibly adjust) it as extended technical
 project documentation for yourself and other future project contributors.</p>
+<p>You can find a demo repository generated from this template <a href="https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo">here</a>.</p>
 <h2 id="configuring-the-template">Configuring the Template<a class="headerlink" href="#configuring-the-template" title="Permanent link">&para;</a></h2>
 <p>If you intend to use the template a lot, e.g. if you want to use (an adaptation of)
 this template as the default way to start a Python project for yourself and/or others,
@@ -677,6 +705,34 @@ Here is an example cookiecutter configuration:</p>
 </code></pre></div>
 <p>This information will be already pre-filled when you use the template,
 saving you some time and possibly avoiding possible mistakes from manual typing.</p>
+<h2 id="modifying-the-template">Modifying the Template<a class="headerlink" href="#modifying-the-template" title="Permanent link">&para;</a></h2>
+<p>If you want to adjust it to your needs and likings (e.g. add, remove or substitute certain
+tools), you probably want to
+<a href="https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/fork">fork</a>
+it to get your own copy. Then you can do the desired changes and use the URL of your
+template repository instead of this one to kickstart your projects.</p>
+<p>However, if you think that your changes are of general interest and would improve this
+template, consider to get in touch
+and <a href="https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter/main/contributing/">contribute</a>!</p>
+<p>In any case we are very happy to know about any similar or derivative templates, e.g. for
+more specific use-cases or based on other tool preferences.</p>
+<h2 id="reusing-parts-of-the-template">Reusing Parts of the Template<a class="headerlink" href="#reusing-parts-of-the-template" title="Permanent link">&para;</a></h2>
+<p>If you already have an existing project where you would like to introduce things you like
+from this template, there are two main ways to do so:</p>
+<ol>
+<li>move your code into a fresh repository based on this template</li>
+<li>use parts of the template in your existing project structure</li>
+</ol>
+<p>If your project currently has no sophisticated setup of tools or strong preferences about
+them, option 1 might be the simplest way to adopt the template. Your code then needs to be
+moved into the <code>YOUR_PROJECT/src</code> subdirectory.</p>
+<p>On the other hand, if you already have a working setup that you do not wish to replace
+completely, you can take a look at</p>
+<ul>
+<li>the <code>.pre-commit-config.yaml</code> file to adopt some of the quality assurance tools listed there</li>
+<li>the CI pipelines defined in <code>.github/workflows</code> or <code>.gitlab-ci.yml</code> for automated tests and releases</li>
+<li>the <code>mkdocs.yml</code> and <code>docs/</code> subdirectory to see how the project website works</li>
+</ul>
 
 
 
