@@ -17,7 +17,11 @@ documentation = "{{ cookiecutter.__project_gh_pages }}"
 given-names = "{{ cookiecutter.author_first_name }}"
 family-names = "{{ cookiecutter.author_last_name }}"
 email = "{{ cookiecutter.author_email }}"
+{%- if cookiecutter.__author_orcid_url.find('TODO') < 0 %}
 orcid = "{{ cookiecutter.__author_orcid_url }}"
+{%- else %}
+# orcid = "{{ cookiecutter.__author_orcid_url }}"
+{%- endif %}
 author = true
 maintainer = true
 
@@ -76,7 +80,7 @@ include = [
 [tool.poetry.dependencies]
 python = "^3.8"
 {%- if "cli" in cookiecutter.init_skel.lower() %}
-typer = "^0.7.0"
+typer = "^0.9.0"
 {%- endif %}
 {%- if "api" in cookiecutter.init_skel.lower() %}
 fastapi = "^0.95.0"
@@ -99,17 +103,17 @@ optional = true
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.4.2"
-mkdocstrings = {extras = ["python"], version = "^0.21.2"}
-mkdocs-material = "^9.1.6"
-mkdocs-gen-files = "^0.4.0"
+mkdocstrings = {extras = ["python"], version = "^0.24.0"}
+mkdocs-material = "^9.4"
+mkdocs-gen-files = "^0.5.0"
 mkdocs-literate-nav = "^0.6.0"
 mkdocs-section-index = "^0.3.5"
 mkdocs-macros-plugin = "^0.7.0"
 markdown-include = "^0.8.1"
-pymdown-extensions = "^9.11"
+pymdown-extensions = "^10.2"
 markdown-exec = {extras = ["ansi"], version = "^1.6.0"}
 mkdocs-coverage = "^0.2.7"
-mike = "^1.1.2"
+mike = "^2.0.0"
 anybadge = "^1.14.0"
 black = "^23.3.0"
 

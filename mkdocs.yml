@@ -1,10 +1,12 @@
 # basic configuration:
 site_name: "fair-python-cookiecutter"
 site_description: "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata."
+repo_name: "Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
+
 site_url: "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
 repo_url: "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
-edit_uri: "blob/main/docs/"
-repo_name: "Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
+edit_uri: "edit/main/docs/"
+
 docs_dir: "{{ cookiecutter.__project_slug }}/docs"
 watch: ["README.md"]
 
@@ -110,8 +112,8 @@ markdown_extensions:
       check_paths: true
   # Icons and Emoji: https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 plugins:
   # default search box (must be listed if plugins are added)

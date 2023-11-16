@@ -2,19 +2,18 @@
   "__org_name": "Your Institution Inc.",
   "__org_mail_suffix": "your-institution.org",
   "__org_rep": "Your Boss <your.boss@{{ cookiecutter.__org_mail_suffix }}>",
-  "__org_gh": "Github-Organization-Or-Username",
-  "__org_gh_url": "https://github.com/{{ cookiecutter.__org_gh }}",
-  "__org_homepage": "{{ cookiecutter.__org_gh_url }}",
+  "__org_homepage": "https://organization.org",
 
   "project_name": "FAIR Python App",
-  "project_gh_org": "{{ cookiecutter.__org_gh }}",
-
   "__project_slug": "{{ cookiecutter.project_name | slugify() }}",
   "__project_package": "{{ cookiecutter.project_name | slugify(separator='_') }}",
 
-  "__project_gh_name": "{{ cookiecutter.project_gh_org }}/{{ cookiecutter.__project_slug }}",
+  "__org_gh": "Github-Organization-Or-Username",
+  "__org_gh_url": "https://github.com/{{ cookiecutter.__org_gh }}",
+  "__project_gh_org": "{{ cookiecutter.__org_gh }}",
+  "__project_gh_name": "{{ cookiecutter.__project_gh_org }}/{{ cookiecutter.__project_slug }}",
   "__project_gh_repo": "https://github.com/{{ cookiecutter.__project_gh_name }}",
-  "__project_gh_pages": "https://{{ cookiecutter.project_gh_org|lower }}.github.io/{{ cookiecutter.__project_slug }}",
+  "__project_gh_pages": "https://{{ cookiecutter.__project_gh_org|lower }}.github.io/{{ cookiecutter.__project_slug }}",
 
   "project_version": "0.1.0",
   "project_description": "TODO - A meaningful one-sentence description.",
