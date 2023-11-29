@@ -7,21 +7,37 @@ authors = ["Anton Pirogov <a.pirogov@fz-juelich.de>"]
 maintainers = ["Anton Pirogov <a.pirogov@fz-juelich.de>"]
 license = "MIT"
 
-keywords = ["fair", "metadata", "python", "cookiecutter", "template"]
+readme = "README.md"
 repository = "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
 homepage = "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
 documentation = "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
+
+keywords = ["fair", "metadata", "python", "cookiecutter", "template"]
 # ---- managed by somesy, see .somesy.toml ----
 
 classifiers = [
     "Intended Audience :: Science/Research",
     "Intended Audience :: Developers",
 ]
-readme = "README.md"
+
+# the Python packages that will be included in a built distribution:
+packages = [{include = "fair_python_cookiecutter", from = "src"}]
+
+# always include basic info for humans and core metadata in the distribution,
+# include files related to test and documentation only in sdist:
+include = [
+  "*.md", "LICENSE", "LICENSES", ".reuse/dep5", "CITATION.cff", "codemeta.json",
+  "mkdocs.yml", "docs", "tests",
+  { path = "mkdocs.yml", format = "sdist" },
+  { path = "docs", format = "sdist" },
+  { path = "tests", format = "sdist" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 cookiecutter = "^2.1.1"
+typer = "^0.9.0"
+pydantic = "^2.5.2"
 
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.18.1"
@@ -48,6 +64,9 @@ anybadge = "^1.14.0"
 interrogate = "^1.5.0"
 black = "^23.3.0"
 
+[tool.poetry.scripts]
+fair-python-cookiecutter = "fair_python_cookiecutter.main:app"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
@@ -63,14 +82,46 @@ docs = "mkdocs build"  # run this to generate local documentation
 # -------------------
 
 [tool.pytest.ini_options]
+pythonpath = ["src"]
 addopts = "--ignore='{{ cookiecutter.__project_slug }}'"
+# addopts = "--cov-report=term-missing:skip-covered"
+filterwarnings = [
+"ignore::DeprecationWarning:pkg_resources.*",
+"ignore::DeprecationWarning:pyshacl.*",
+# Example:
+# "ignore::DeprecationWarning:importlib_metadata.*",
+]
 
-[tool.flake8]
-ignore = ["W503"]
-max-line-length = 88
+[tool.coverage.run]
+source = ["fair_python_cookiecutter"]
 
-[tool.pydocstyle]
-convention = "google"
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if TYPE_CHECKING:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+
+[tool.ruff.lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
+select = ["E4", "E7", "E9", "F"]
+ignore = []
+# TODO: check that ruff substitutes
+# - flake8-bugbear
+# - dlint
+# - pydocstyle (google style)
+# - black
+# - autoflake
+# - isort
 
 [tool.bandit]
 exclude_dirs = ["tests"]
+

@@ -59,12 +59,32 @@
         },
         {
             "@type": "SoftwareApplication",
+            "identifier": "pydantic",
+            "name": "pydantic",
+            "runtimePlatform": "Python 3",
+            "version": "^2.5.2"
+        },
+        {
+            "@type": "SoftwareApplication",
             "identifier": "python",
             "name": "python",
             "runtimePlatform": "Python 3",
             "version": "^3.8"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "typer",
+            "name": "typer",
+            "runtimePlatform": "Python 3",
+            "version": "^0.9.0"
         }
     ],
+    "targetProduct": {
+        "@type": "CommandLineApplication",
+        "executableName": "fair-python-cookiecutter",
+        "name": "fair-python-cookiecutter",
+        "runtimePlatform": "Python 3"
+    },
     "url": "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter",
     "version": "0.1.0"
 }

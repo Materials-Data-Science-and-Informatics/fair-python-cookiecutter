@@ -11,6 +11,6 @@ Files: .gitignore pyproject.toml poetry.lock .pre-commit-config.yaml .somesy.tom
 Copyright: 2023 Forschungszentrum Jülich GmbH - Institute for Materials Data Science and Informatics (IAS9) - Stefan Sandfeld <s.sandfeld@fz-juelich.de>
 License: CC0-1.0
 
-Files: tests/* hooks/*
+Files: src/* tests/* hooks/*
 Copyright: 2023 Forschungszentrum Jülich GmbH - Institute for Materials Data Science and Informatics (IAS9) - Stefan Sandfeld <s.sandfeld@fz-juelich.de>
 License: MIT
