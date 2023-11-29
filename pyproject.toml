@@ -111,16 +111,11 @@ exclude_lines = [
 ]
 
 [tool.ruff.lint]
-# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
-select = ["E4", "E7", "E9", "F"]
-ignore = []
-# TODO: check that ruff substitutes
-# - flake8-bugbear
-# - dlint
-# - pydocstyle (google style)
-# - black
-# - autoflake
-# - isort
+# see here: https://docs.astral.sh/ruff/rules/
+# ruff by default works like a mix of flake8, autoflake and black
+# we extend default linter rules to substitute:
+# flake8-bugbear, pydocstyle, isort, flake8-bandit
+extend-select = ["B", "D", "I", "S"]
 
 [tool.bandit]
 exclude_dirs = ["tests"]
