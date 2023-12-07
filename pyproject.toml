@@ -1,7 +1,7 @@
 [tool.poetry]
 # ---- managed by somesy, see .somesy.toml ----
 name = "fair-python-cookiecutter"
-version = "0.1.0"
+version = "0.2.0"
 description = "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata."
 authors = ["Anton Pirogov <a.pirogov@fz-juelich.de>"]
 maintainers = ["Anton Pirogov <a.pirogov@fz-juelich.de>"]
@@ -68,7 +68,7 @@ interrogate = "^1.5.0"
 black = "^23.3.0"
 
 [tool.poetry.scripts]
-fair-python-cookiecutter = "fair_python_cookiecutter.main:app"
+fair-python-cookiecutter = "fair_python_cookiecutter.cli:app"
 
 [build-system]
 requires = ["poetry-core"]

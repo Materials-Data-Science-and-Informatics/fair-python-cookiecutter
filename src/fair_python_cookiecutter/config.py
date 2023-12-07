@@ -16,6 +16,7 @@ from pydantic import (
 )
 from pydantic_yaml import to_yaml_file
 from rich import print
+from rich.panel import Panel
 from rich.prompt import Prompt
 from typing_extensions import Annotated, Self
 
@@ -43,7 +44,9 @@ SPDXLicense = Annotated[
 ]
 DomainName = Annotated[
     HttpUrl,
-    BeforeValidator(lambda s: f"https://{s}" if not s.startswith("https://") else s),
+    BeforeValidator(
+        lambda s: f"https://{s}" if s and not s.startswith("https://") else s
+    ),
 ]
 
 
@@ -86,7 +89,7 @@ class MyBaseModel(BaseModel):
                 setattr(self, key, user_val)
                 success = True
             except ValidationError as e:
-                print(e)
+                print(Panel.fit(str(e)))
                 print("[red]The provided value is not valid, please try again.[/red]")
 
         return getattr(self, key)
