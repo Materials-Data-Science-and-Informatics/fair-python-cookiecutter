@@ -36,8 +36,11 @@ include = [
 [tool.poetry.dependencies]
 python = "^3.8"
 cookiecutter = "^2.1.1"
-typer = "^0.9.0"
+typer = {extras = ["all"], version = "^0.9.0"}
 pydantic = "^2.5.2"
+typing-extensions = "^4.8.0"
+pydantic-yaml = "^1.2.0"
+spdx-lookup = "^0.3.3"
 
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.18.1"
@@ -116,7 +119,8 @@ exclude_lines = [
 # we extend default linter rules to substitute:
 # flake8-bugbear, pydocstyle, isort, flake8-bandit
 extend-select = ["B", "D", "I", "S"]
+ignore = ["D203", "D213", "D407", "B008"]
 
-[tool.bandit]
-exclude_dirs = ["tests"]
+[tool.ruff.lint.per-file-ignores]
+"**/{tests,docs}/*" = ["ALL"]
 

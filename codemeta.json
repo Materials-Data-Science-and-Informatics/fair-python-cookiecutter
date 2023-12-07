@@ -66,6 +66,13 @@
         },
         {
             "@type": "SoftwareApplication",
+            "identifier": "pydantic-yaml",
+            "name": "pydantic-yaml",
+            "runtimePlatform": "Python 3",
+            "version": "^1.2.0"
+        },
+        {
+            "@type": "SoftwareApplication",
             "identifier": "python",
             "name": "python",
             "runtimePlatform": "Python 3",
@@ -73,10 +80,24 @@
         },
         {
             "@type": "SoftwareApplication",
+            "identifier": "spdx-lookup",
+            "name": "spdx-lookup",
+            "runtimePlatform": "Python 3",
+            "version": "^0.3.3"
+        },
+        {
+            "@type": "SoftwareApplication",
             "identifier": "typer",
             "name": "typer",
             "runtimePlatform": "Python 3",
             "version": "^0.9.0"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "typing-extensions",
+            "name": "typing-extensions",
+            "runtimePlatform": "Python 3",
+            "version": "^4.8.0"
         }
     ],
     "targetProduct": {

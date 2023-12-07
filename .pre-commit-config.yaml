@@ -26,12 +26,6 @@ repos:
         args: [--no-strict-optional, --ignore-missing-imports]
         # NOTE: you might need to add some deps here:
         additional_dependencies: []
-  - repo: https://github.com/PyCQA/bandit
-    rev: '1.7.5'
-    hooks:
-    - id: bandit
-      args: ['-q', '-c', 'pyproject.toml']
-      additional_dependencies: [ '.[toml]' ]
 
   # Metadata
   - repo: https://github.com/citation-file-format/cff-converter-python
