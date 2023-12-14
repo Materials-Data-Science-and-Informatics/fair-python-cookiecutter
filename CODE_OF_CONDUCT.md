@@ -1,1 +1,1 @@
-{{ cookiecutter.__project_slug }}/CODE_OF_CONDUCT.md
+src/fair_python_cookiecutter/template/{{ cookiecutter.project_slug }}/CODE_OF_CONDUCT.md

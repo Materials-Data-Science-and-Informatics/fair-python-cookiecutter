@@ -1,1 +1,1 @@
-{{ cookiecutter.__project_slug }}/CONTRIBUTING.md
+src/fair_python_cookiecutter/template/{{ cookiecutter.project_slug }}/CONTRIBUTING.md

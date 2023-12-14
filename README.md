@@ -6,6 +6,14 @@
 ](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/actions/workflows/ci.yml)
 
 <!-- --8<-- [start:abstract] -->
+
+<br />
+<div>
+<img style="center-align: middle;" alt="DirSchema Logo" src="https://raw.githubusercontent.com/Materials-Data-Science-and-Informatics/Logos/main/FAIRPythonCookiecutter/FAIRPYTHONCOOKIECUTTER_Logo_Text.png" width=70% height=70% />
+&nbsp;&nbsp;
+</div>
+<br />
+
 # fair-python-cookiecutter
 
 An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata.
@@ -81,17 +89,25 @@ First, make sure that you have a recent version of
 [cookiecutter](https://www.cookiecutter.io/) (`cookiecutter>=2.1`).
 This template does not work with older versions, because they lack some needed features.
 
-To install `cookiecutter`, you can run `pip install cookiecutter`.
+To install `cookiecutter`, you can run `pip install fair-python-cookiecutter`.
 
-To generate a new Python project from this template, run:
+To generate a new Python project from this template, you can run:
 
 ```bash
-cookiecutter https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter
+fair-python-cookiecutter YourProjectName
 ```
 
 This will spawn an interactive prompt, where you have to provide some information and select
 a starting skeleton for your software project. Don't worry, you can always adapt this
 information later on by hand. After this cookiecutter will initate your software project.
+
+To save you some time answering the questions, we recommend that you create an empty repository
+in GitHub or GitLab of your choice (i.e., the location where you plan to push your new project).
+In that case, you can provide the URL which already will provide many required inputs:
+
+```bash
+fair-python-cookiecutter --repo-url https://github.com/YourOrganization/YourProjectName
+```
 
 Your new project repository will also include a copy of a
 [developer guide](https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter-demo/latest/dev_guide),

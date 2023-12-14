@@ -7,7 +7,7 @@ site_url: "https://materials-data-science-and-informatics.github.io/fair-python-
 repo_url: "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
 edit_uri: "edit/main/docs/"
 
-docs_dir: "{{ cookiecutter.__project_slug }}/docs"
+docs_dir: "src/fair_python_cookiecutter/template/{{ cookiecutter.project_slug }}/docs"
 watch: ["README.md"]
 
 # navigation structure (TOC + respective markdown files):
@@ -41,7 +41,7 @@ extra:
 theme:
   # See here for customization guide: https://squidfunk.github.io/mkdocs-material/setup/
   name: "material"
-  custom_dir: "{{ cookiecutter.__project_slug }}/docs/overrides"
+  custom_dir: "src/fair_python_cookiecutter/template/{{ cookiecutter.project_slug }}/docs/overrides"
 
   features:
   - content.action.edit
