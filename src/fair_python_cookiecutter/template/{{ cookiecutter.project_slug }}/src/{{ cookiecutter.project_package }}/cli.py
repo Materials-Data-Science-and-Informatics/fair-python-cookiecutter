@@ -1,4 +1,4 @@
-"""CLI of {{ cookiecutter.__project_slug }}."""
+"""CLI of {{ cookiecutter.project_slug }}."""
 
 import typer
 

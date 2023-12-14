@@ -59,6 +59,20 @@
         },
         {
             "@type": "SoftwareApplication",
+            "identifier": "importlib-resources",
+            "name": "importlib-resources",
+            "runtimePlatform": "Python 3",
+            "version": "^6.1.1"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "identifier": "platformdirs",
+            "name": "platformdirs",
+            "runtimePlatform": "Python 3",
+            "version": "^4.1.0"
+        },
+        {
+            "@type": "SoftwareApplication",
             "identifier": "pydantic",
             "name": "pydantic",
             "runtimePlatform": "Python 3",

@@ -1,4 +1,4 @@
-"""API of {{ cookiecutter.__project_slug }}."""
+"""API of {{ cookiecutter.project_slug }}."""
 from fastapi import FastAPI, HTTPException
 
 from .lib import CalcOperation, calculate

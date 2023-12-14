@@ -41,6 +41,8 @@ pydantic = "^2.5.2"
 typing-extensions = "^4.8.0"
 pydantic-yaml = "^1.2.0"
 spdx-lookup = "^0.3.3"
+platformdirs = "^4.1.0"
+importlib-resources = "^6.1.1"
 
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.18.1"
@@ -86,7 +88,7 @@ docs = "mkdocs build"  # run this to generate local documentation
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
-addopts = "--ignore='{{ cookiecutter.__project_slug }}'"
+addopts = "--ignore='src/fair_python_cookiecutter/template'"
 # addopts = "--cov-report=term-missing:skip-covered"
 filterwarnings = [
 "ignore::DeprecationWarning:pkg_resources.*",
@@ -119,8 +121,7 @@ exclude_lines = [
 # we extend default linter rules to substitute:
 # flake8-bugbear, pydocstyle, isort, flake8-bandit
 extend-select = ["B", "D", "I", "S"]
-ignore = ["D203", "D213", "D407", "B008"]
+ignore = ["D203", "D213", "D407", "B008", "S101", "D102", "D103"]
 
 [tool.ruff.lint.per-file-ignores]
 "**/{tests,docs}/*" = ["ALL"]
-

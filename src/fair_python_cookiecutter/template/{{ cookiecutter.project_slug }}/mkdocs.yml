@@ -1,10 +1,10 @@
 # basic configuration:
 site_name: "{{ cookiecutter.project_name }}"
 site_description: "{{ cookiecutter.project_description }}"
-repo_name: "{{ cookiecutter.__project_slug }}"
+repo_name: "{{ cookiecutter.project_slug }}"
 
-site_url: "{{ cookiecutter.__project_gh_pages }}"
-repo_url: "{{ cookiecutter.__project_gh_repo }}"
+site_url: "{{ cookiecutter.project_pages_url }}"
+repo_url: "{{ cookiecutter.project_repo_url }}"
 
 # add support for buttons to edit a documentation page/section (both github and gitlab):
 edit_uri: "edit/main/docs/"
@@ -28,12 +28,12 @@ nav:
 extra:
   # social links in footer: https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/?h=social#social-links
   social:
-    - icon: 'fontawesome/solid/globe'
-      link: '{{ cookiecutter.__org_homepage }}'
-    # you can add more social links, if desired
+    # you can add more various social links, if desired
+    # - icon: 'fontawesome/solid/globe'
+    #   link: 'https://your-organization-homepage.org'
     # - icon: 'fontawesome/brands/github'
     #   link: 'https://github.com/your_github_organization'
-    # - icon: 'fontawesome/brands/github'
+    # - icon: 'fontawesome/brands/gitlab'
     #   link: 'https://your.gitlab.instance/your_organization'
 
   # versioned docs: https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/

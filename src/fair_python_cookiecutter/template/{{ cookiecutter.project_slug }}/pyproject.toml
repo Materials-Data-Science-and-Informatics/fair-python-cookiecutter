@@ -3,24 +3,24 @@
 # To see which other metadata can be added, check out the somesy documentation
 # https://materials-data-science-and-informatics.github.io/somesy/main/
 [tool.somesy.project]
-name = "{{ cookiecutter.__project_slug }}"
+name = "{{ cookiecutter.project_slug }}"
 version = "{{ cookiecutter.project_version }}"
 description = "{{ cookiecutter.project_description }}"
-license = "{{ cookiecutter.project_license_spdx }}"
+license = "{{ cookiecutter.project_license }}"
 
 keywords = {{ cookiecutter.project_keywords.split() | jsonify }}
-repository = "{{ cookiecutter.__project_gh_repo }}"
-homepage = "{{ cookiecutter.__project_gh_pages }}"
-documentation = "{{ cookiecutter.__project_gh_pages }}"
+repository = "{{ cookiecutter.project_repo_url }}"
+homepage = "{{ cookiecutter.project_pages_url }}"
+documentation = "{{ cookiecutter.project_pages_url }}"
 
 [[tool.somesy.project.people]]
 given-names = "{{ cookiecutter.author_first_name }}"
 family-names = "{{ cookiecutter.author_last_name }}"
 email = "{{ cookiecutter.author_email }}"
-{%- if cookiecutter.__author_orcid_url.find('TODO') < 0 %}
-orcid = "{{ cookiecutter.__author_orcid_url }}"
+{%- if cookiecutter.author_orcid_url %}
+orcid = "{{ cookiecutter.author_orcid_url }}"
 {%- else %}
-# orcid = "{{ cookiecutter.__author_orcid_url }}"
+# orcid = "https://orcid.org/your-orcid"
 {%- endif %}
 author = true
 maintainer = true
@@ -35,23 +35,24 @@ maintainer = true
 
 [tool.somesy.config]
 verbose = true
+no_sync_codemeta = true
 
 [tool.poetry]
 # ---- DO NOT EDIT - core project metadata managed by somesy  ----
 # to update, edit values in [tool.somesy.project] section
 # and run somesy: poetry run somesy
-name = "{{ cookiecutter.__project_slug }}"
+name = "{{ cookiecutter.project_slug }}"
 version = "{{ cookiecutter.project_version }}"
 description = "{{ cookiecutter.project_description }}"
-license = "{{ cookiecutter.project_license_spdx }}"
+license = "{{ cookiecutter.project_license }}"
 
-authors = ["{{ cookiecutter.__author_name_email }}"]
-maintainers = ["{{ cookiecutter.__author_name_email }}"]
+authors = ["{{ cookiecutter.author_name_email }}"]
+maintainers = ["{{ cookiecutter.author_name_email }}"]
 
 keywords = {{ cookiecutter.project_keywords.split() | jsonify }}
-repository = "{{ cookiecutter.__project_gh_repo }}"
-homepage = "{{ cookiecutter.__project_gh_pages }}"
-documentation = "{{ cookiecutter.__project_gh_pages }}"
+repository = "{{ cookiecutter.project_repo_url }}"
+homepage = "{{ cookiecutter.project_pages_url }}"
+documentation = "{{ cookiecutter.project_pages_url }}"
 # ----------------------------------------------------------------
 
 # Python- and Poetry-specific metadata
@@ -66,7 +67,7 @@ classifiers = [
 ]
 
 # the Python packages that will be included in a built distribution:
-packages = [{include = "{{ cookiecutter.__project_package }}", from = "src"}]
+packages = [{include = "{{ cookiecutter.project_package }}", from = "src"}]
 
 # always include basic info for humans and core metadata in the distribution,
 # include files related to test and documentation only in sdist:
@@ -79,10 +80,10 @@ include = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-{%- if "cli" in cookiecutter.init_skel.lower() %}
+{%- if cookiecutter.init_cli %}
 typer = "^0.9.0"
 {%- endif %}
-{%- if "api" in cookiecutter.init_skel.lower() %}
+{%- if cookiecutter.init_api %}
 fastapi = "^0.95.0"
 uvicorn = "^0.21.1"
 {%- endif %}
@@ -94,7 +95,7 @@ pytest = "^7.2.2"
 pytest-cov = "^4.0.0"
 hypothesis = "^6.68.2"
 licensecheck = "^2023.1.1"
-{%- if "api" in cookiecutter.init_skel.lower() %}
+{%- if cookiecutter.init_api %}
 httpx = "^0.23.3"
 {%- endif %}
 
@@ -120,8 +121,8 @@ black = "^23.3.0"
 [tool.poetry.scripts]
 # put your script entrypoints here
 # some-script = 'module.submodule:some_object'
-{%- if "cli" in cookiecutter.init_skel.lower() %}
-{{ cookiecutter.__project_slug }}-cli = '{{ cookiecutter.__project_package }}.cli:app'
+{%- if cookiecutter.init_cli %}
+{{ cookiecutter.project_slug }}-cli = '{{ cookiecutter.project_package }}.cli:app'
 {%- endif %}
 
 [build-system]
@@ -147,7 +148,7 @@ filterwarnings = [
 ]
 
 [tool.coverage.run]
-source = ["{{ cookiecutter.__project_package }}"]
+source = ["{{ cookiecutter.project_package }}"]
 
 [tool.coverage.report]
 exclude_lines = [

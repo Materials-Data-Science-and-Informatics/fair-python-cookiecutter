@@ -1,0 +1,38 @@
+{
+  "project_name": "FAIR Python App",
+  "project_slug": "{{ cookiecutter.project_name | slugify() }}",
+  "project_package": "{{ cookiecutter.project_name | slugify(separator='_') }}",
+
+  "project_git_hoster": "https://github.com",
+  "project_git_org": "Github-Organization-Or-Username",
+  "project_git_path": "{{ cookiecutter_git_org }}/{{ cookiecutter.project_slug }}",
+  "project_repo_url": "{{ cookiecutter.project_git_hoster }}/{{ cookiecutter.project_git_org }}/{{ cookiecutter.project_slug }}",
+  "project_clone_url": "git@{{ cookiecutter.project_git_hoster }}:{{ cookiecutter.project_git_path }}.git",
+  "project_pages_domain": "github.io",
+  "project_pages_url": "https://{{ cookiecutter.project_git_org }}.{{ cookiecutter.project_pages_url }}/{{ cookiecutter.__project_slug }}",
+
+  "project_version": "0.1.0",
+  "project_description": "TODO - A meaningful one-sentence description.",
+  "project_keywords": "TODO list keywords separated by spaces",
+  "project_license": "mit",
+
+  "author_last_name": "Doe",
+  "author_first_name": "Jane",
+  "author_email": "{{ cookiecutter.author_first_name[0].lower() }}.{{ cookiecutter.author_last_name.lower() }}@my-organization.org",
+  "author_orcid": "",
+  "author_affiliation": "{{ cookiecutter.__org_name }}",
+
+  "author_name_email": "{{ cookiecutter.author_first_name }} {{ cookiecutter.author_last_name }} <{{ cookiecutter.author_email }}>",
+  "author_orcid_url": "https://orcid.org/{{ cookiecutter.author_orcid }}",
+
+  "copyright_year": "{% now 'local', '%Y' %}",
+  "copyright_holder": "{{ cookiecutter.author_affiliation }}",
+  "copyright_text": "{{ cookiecutter.copyright_year }} {{ cookiecutter.copyright_holder }}",
+  "copyright_line": "SPDX-FileCopyrightText: © {{ cookiecutter.copyright_text }}",
+
+  "init_cli": false,
+  "init_api": false,
+  "is_github": true,
+
+  "_copy_without_render": ["docs/overrides", ".github"]
+}

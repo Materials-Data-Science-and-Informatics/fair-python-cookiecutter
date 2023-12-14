@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 from typer.testing import CliRunner
 
-from {{ cookiecutter.__project_package }}.cli import app
+from {{ cookiecutter.project_package }}.cli import app
 
 runner = CliRunner()
 

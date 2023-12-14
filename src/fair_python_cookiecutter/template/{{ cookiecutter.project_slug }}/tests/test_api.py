@@ -1,7 +1,7 @@
 """Test API."""
 from fastapi.testclient import TestClient
 
-from {{ cookiecutter.__project_package }}.api import app
+from {{ cookiecutter.project_package }}.api import app
 
 client = TestClient(app)
 

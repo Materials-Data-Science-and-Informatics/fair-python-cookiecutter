@@ -3,7 +3,7 @@ import pytest
 from hypothesis import assume, given
 from hypothesis import strategies as st
 
-from {{ cookiecutter.__project_package }}.lib import CalcOperation, calculate
+from {{ cookiecutter.project_package }}.lib import CalcOperation, calculate
 
 
 def test_calculate_invalid():

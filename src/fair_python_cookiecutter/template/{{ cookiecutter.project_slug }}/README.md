@@ -1,12 +1,14 @@
 [
 ![Docs](https://img.shields.io/badge/read-docs-success)
-]({{ cookiecutter.__project_gh_pages }})
+]({{ cookiecutter.project_pages_url }})
 [
-![CI](https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.__project_gh_name }}/ci.yml?branch=main&label=ci)
-](https://github.com/{{ cookiecutter.__project_gh_name }}/actions/workflows/ci.yml)
+![Test Coverage]({{ cookiecutter.project_pages_url }}/main/coverage_badge.svg)
+]({{ cookiecutter.project_pages_url }}/main/coverage)
+{%- if cookiecutter.is_github %}
 [
-![Test Coverage]({{ cookiecutter.__project_gh_pages }}/main/coverage_badge.svg)
-]({{ cookiecutter.__project_gh_pages }}/main/coverage)
+![CI](https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.project_git_path }}/ci.yml?branch=main&label=ci)
+](https://github.com/{{ cookiecutter.project_git_path }}/actions/workflows/ci.yml)
+{% endif %}
 
 <!-- --8<-- [start:abstract] -->
 # {{ cookiecutter.project_name.strip() }}
@@ -25,7 +27,7 @@ To finalize the project setup, please complete the following steps:
 - [ ] Check that everything works for you locally
 - [ ] Create and add an empty remote repository (GitHub/GitLab) and push to it
 - [ ] Wait and check that the CI pipeline runs successfully
-- [ ] Enable Github Pages for the repository (from `gh-pages` branch)
+- [ ] Enable GitHub/GitLab Pages for the repository (publishing from `gh-pages` branch)
 - [ ] Remove this section
 ----
 
@@ -43,7 +45,7 @@ To finalize the project setup, please complete the following steps:
 This project works with Python > 3.8.
 
 ```
-$ pip install git+ssh://git@github.com:{{ cookiecutter.__project_gh_name }}.git
+$ pip install git+ssh://{{ cookiecutter.project_clone_url }}
 ```
 
 ## Getting Started
@@ -62,7 +64,7 @@ this problem. If the installed version is older, you can upgrade it with
 `pip install --upgrade pip` and then try again to install the package.
 
 **You can find more information on using and contributing to this repository in the
-[documentation]({{ cookiecutter.__project_gh_pages }}/main).**
+[documentation]({{ cookiecutter.project_pages_url }}/main).**
 
 <!-- --8<-- [start:citation] -->
 
@@ -70,7 +72,7 @@ this problem. If the installed version is older, you can upgrade it with
 
 If you want to cite this project in your scientific work,
 please use the [citation file](https://citation-file-format.github.io/)
-in the [repository]({{ cookiecutter.__project_gh_repo }}/blob/main/CITATION.cff).
+in the [repository]({{ cookiecutter.project_repo_url }}/blob/main/CITATION.cff).
 
 <!-- --8<-- [end:citation] -->
 <!-- --8<-- [start:acknowledgements] -->
@@ -78,7 +80,7 @@ in the [repository]({{ cookiecutter.__project_gh_repo }}/blob/main/CITATION.cff)
 ## Acknowledgements
 
 We kindly thank all
-[authors and contributors]({{ cookiecutter.__project_gh_pages }}/latest/credits).
+[authors and contributors]({{ cookiecutter.project_pages_url }}/latest/credits).
 
 **:construction: TODO: relevant organizational acknowledgements (employers, funders)**
 

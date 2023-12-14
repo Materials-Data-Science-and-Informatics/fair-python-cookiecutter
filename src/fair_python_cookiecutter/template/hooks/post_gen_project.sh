@@ -14,43 +14,38 @@ done
 
 # ----
 # remove unneeded demo code
-# {% if "cli" not in cookiecutter.init_skel.lower() %}
-rm src/{{ cookiecutter.__project_package }}/cli.py
+# {% if not cookiecutter.init_cli %}
+rm src/{{ cookiecutter.project_package }}/cli.py
 rm tests/test_cli.py
 # {% endif %}
-# {% if "api" not in cookiecutter.init_skel.lower() %}
-rm src/{{ cookiecutter.__project_package }}/api.py
+# {% if not cookiecutter.init_api %}
+rm src/{{ cookiecutter.project_package }}/api.py
 rm tests/test_api.py
 # {% endif %}
 # ----
 
-
 # finalize repo setup
 git init
+
 poetry install --with docs
 poetry run poe init-dev  # init git repo + register pre-commit
 poetry run pip install pipx  # install pipx into venv without adding it as dep
 poetry run pipx run reuse download --all  # get license files for REUSE compliance
 
-# ----
-# if we use somesy, CITATION.cff + codemeta.json is created automatically
-rm CITATION.cff  # using somesy -> will be created from pyproject.toml
-if [ -f "CITATION.cff" ]; then
-    # not using somesy -> create a minimal codemeta.json based on the CITATION.cff
-    # (avoiding the buggy codemetapy pyproject.toml parsing)
-    pipx run cffconvert -i CITATION.cff -f codemeta -o codemeta.json
-fi
-# ----
-# use somesy to create CITATION.cff + codemeta.json
-poetry run poe lint somesy --files pyproject.toml
+# copy over the main project license
+cp "LICENSES/{{ cookiecutter.project_license }}.txt" LICENSE
+
+# create a minimal codemeta.json based on the CITATION.cff
+# (avoiding the buggy codemetapy pyproject.toml parsing)
+pipx run cffconvert -i CITATION.cff -f codemeta -o codemeta.json
 
 # create first commit
 git add .
+poetry run pre-commit run somesy
+git add .
 poetry run git commit \
-    -m "generated project using fair-python-cookiecutter" \
+    -m "generated project using fair-python-cookiecutter {{ cookiecutter._fpc_version }}" \
     -m "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
 
 # make sure that the default branch is called 'main'
 git branch -M main
-
-# exit 0  # <- uncomment for debugging (keep output dir even in case of errors)

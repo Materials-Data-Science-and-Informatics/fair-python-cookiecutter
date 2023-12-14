@@ -15,7 +15,7 @@ please inspect the git history of this repository.
 
 - {{ cookiecutter.author_first_name }} {{ cookiecutter.author_last_name }} (
     [E-Mail](mailto:{{ cookiecutter.author_email }}),
-    [ORCID]({{ cookiecutter.__author_orcid_url }})
+    [ORCID]({{ cookiecutter.author_orcid_url }})
   ): original author
 
 ## Additional Contributors
@@ -25,4 +25,4 @@ please inspect the git history of this repository.
 Summary of contribution
 -->
 
-... maybe **[you]({{ cookiecutter.__project_gh_pages }}/main/contributing)**?
+... maybe **[you]({{ cookiecutter.project_pages_url }}/main/contributing)**?

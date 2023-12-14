@@ -16,7 +16,7 @@ please make sure that you follow our code of conduct when communicating with oth
 ## Ideas, Questions and Problems
 
 If you have questions or difficulties using this software,
-please use the [issue tracker]({{ cookiecutter.__project_gh_repo }}/issues).
+please use the [issue tracker]({{ cookiecutter.project_repo_url }}/issues).
 
 If your topic is not already covered by an existing issue,
 please create a new issue using one of the provided issue templates.
@@ -37,8 +37,8 @@ This project uses [Poetry](https://python-poetry.org/) for dependency management
 You can run the following lines to check out the project and prepare it for development:
 
 ```
-git clone git@github.com:{{ cookiecutter.__project_gh_name }}.git
-cd {{ cookiecutter.__project_slug }}
+git clone {{ cookiecutter.project_git_path }}
+cd {{ cookiecutter.project_slug }}
 poetry install --with docs
 poetry run poe init-dev
 ```
