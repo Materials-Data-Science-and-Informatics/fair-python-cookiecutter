@@ -24,10 +24,12 @@ To finalize the project setup, please complete the following steps:
 
 - [ ] Inspect the generated project files and adjust them as needed
 - [ ] Take care of the TODOs in some of the files
-- [ ] Check that everything works for you locally
+- [ ] Check that everything works for you locally (running tests, building documentation)
 - [ ] Create and add an empty remote repository (GitHub/GitLab) and push to it
 - [ ] Wait and check that the CI pipeline runs successfully
-- [ ] Enable GitHub/GitLab Pages for the repository (publishing from `gh-pages` branch)
+- [ ] Follow the instructions in the [developer guide](./docs/dev_guide.md) to
+    * setup the deployment of your project documentation (to GitLab/GitHub Pages)
+    * setup the deployment of your project releases (to GitLab/GitHub/PyPI)
 - [ ] Remove this section
 ----
 

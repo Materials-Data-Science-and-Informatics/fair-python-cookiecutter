@@ -223,19 +223,9 @@ class FPCConfig(MyBaseModel):
         description="Year when the project was initiated (for copyright notice, usually the current year for new repositories).",
         exclude=True,
     )
-
-    # organization-specific
-
     project_license: SPDXLicense = Field(
         "MIT",
         description="License used for this project (must be a valid [link=https://spdx.org/licenses]SPDX license identifier[/link], such as [b]MIT[/b] or [b]GPL-3.0-only[/b]).",
-    )
-    copyright_holder: str = Field(
-        None,
-        description="The copyright holder of your work (usually your employer or a department).",
-    )
-    affiliation: str = Field(
-        None, description="Your affiliation (usually your employer or a department)."
     )
 
     # person-specific
@@ -253,6 +243,13 @@ class FPCConfig(MyBaseModel):
     orcid: Optional[Union[OrcidUrl, Orcid]] = Field(
         None,
         description="Your [link=https://www.orcid.org]ORCID[/link], as a URL or the raw identifier [b]XXXX-XXXX-XXXX-XXXX[/b] (leave empty if you do not have one yet).",
+    )
+    affiliation: str = Field(
+        None, description="Your affiliation (usually your employer or a department)."
+    )
+    copyright_holder: str = Field(
+        None,
+        description="The copyright holder of your work (usually your employer or a department).",
     )
 
     # technical

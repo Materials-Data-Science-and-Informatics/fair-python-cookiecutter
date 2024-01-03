@@ -64,7 +64,7 @@ jobs:
       - name: Check that documentation builds without errors
         run: |
           poetry install --with docs
-          poetry run poe docs
+          poetry run poe docs --verbose
 
   test:
     # run tests with different OS and Python combinations

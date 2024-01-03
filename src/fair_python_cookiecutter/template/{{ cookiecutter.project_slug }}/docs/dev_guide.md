@@ -258,12 +258,40 @@ To make this both possible as well as convenient, this project uses
 ### Online Documentation
 
 To avoid dependence on additional services such as [readthedocs](https://readthedocs.org/),
-the project website is deployed using [GitHub Pages](https://pages.github.com/).
+the project website is set up for simple deployment using
+[GitHub Pages](https://pages.github.com/) or
+[GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/).
 
 The provided CI pipeline automatically generates the documentation for the latest
 development version (i.e., current state of the `main` branch) as well as every released
 version (i.e., marked by a version tag `vX.Y.Z`).
 
+#### Setup
+
+=== "GitLab"
+    1. Create a new project access token for GitLab Pages deployment
+        * in your GitLab project, go to **Settings > Access Tokens**
+        * Add a **new token** with the following settings:
+            - **Token name:** `PAGES_DEPLOYMENT_TOKEN`
+            - **Expiration date:** *(far in the future)*
+            - **Select a role:** *Maintainer*
+            - **Select scopes:** *read_repository, write_repository*
+    2. Provide the token as a masked**(!)** variable to the CI pipeline
+        * in your GitLab project, go to **Settings > CI/CD**
+        * in the section **Variables** add a new variable with
+            - **Key:** `PAGES_TOKEN`
+            - **Value:** *(the token string, as generated in the previous step)*
+            - enable **Mask variable**, so your token will not appear in logs
+    3. Ensure that the GitLab pages URL is correct
+        * in your GitLab project, go to **Deploy > Pages**
+        * make sure that *Use unique domain* is **NOT** enabled
+        * check that under *Access pages* the URL matches the `site_url` in your `mkdocs.yml`
+
+=== "GitHub"
+    * make sure that you pushed the repository and the CI pipeline completed at least once
+    * go to your GitHub repository **Settings**
+    * go to the settings for **Pages**
+    * under **Build and deployment** pick `gh-pages` as the branch for serving documentation
 
 !!! tip
     Should anything go wrong and you need to manually access the data of the deployed

@@ -9,7 +9,7 @@
 
 <br />
 <div>
-<img style="center-align: middle;" alt="DirSchema Logo" src="https://raw.githubusercontent.com/Materials-Data-Science-and-Informatics/Logos/main/FAIRPythonCookiecutter/FAIRPYTHONCOOKIECUTTER_Logo_Text.png" width=70% height=70% />
+<img style="center-align: middle;" alt="FAIR Python Cookiecutter Logo" src="https://raw.githubusercontent.com/Materials-Data-Science-and-Informatics/Logos/main/FAIRPythonCookiecutter/FAIRPYTHONCOOKIECUTTER_Logo_Text.png" width=70% height=70% />
 &nbsp;&nbsp;
 </div>
 <br />
@@ -22,8 +22,9 @@ An opinionated cookiecutter template to kickstart a modern best-practice Python 
      for hosting the mindmap than adding it to the repository -->
 ![FAIR Software Mindmap](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/assets/371708/1eba8eaf-663f-4475-b6ce-39fac1a183b5)
 
-*Check out a demo repository generated from this template
-:point_right: [here](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo)*
+*Check out the
+[demo repository](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo)
+generated from this template!*
 
 ## Overview
 
@@ -125,15 +126,15 @@ you might want to configure some template variables in your `~/.cookiecutterrc`.
 Here is an example cookiecutter configuration:
 
 ```yaml
-default_context:
-  __org_name: "Your Institution"
-  __org_mail_suffix: "your-institution.org"
-  __org_rep: "Your Boss <your.boss@your-institution.org>"
-  __org_gh: "Your-Github-Organization"
-
-  author_last_name: "Lastname"
-  author_first_name: "Firstname"
-  author_orcid: "0000-0000-1234-5678"
+fair_python_cookiecutter:
+  last_name: "Carberry"
+  first_name: "Josiah"
+  project_keywords: "psychoceramics analytics"
+  email: "josiah.carberry@brown.edu"
+  orcid: "0000-0002-1825-0097"
+  affiliation: "Brown University"
+  copyright_holder: "Brown University"
+  license: "MIT"
 ```
 
 This information will be already pre-filled when you use the template,
@@ -148,8 +149,9 @@ it to get your own copy. Then you can do the desired changes and use the URL of 
 template repository instead of this one to kickstart your projects.
 
 However, if you think that your changes are of general interest and would improve this
-template, consider to get in touch
-and [contribute](https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter/main/contributing/)!
+template for a majority of users, please get in touch
+and [contribute](https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter/main/contributing/)
+or [suggest](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/issues) an improvement!
 
 In any case we are very happy to know about any similar or derivative templates, e.g. for
 more specific use-cases or based on other tool preferences.

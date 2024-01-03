@@ -8,6 +8,7 @@ stages:
 # Set some environment variables based on Gitlab-specific variables
 # See https://docs.gitlab.com/ee/ci/variables/
 variables:
+  # for caching
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   PRE_COMMIT_HOME: "$CI_PROJECT_DIR/.cache/pre-commit"
 
@@ -41,24 +42,7 @@ cache: &global_cache
     - poetry install --no-root
     - source .venv/bin/activate
 
-
 # ----
-
-# Generate docs and expose as Gitlab job artifact, so that it can be downloaded.
-# If Gitlab Pages is enabled on your instance, better serve the documentation there.
-# In that case, you should use `mike` to provide documentaion for each tagged version.
-# See https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html#access-the-latest-job-artifacts-by-url
-# and https://stackoverflow.com/a/72481235
-make-docs:
-  image: python:latest
-  stage: deploy
-  <<: *prepare-env
-  script:
-    - poetry install --with docs
-    - OFFLINE=true poetry run poe docs     # generate docs
-  artifacts:
-    paths:
-      - site/
 
 # Run pre-commit, just to make sure the developers did not mess up.
 # It uses its own cache for its isolated environments (location: PRE_COMMIT_HOME).
@@ -74,6 +58,9 @@ run-pre-commit:
 # ----
 
 # Test job template (combine with image(s) containing a specific Python version):
+#
+# NOTE: it is not possible to easily test against a specific operation system,
+# using GitLab CI, as this depends on the used runner (which is usually Linux-based).
 .run-pytest-template: &run-pytest
   stage: test
   <<: *prepare-env
@@ -95,3 +82,39 @@ run-pytest-3.9:
 run-pytest-3.10:
   image: python:3.10
   <<: *run-pytest
+run-pytest-3.11:
+  image: python:3.11
+  <<: *run-pytest
+
+# ----
+
+# Update documentation
+pages:
+  image: python:latest
+  stage: deploy
+  variables:
+    PAGES_BRANCH: gl-pages
+    HTTPS_REMOTE: https://gitlab-ci-token:${PAGES_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git
+  <<: *prepare-env
+  script:
+  - poetry install --with docs
+  - |
+    echo "Checking that docs build successfully for branch..."
+    if poetry run poe docs --verbose; then
+      echo "Docs built successfully, proceeding with docs deployment."
+    else
+      echo "Docs building failed! Aborting docs deployment..."
+      exit 1
+    fi
+  - git config user.name $GITLAB_USER_NAME
+  - git config user.email $GITLAB_USER_EMAIL
+  - git fetch origin $PAGES_BRANCH && git -b checkout $PAGES_BRANCH origin/$PAGES_BRANCH || git checkout $PAGES_BRANCH || echo "Pages branch not deployed yet."
+  - git checkout $CI_COMMIT_SHA
+  - DOCS_TAG=${CI_COMMIT_TAG:=$CI_COMMIT_BRANCH}
+  - echo Deploying docs for "$DOCS_TAG"
+  - mike deploy --deploy-prefix public -r $HTTPS_REMOTE -p -b $PAGES_BRANCH -u $DOCS_TAG latest
+  - mike set-default --deploy-prefix public -r $HTTPS_REMOTE -p -b $PAGES_BRANCH latest
+  - git checkout $PAGES_BRANCH -- public/
+  artifacts:
+    paths:
+     - public/
