@@ -20,7 +20,7 @@ An opinionated cookiecutter template to kickstart a modern best-practice Python 
 
 <!-- NOTE: For technical reasons, it is much easier to use GitHub
      for hosting the mindmap than adding it to the repository -->
-![FAIR Software Mindmap](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/assets/371708/1eba8eaf-663f-4475-b6ce-39fac1a183b5)
+![FAIR Software Mindmap](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/assets/371708/ef566ee1-8965-4d58-9ede-18eeb49a476e)
 
 *Check out the
 [demo repository](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo)
