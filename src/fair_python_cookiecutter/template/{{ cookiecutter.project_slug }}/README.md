@@ -20,14 +20,14 @@ This is a Python project generated from the
 [fair-python-cookiecutter](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter)
 template.
 
-To finalize the project setup, please complete the following steps:
+**TODO:** To finalize the project setup, please follow the instructions in the
+[developer guide](https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter/latest/dev_guide).
 
 - [ ] Inspect the generated project files and adjust them as needed
 - [ ] Take care of the TODOs in some of the files
 - [ ] Check that everything works for you locally (running tests, building documentation)
 - [ ] Create and add an empty remote repository (GitHub/GitLab) and push to it
 - [ ] Wait and check that the CI pipeline runs successfully
-- [ ] Follow the instructions in the [developer guide](./docs/dev_guide.md) to
     * setup the deployment of your project documentation (to GitLab/GitHub Pages)
     * setup the deployment of your project releases (to GitLab/GitHub/PyPI)
 - [ ] Remove this section
