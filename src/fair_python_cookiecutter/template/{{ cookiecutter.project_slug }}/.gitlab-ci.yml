@@ -1,20 +1,26 @@
-# List of stages (jobs on the same stage run in parallel). Unused stages are ignored.
-# See https://docs.gitlab.com/ee/ci/yaml/#stages
+# Used CI pipeline stages (see https://docs.gitlab.com/ee/ci/yaml/#stages)
 stages:
-  - check
-  - test
-  - docs
-  - release
+  - check    # runs all linters
+  - test     # runs pytest tests with different Python versions
+  - docs     # builds and deploys documentation to GitLab Pages
+  - release  # deploy release to GitLab/PyPI/Test-PyPI (for pushed release tags only)
 
 # Set some environment variables based on Gitlab-specific variables
 # See https://docs.gitlab.com/ee/ci/variables/
 variables:
+  # documentation and package release configuration
+  # (NOTE: adjust as needed for your project, depending on your environment)
+  # ----
+  release_docs_pages: "true"   # NOTE: needs CI variable PAGES_TOKEN
+  release_to_gitlab: "true"
+  release_to_testpypi: "false" # NOTE: needs CI variable RELEASE_TOKEN_testpypi
+  release_to_pypi: "false"     # NOTE: needs CI variable RELEASE_TOKEN_pypi
+  release_to_custom: "false"   # NOTE: needs CI variable RELEASE_TOKEN_custom
+  # ----
+  #
   # settings for caching
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   PRE_COMMIT_HOME: "$CI_PROJECT_DIR/.cache/pre-commit"
-
-  # release target configuration (triggered by new tags)
-  release_to_gitlab: "true"
 
 # Global cache settings for test jobs (each job by default uses own copy of these settings)
 # If key files do not change, restore the listed paths from cache (if cached).
@@ -36,6 +42,7 @@ cache: &global_cache
 # See https://docs.gitlab.com/ee/ci/yaml/#anchors
 .prepare-env-template: &prepare-env
   before_script:
+    # install needed tools
     - pip install pipx==1.2.0
     - pipx ensurepath
     - pipx install poetry
@@ -43,12 +50,13 @@ cache: &global_cache
     - ln -s ~/.local/bin/poetry /usr/bin/poetry  # for poe (PATH is set only locally)
     - poetry --version
     - poetry config virtualenvs.in-project true
+    # install deps and activate venv
     - poetry install --no-root
     - source .venv/bin/activate
 
 # ----
 
-# Run pre-commit, just to make sure the developers did not mess up.
+# Run pre-commit, just to make sure the developers did not mess up and forgot it.
 # It uses its own cache for its isolated environments (location: PRE_COMMIT_HOME).
 run-pre-commit:
   image: python:latest
@@ -97,11 +105,18 @@ run-pytest-3.11:
 pages:
   image: python:latest
   stage: docs
+  rules:
+    - if: "$release_docs_pages == 'true' || $release_docs_pages == '1'"
   variables:
     PAGES_BRANCH: gl-pages
     HTTPS_REMOTE: https://gitlab-ci-token:${PAGES_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git
   <<: *prepare-env
   script:
+  - |
+    if [[ -z "$PAGES_TOKEN" ]]; then
+      echo "ERROR: CI variable PAGES_TOKEN is missing, cannot proceed!"
+      exit 1
+    fi
   - poetry install --with docs
   - |
     echo "Checking that docs build successfully for branch..."
@@ -126,17 +141,66 @@ pages:
 
 # ----
 
-# Create a new GitLab release if a tag is pushed
+# Create a new GitLab release if a tag is pushed (only if release_to_gitlab is true)
 # https://docs.gitlab.com/ee/user/project/releases/release_cicd_examples.html
 release_gitlab:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   rules:
-    - if: "$release_to_gitlab == 'true' || $release_to_gitlab == '1'"
-    - if: $CI_COMMIT_TAG
+    - if: "$CI_COMMIT_TAG && ($release_to_gitlab == 'true' || $release_to_gitlab == '1')"
   script:
-    - echo "running release_job"
+    - echo "creating GitLab Release for tag '$CI_COMMIT_TAG'"
   release:
-    # See https://docs.gitlab.com/ee/ci/yaml/#release for available properties
     tag_name: '$CI_COMMIT_TAG'
     description: '$CI_COMMIT_TAG'
+
+# Common script to publish to PyPI, Test PyPI or other custom instances
+.release-pypi-common: &release-pypi-common
+  stage: release
+  image: python:latest
+  <<: *prepare-env
+  script:
+    - | # set up custom repository for poetry, if corresponding variables are set
+      if [[ -n "$PKGIDX_NAME" ]]; then
+        [[ -n "$PKGIDX_URL" ]] || (echo "ERROR: PKGIDX_NAME is provided, but PKGIDX_URL is missing!" && exit 1)
+        poetry config "repositories.$PKGIDX_NAME" "$PKGIDX_URL"
+      fi
+    # determine correct CI token variables to use
+    - PKGIDX_NAME=${PKGIDX_NAME:=pypi}
+    - TOKVAR=RELEASE_TOKEN_${PKGIDX_NAME}
+    - echo Will use token from CI variable $TOKVAR for publishing to $PKGIDX_NAME
+    - | # check that the correct token is actually provided
+      if [[ -z "${!TOKVAR}" ]] ; then
+        echo "ERROR: CI variable $TOKVAR is missing, cannot proceed!"
+        echo "Please provide the token for $PKGIDX_NAME as a masked CI variable called $TOKVAR!"
+        exit 1
+      fi
+    # set up credentials, build package and upload it to the desired package index
+    - poetry config -- http-basic.pypi "__token__" "${!TOKVAR}"
+    - poetry build
+    - poetry publish -r $PKGIDX_NAME $POETRY_PUBLISH_EXTRA_ARGS
+
+# Create a new PyPI release if a tag is pushed (only if release_to_pypi is true)
+release_pypi:
+  rules:
+    - if: "$CI_COMMIT_TAG && ($release_to_pypi == 'true' || $release_to_pypi == '1')"
+  <<: *release-pypi-common
+
+# Create a new Test PyPI release if a tag is pushed (only if release_to_testpypi is true)
+release_test_pypi:
+  rules:
+    - if: "$CI_COMMIT_TAG && ($release_to_testpypi == 'true' || $release_to_testpypi == '1')"
+  <<: *release-pypi-common
+  variables:
+    PKGIDX_NAME: "testpypi"
+    PKGIDX_URL: "https://test.pypi.org/legacy/"
+
+# Create a new custom release if a tag is pushed (only if release_to_custom is true)
+# NOTE: adjust the URL to the API of your custom package index in order to use this job
+release_custom_pypi:
+  rules:
+    - if: "$CI_COMMIT_TAG && ($release_to_custom == 'true' || $release_to_custom == '1')"
+  <<: *release-pypi-common
+  variables:
+    PKGIDX_NAME: "custom"
+    PKGIDX_URL: "https://your.custom.package-index.org/legacy/"
