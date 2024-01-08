@@ -6,16 +6,25 @@
 ](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/actions/workflows/ci.yml)
 
 <!-- --8<-- [start:abstract] -->
+
+<br />
+<div>
+<img style="center-align: middle;" alt="FAIR Python Cookiecutter Logo" src="https://raw.githubusercontent.com/Materials-Data-Science-and-Informatics/Logos/main/FAIRPythonCookiecutter/FAIRPYTHONCOOKIECUTTER_Logo_Text.png" width=70% height=70% />
+&nbsp;&nbsp;
+</div>
+<br />
+
 # fair-python-cookiecutter
 
 An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata.
 
 <!-- NOTE: For technical reasons, it is much easier to use GitHub
      for hosting the mindmap than adding it to the repository -->
-![FAIR Software Mindmap](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/assets/371708/1eba8eaf-663f-4475-b6ce-39fac1a183b5)
+![FAIR Software Mindmap](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/assets/371708/ef566ee1-8965-4d58-9ede-18eeb49a476e)
 
-*Check out a demo repository generated from this template
-:point_right: [here](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo)*
+*Check out the
+[demo repository](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo)
+generated from this template!*
 
 ## Overview
 
@@ -77,27 +86,37 @@ recommendations on the state of software citation in academic practice.
 
 ## Getting Started
 
-First, make sure that you have a recent version of
-[cookiecutter](https://www.cookiecutter.io/) (`cookiecutter>=2.1`).
-This template does not work with older versions, because they lack some needed features.
+To install the template, run `pip install fair-python-cookiecutter`.
 
-To install `cookiecutter`, you can run `pip install cookiecutter`.
-
-To generate a new Python project from this template, run:
+Now you can run the tool to generate a new Python project:
 
 ```bash
-cookiecutter https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter
+fair-python-cookiecutter YourProjectName
 ```
 
-This will spawn an interactive prompt, where you have to provide some information and select
-a starting skeleton for your software project. Don't worry, you can always adapt this
-information later on by hand. After this cookiecutter will initate your software project.
+This will spawn an interactive prompt, where you have to provide some information and
+make some choices for your new software project. Don't worry, you can always adapt
+everything later on by hand. After this, your software project will be created in
+a new directory.
+
+To save you some time answering the questions, we recommend that you create an empty repository
+in GitHub or GitLab of your choice (i.e., the location where you plan to push your new project).
+
+If you already have created an empty remote repository or know exactly its future
+location, you can provide the URL, which already will provide many required inputs:
+
+```bash
+fair-python-cookiecutter --repo-url https://github.com/YourOrganization/YourProjectName
+```
 
 Your new project repository will also include a copy of a
 [developer guide](https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter-demo/latest/dev_guide),
 containing more information about the structure and features of the generated project.
-Feel free to either remove it, or keep (and possibly adjust) it as extended technical
-project documentation for yourself and other future project contributors.
+
+**Please familiarize yourself with the generated structures, files and the contents of the
+developer guide.** Feel free to either remove the guide afterwards, or keep (and possibly
+adjust) it as extended technical project documentation for yourself and other future
+project contributors.
 
 You can find a demo repository generated from this template [here](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo).
 
@@ -109,15 +128,15 @@ you might want to configure some template variables in your `~/.cookiecutterrc`.
 Here is an example cookiecutter configuration:
 
 ```yaml
-default_context:
-  __org_name: "Your Institution"
-  __org_mail_suffix: "your-institution.org"
-  __org_rep: "Your Boss <your.boss@your-institution.org>"
-  __org_gh: "Your-Github-Organization"
-
-  author_last_name: "Lastname"
-  author_first_name: "Firstname"
-  author_orcid: "0000-0000-1234-5678"
+fair_python_cookiecutter:
+  last_name: "Carberry"
+  first_name: "Josiah"
+  project_keywords: "psychoceramics analytics"
+  email: "josiah.carberry@brown.edu"
+  orcid: "0000-0002-1825-0097"
+  affiliation: "Brown University"
+  copyright_holder: "Brown University"
+  license: "MIT"
 ```
 
 This information will be already pre-filled when you use the template,
@@ -132,8 +151,9 @@ it to get your own copy. Then you can do the desired changes and use the URL of 
 template repository instead of this one to kickstart your projects.
 
 However, if you think that your changes are of general interest and would improve this
-template, consider to get in touch
-and [contribute](https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter/main/contributing/)!
+template for a majority of users, please get in touch
+and [contribute](https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter/main/contributing/)
+or [suggest](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/issues) an improvement!
 
 In any case we are very happy to know about any similar or derivative templates, e.g. for
 more specific use-cases or based on other tool preferences.
@@ -148,7 +168,7 @@ from this template, there are two main ways to do so:
 
 If your project currently has no sophisticated setup of tools or strong preferences about
 them, option 1 might be the simplest way to adopt the template. Your code then needs to be
-moved into the `YOUR_PROJECT/src` subdirectory.
+moved into the `YOUR_PROJECT/src/YOUR_PACKAGE` subdirectory.
 
 On the other hand, if you already have a working setup that you do not wish to replace
 completely, you can take a look at

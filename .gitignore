@@ -1,3 +1,6 @@
+temp/
+scratch/
+
 # don't add vscode stuff
 .vscode
 

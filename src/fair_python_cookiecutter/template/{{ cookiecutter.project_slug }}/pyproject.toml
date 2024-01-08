@@ -1,0 +1,179 @@
+# NOTE: this repository uses the tool somesy to help you easily maintain
+# and synchronize all the high-level project metadata across multiple files.
+# To see which other metadata can be added, check out the somesy documentation
+# https://materials-data-science-and-informatics.github.io/somesy/main/
+[tool.somesy.project]
+name = "{{ cookiecutter.project_slug }}"
+version = "{{ cookiecutter.project_version }}"
+description = "{{ cookiecutter.project_description }}"
+license = "{{ cookiecutter.project_license }}"
+
+keywords = {{ cookiecutter.project_keywords.split() | jsonify }}
+repository = "{{ cookiecutter.project_repo_url }}"
+homepage = "{{ cookiecutter.project_pages_url }}"
+documentation = "{{ cookiecutter.project_pages_url }}"
+
+[[tool.somesy.project.people]]
+given-names = "{{ cookiecutter.author_first_name }}"
+family-names = "{{ cookiecutter.author_last_name }}"
+email = "{{ cookiecutter.author_email }}"
+{%- if cookiecutter.author_orcid_url %}
+orcid = "{{ cookiecutter.author_orcid_url }}"
+{%- else %}
+# orcid = "https://orcid.org/your-orcid"
+{%- endif %}
+author = true
+maintainer = true
+
+# You also can add more authors, maintainers or contributors here:
+# [[tool.somesy.project.people]]
+# given-names = "Another"
+# family-names = "Contributor"
+# email = "contributor@email.com"
+# orcid = "https://orcid.org/0123-4567-8910-1112"
+# ...
+
+[tool.somesy.config]
+verbose = true
+no_sync_codemeta = true
+
+[tool.poetry]
+# ---- DO NOT EDIT - core project metadata managed by somesy  ----
+# to update, edit values in [tool.somesy.project] section
+# and run somesy: poetry run somesy
+name = "{{ cookiecutter.project_slug }}"
+version = "{{ cookiecutter.project_version }}"
+description = "{{ cookiecutter.project_description }}"
+license = "{{ cookiecutter.project_license }}"
+
+authors = ["{{ cookiecutter.author_name_email }}"]
+maintainers = ["{{ cookiecutter.author_name_email }}"]
+
+keywords = {{ cookiecutter.project_keywords.split() | jsonify }}
+repository = "{{ cookiecutter.project_repo_url }}"
+homepage = "{{ cookiecutter.project_pages_url }}"
+documentation = "{{ cookiecutter.project_pages_url }}"
+# ----------------------------------------------------------------
+
+# Python- and Poetry-specific metadata
+# ------------------------------------
+readme = "README.md"
+classifiers = [
+    # TODO: update the classifier strings
+    # (see https://pypi.org/classifiers/)
+    "Operating System :: POSIX :: Linux",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+]
+
+# the Python packages that will be included in a built distribution:
+packages = [{include = "{{ cookiecutter.project_package }}", from = "src"}]
+
+# always include basic info for humans and core metadata in the distribution,
+# include files related to test and documentation only in sdist:
+include = [
+  "*.md", "LICENSE", "LICENSES", ".reuse/dep5", "CITATION.cff", "codemeta.json",
+  { path = "mkdocs.yml", format = "sdist" },
+  { path = "docs", format = "sdist" },
+  { path = "tests", format = "sdist" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+{%- if cookiecutter.init_cli %}
+typer = "^0.9.0"
+{%- endif %}
+{%- if cookiecutter.init_api %}
+fastapi = "^0.95.0"
+uvicorn = "^0.21.1"
+{%- endif %}
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.18.1"
+pre-commit = "^3.1.1"
+pytest = "^7.2.2"
+pytest-cov = "^4.0.0"
+hypothesis = "^6.68.2"
+licensecheck = "^2023.1.1"
+{%- if cookiecutter.init_api %}
+httpx = "^0.23.3"
+{%- endif %}
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.4.2"
+mkdocstrings = {extras = ["python"], version = "^0.24.0"}
+mkdocs-material = "^9.4"
+mkdocs-gen-files = "^0.5.0"
+mkdocs-literate-nav = "^0.6.0"
+mkdocs-section-index = "^0.3.5"
+mkdocs-macros-plugin = "^0.7.0"
+markdown-include = "^0.8.1"
+pymdown-extensions = "^10.2"
+markdown-exec = {extras = ["ansi"], version = "^1.6.0"}
+mkdocs-coverage = "^0.2.7"
+mike = "^2.0.0"
+anybadge = "^1.14.0"
+black = "^23.3.0"
+
+[tool.poetry.scripts]
+# put your script entrypoints here
+# some-script = 'module.submodule:some_object'
+{%- if cookiecutter.init_cli %}
+{{ cookiecutter.project_slug }}-cli = '{{ cookiecutter.project_package }}.cli:app'
+{%- endif %}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# NOTE: You can run the following with "poetry poe TASK"
+[tool.poe.tasks]
+init-dev = "pre-commit install"  # run once after clone to enable various tools
+lint = "pre-commit run"  # pass --all-files to check everything
+test = "pytest"  # pass --cov to also collect coverage info
+docs = "mkdocs build"  # run this to generate local documentation
+licensecheck = "licensecheck"  # run this when you add new deps
+
+# Tool Configurations
+# -------------------
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "--cov-report=term-missing:skip-covered"
+filterwarnings = [
+# Example:
+# "ignore::DeprecationWarning:importlib_metadata.*"
+]
+
+[tool.coverage.run]
+source = ["{{ cookiecutter.project_package }}"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if TYPE_CHECKING:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+
+[tool.flake8]
+ignore = ["W503"]
+max-line-length = 88
+
+[tool.pydocstyle]
+convention = "google"
+
+[tool.bandit]
+exclude_dirs = ["tests", "scripts"]
+
+[tool.licensecheck]
+using = "poetry"

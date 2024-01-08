@@ -1,0 +1,150 @@
+name: CI
+# Main CI pipeline of the repository.
+#
+# Overview:
+# Lint --> test doc build -\
+#      \-> test code      ---> deploy docs (*) -> release (**)
+#
+#  (*): only on push of primary branches + release tags
+# (**): only for release version tags (vX.Y.Z)
+
+on:
+  push:
+    branches: [main, dev]
+    tags: ["v*.*.*"]
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+jobs:
+
+  lint:
+    # run general checks that do not require installing the package
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install poe, pre-commit and safety
+        run: pip install poethepoet pre-commit safety
+
+      # NOTE: using custom cache, to include pre-commit linters + deps
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pre-commit
+            ~/.cache/pip
+          key: ${{ hashFiles('.pre-commit-config.yaml') }}-pre-commit
+
+      - name: Check that all static analysis tools run without errors
+        run: poetry run poe lint --all-files
+
+      - name: Scan dependencies for known vulnerabilities
+        run: safety check -r pyproject.toml
+
+  test-build-docs:
+    # make sure that documentation is buildable
+    # (better to know that before e.g. a PR is merged)
+    needs: lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: "poetry"
+
+      - name: Check that documentation builds without errors
+        run: |
+          poetry install --with docs
+          poetry run poe docs --verbose
+
+  test:
+    # run tests with different OS and Python combinations
+    needs: lint
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ "ubuntu-latest", "macos-latest", "windows-latest" ]
+        python-version: [ "3.8", "3.9", "3.10", "3.11" ]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "poetry"
+
+      - name: Check that tests complete without errors
+        run: |
+          poetry install
+          poetry run poe test
+
+  docs:
+    # build + deploy documentation (only on push event for certain branches+tags)
+    needs: [test, test-build-docs]
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install poetry
+      run: pipx install poetry
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+        cache: "poetry"
+
+    - name: Install project with mkdocs and plugins
+      run: poetry install --with docs
+
+    - name: Configure Git user (Github Actions Bot)
+      run: |
+        git config --local user.name "github-actions[bot]"
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+    - name: Check out or initialize gh-pages branch
+      run: |
+        if git fetch origin gh-pages:gh-pages
+        then
+          echo "Found existing gh-pages branch."
+        else
+          echo "Creating new gh-pages branch and initializing mike."
+          poetry run mike deploy -u ${{ github.ref_name }} latest
+          poetry run mike set-default latest
+        fi
+
+    - name: Build and deploy documentation to gh-pages
+      run: |
+        SET_LATEST=""
+        if [[ "${{ github.ref_name }}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+*$ ]]; then
+          # if a new release tag is pushed, mark the built documentation as 'latest'
+          SET_LATEST="latest"
+        fi
+        poetry run mike deploy -u --push ${{ github.ref_name }} $SET_LATEST
+
+  publish:
+    # if a version tag is pushed + tests + docs completed -> do release
+    needs: docs
+    if: startswith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write  # for GitHub release
+      id-token: write  # for PyPI release
+
+    uses: "./.github/workflows/release.yml"
+    with:
+      to_github: true
+      to_test_pypi: false
+      to_pypi: false

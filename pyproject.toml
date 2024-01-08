@@ -1,7 +1,7 @@
 [tool.poetry]
 # ---- managed by somesy, see .somesy.toml ----
 name = "fair-python-cookiecutter"
-version = "0.1.0"
+version = "0.2.0"
 description = "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata."
 authors = ["Anton Pirogov <a.pirogov@fz-juelich.de>"]
 maintainers = ["Anton Pirogov <a.pirogov@fz-juelich.de>"]
@@ -36,8 +36,13 @@ include = [
 [tool.poetry.dependencies]
 python = "^3.8"
 cookiecutter = "^2.1.1"
-typer = "^0.9.0"
+typer = {extras = ["all"], version = "^0.9.0"}
 pydantic = "^2.5.2"
+typing-extensions = "^4.8.0"
+pydantic-yaml = "^1.2.0"
+spdx-lookup = "^0.3.3"
+platformdirs = "^4.1.0"
+importlib-resources = "^6.1.1"
 
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.18.1"
@@ -65,7 +70,7 @@ interrogate = "^1.5.0"
 black = "^23.3.0"
 
 [tool.poetry.scripts]
-fair-python-cookiecutter = "fair_python_cookiecutter.main:app"
+fair-python-cookiecutter = "fair_python_cookiecutter.cli:app"
 
 [build-system]
 requires = ["poetry-core"]
@@ -83,7 +88,7 @@ docs = "mkdocs build"  # run this to generate local documentation
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
-addopts = "--ignore='{{ cookiecutter.__project_slug }}'"
+addopts = "--ignore='src/fair_python_cookiecutter/template'"
 # addopts = "--cov-report=term-missing:skip-covered"
 filterwarnings = [
 "ignore::DeprecationWarning:pkg_resources.*",
@@ -116,7 +121,7 @@ exclude_lines = [
 # we extend default linter rules to substitute:
 # flake8-bugbear, pydocstyle, isort, flake8-bandit
 extend-select = ["B", "D", "I", "S"]
+ignore = ["D203", "D213", "D407", "B008", "S101", "D102", "D103"]
 
-[tool.bandit]
-exclude_dirs = ["tests"]
-
+[tool.ruff.lint.per-file-ignores]
+"**/{tests,docs}/*" = ["ALL"]
