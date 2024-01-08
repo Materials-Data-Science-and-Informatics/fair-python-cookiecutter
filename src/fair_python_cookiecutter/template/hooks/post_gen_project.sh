@@ -27,7 +27,15 @@ rm tests/test_api.py
 # finalize repo setup
 git init
 
-poetry install --with docs
+# make sure we are not in some venv (or poetry would just use that!)
+if pip -V | grep poetry; then
+    env=$(pip -V | awk '{print $4}' | sed 's/\/lib\/.*//')
+    echo WARNING: deactivating currently active virtual environment "$env"
+    source "$env/bin/activate"
+    deactivate
+fi
+
+poetry install --with docs  # install everything into a new venv
 poetry run poe init-dev  # init git repo + register pre-commit
 poetry run pip install pipx  # install pipx into venv without adding it as dep
 poetry run pipx run reuse download --all  # get license files for REUSE compliance
@@ -49,3 +57,9 @@ poetry run git commit \
 
 # make sure that the default branch is called 'main'
 git branch -M main
+
+# sanity-check that main tasks all work
+poetry install --with docs 
+poetry run poe lint --all-files
+poetry run poe test
+poetry run poe docs
