@@ -7,7 +7,7 @@ and provides more information on how to work with this repository.
     ## TODO: Final Steps
 
     Dear project author, thank you for using `fair-python-cookiecutter`!
-    
+
     Before diving into your actual project work, please complete the following
     steps to finalize the configuration of your project repository:
 
@@ -16,7 +16,7 @@ and provides more information on how to work with this repository.
     We suggest that first you familiarize yourself with the generated structure and make it "your own".
     The following sections of this guide provide a high-level overview, but you might want to
     inspect the various files to get a better understanding. A few files
-    contain **TODO** items or sections -- please complete and remove them. 
+    contain **TODO** items or sections -- please complete and remove them.
 
     ### Test the tools locally
 
@@ -434,7 +434,7 @@ but in any case this requires a bit of initial configuration.
 
     The corresponding tokens can be added analogously to the `PAGES_TOKEN` for online documentation,
     which was explained [here](#online-documentation).
-    
+
     **PyPI:**
 
     - add the token as a masked CI variable called `RELEASE_TOKEN_pypi`
@@ -443,7 +443,7 @@ but in any case this requires a bit of initial configuration.
     **Test PyPI:**
 
     - add the token as a masked CI variable called `RELEASE_TOKEN_testpypi`
-    - in `.gitlab-ci.yml`, set `release_to_testpypi: "true"` 
+    - in `.gitlab-ci.yml`, set `release_to_testpypi: "true"`
 
     **Custom Package Index:**
 
