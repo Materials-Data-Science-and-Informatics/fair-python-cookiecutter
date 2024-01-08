@@ -86,25 +86,24 @@ recommendations on the state of software citation in academic practice.
 
 ## Getting Started
 
-First, make sure that you have a recent version of
-[cookiecutter](https://www.cookiecutter.io/) (`cookiecutter>=2.1`).
-This template does not work with older versions, because they lack some needed features.
+To install the template, run `pip install fair-python-cookiecutter`.
 
-To install `cookiecutter`, you can run `pip install fair-python-cookiecutter`.
-
-To generate a new Python project from this template, you can run:
+Now you can run the tool to generate a new Python project:
 
 ```bash
 fair-python-cookiecutter YourProjectName
 ```
 
-This will spawn an interactive prompt, where you have to provide some information and select
-a starting skeleton for your software project. Don't worry, you can always adapt this
-information later on by hand. After this cookiecutter will initate your software project.
+This will spawn an interactive prompt, where you have to provide some information and
+make some choices for your new software project. Don't worry, you can always adapt
+everything later on by hand. After this, your software project will be created in
+a new directory.
 
 To save you some time answering the questions, we recommend that you create an empty repository
 in GitHub or GitLab of your choice (i.e., the location where you plan to push your new project).
-In that case, you can provide the URL which already will provide many required inputs:
+
+If you already have created an empty remote repository or know exactly its future
+location, you can provide the URL, which already will provide many required inputs:
 
 ```bash
 fair-python-cookiecutter --repo-url https://github.com/YourOrganization/YourProjectName
@@ -113,8 +112,11 @@ fair-python-cookiecutter --repo-url https://github.com/YourOrganization/YourProj
 Your new project repository will also include a copy of a
 [developer guide](https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter-demo/latest/dev_guide),
 containing more information about the structure and features of the generated project.
-Feel free to either remove it, or keep (and possibly adjust) it as extended technical
-project documentation for yourself and other future project contributors.
+
+**Please familiarize yourself with the generated structures, files and the contents of the
+developer guide.** Feel free to either remove the guide afterwards, or keep (and possibly
+adjust) it as extended technical project documentation for yourself and other future
+project contributors.
 
 You can find a demo repository generated from this template [here](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo).
 
@@ -166,7 +168,7 @@ from this template, there are two main ways to do so:
 
 If your project currently has no sophisticated setup of tools or strong preferences about
 them, option 1 might be the simplest way to adopt the template. Your code then needs to be
-moved into the `YOUR_PROJECT/src` subdirectory.
+moved into the `YOUR_PROJECT/src/YOUR_PACKAGE` subdirectory.
 
 On the other hand, if you already have a working setup that you do not wish to replace
 completely, you can take a look at

@@ -3,6 +3,45 @@
 This guide is targeting mainly developers, maintainers and other technical contributors
 and provides more information on how to work with this repository.
 
+!!! warning "Important Information"
+    ## TODO: Final Steps
+
+    Dear project author, thank you for using `fair-python-cookiecutter`!
+    
+    Before diving into your actual project work, please complete the following
+    steps to finalize the configuration of your project repository:
+
+    ### Inspect the generated project files
+
+    We suggest that first you familiarize yourself with the generated structure and make it "your own".
+    The following sections of this guide provide a high-level overview, but you might want to
+    inspect the various files to get a better understanding. A few files
+    contain **TODO** items or sections -- please complete and remove them. 
+
+    ### Test the tools locally
+
+    After having some idea about the repository structure, we suggest that you try to run
+    some operations, such as linting, running tests and building the documentation on your computer.
+
+    ### Push the repository
+
+    If you have not created an empty repository in your git hosting service already,
+    you should create it now. Follow the instructions of your hosting service to
+    *push an existing repository* (i.e. this one), which will consist of
+
+    1. adding the remote repository locally (`git remote add ...`)
+    2. pushing the contents to the remote (`git push`)
+
+    ### Check the CI
+
+    Your first push should have automatically triggered the CI pipeline.
+    Please check that it runs successfully.
+
+    ### Set up Pages and Releases
+
+    For deployment of documentation pages and releases of your code, some additional
+    configuration is required. Please consult the corresponding sections of this guide.
+
 ## Overview
 
 ### Repository Structure
@@ -10,33 +49,33 @@ and provides more information on how to work with this repository.
 Here is a *non-exhaustive* list of the most important files and directories in the repository.
 
 === "General"
-    * `AUTHORS.md`: acknowledges and lists all contributors
-    * `CHANGELOG.md`: summarizes the changes for each version of the software for users
-    * `CODE_OF_CONDUCT.md`: defines the social standards that must be followed by contributors
-    * `CONTRIBUTING.md`: explains  how others can contribute to the project
-    * `README.md`: provides an overview and points to other resources
+    - `AUTHORS.md`: acknowledges and lists all contributors
+    - `CHANGELOG.md`: summarizes the changes for each version of the software for users
+    - `CODE_OF_CONDUCT.md`: defines the social standards that must be followed by contributors
+    - `CONTRIBUTING.md`: explains  how others can contribute to the project
+    - `README.md`: provides an overview and points to other resources
 
 === "Metadata"
-    * `CITATION.cff`: metadata stating how to cite the project
-    * `codemeta.json`: metadata for harvesting by other tools and services
-    * `LICENSE`: the (main) license of the project
-    * `LICENSES`: copies of all licenses that apply to files in the project
-    * `.reuse/dep5`: granular license and copyright information for all files and directories
+    - `CITATION.cff`: metadata stating how to cite the project
+    - `codemeta.json`: metadata for harvesting by other tools and services
+    - `LICENSE`: the (main) license of the project
+    - `LICENSES`: copies of all licenses that apply to files in the project
+    - `.reuse/dep5`: granular license and copyright information for all files and directories
 
 === "Development"
-    * `pyproject.toml`: project metadata, dependencies, development tool configurations
-    * `poetry.lock`: needed for reproducible installation of the project
-    * `src`: actual code provided by the project
-    * `tests`: all tests for the code in the project
-    * `mkdocs.yml`: configuration of the project website
-    * `docs`: most contents used for the project website
+    - `pyproject.toml`: project metadata, dependencies, development tool configurations
+    - `poetry.lock`: needed for reproducible installation of the project
+    - `src`: actual code provided by the project
+    - `tests`: all tests for the code in the project
+    - `mkdocs.yml`: configuration of the project website
+    - `docs`: most contents used for the project website
 
 === "CI / QA"
-    * `.pre-commit-config.yaml`: quality assurance tools used in the project
-    * `.github/workflows`: CI scripts for GitHub (QA, documentation and package deployment)
-    * `.github/ISSUE_TEMPLATE`: templates for the GitHub issue tracker
-    * `.gitlab-ci.yml`: mostly equivalent CI scripts, but for GitLab
-    * `.gitlab/issue_templates`: The same issues templates, but for GitLab
+    - `.pre-commit-config.yaml`: quality assurance tools used in the project
+    - `.github/workflows`: CI scripts for GitHub (QA, documentation and package deployment)
+    - `.github/ISSUE_TEMPLATE`: templates for the GitHub issue tracker
+    - `.gitlab-ci.yml`: mostly equivalent CI scripts, but for GitLab
+    - `.gitlab/issue_templates`: The same issues templates, but for GitLab
 
 !!! tip
     You might find various other files popping up which are generated by different tools.
@@ -48,32 +87,32 @@ Here is a *non-exhaustive* list of the most important files and directories in t
 Here is a *non-exhaustive* list of the most important tools used in the project.
 
 === "General"
-    * `poetry` for dependency management and packaging
-    * `poethepoet` tool for running common tasks
-    * `pre-commit` for orchestrating linters, formatters and other utilities
-    * `mkdocs` for generating the project documentation website
-    * `mike` for managing the `mkdocs`-generated documentation website
+    - `poetry` for dependency management and packaging
+    - `poethepoet` tool for running common tasks
+    - `pre-commit` for orchestrating linters, formatters and other utilities
+    - `mkdocs` for generating the project documentation website
+    - `mike` for managing the `mkdocs`-generated documentation website
 
 === "Code Quality"
-    * `flake8` for general linting (using various linter plugins)
-    * `mypy` for editor-independent type-checking
-    * `pytest` for unit testing
-    * `pytest-cov` for computing code coverage by tests
-    * `hypothesis` for property-based testing
-    * `bandit` for checking security issues in the code
-    * `safety` for checking security issues in the current dependencies
+    - `flake8` for general linting (using various linter plugins)
+    - `mypy` for editor-independent type-checking
+    - `pytest` for unit testing
+    - `pytest-cov` for computing code coverage by tests
+    - `hypothesis` for property-based testing
+    - `bandit` for checking security issues in the code
+    - `safety` for checking security issues in the current dependencies
 
 === "Formatting and Style"
-    * `black` for source-code formatting
-    * `autoflake` for automatically removing unused imports
-    * `pydocstyle` for checking docstring conventions
+    - `black` for source-code formatting
+    - `autoflake` for automatically removing unused imports
+    - `pydocstyle` for checking docstring conventions
 
 === "FAIR metadata"
-    * `cffconvert` to check the `CITATION.cff` (citation metadata)
-    * `codemetapy` to generate a `codemeta.json` (general software metadata)
-    * `somesy` to keep all important metadata continuously synchronized
-    * `reuse` to check [REUSE-compliance](https://reuse.software/spec/) (granular copyright and license metadata)
-    * `licensecheck` to scan for possible license incompatibilities in the dependencies
+    - `cffconvert` to check the `CITATION.cff` (citation metadata)
+    - `codemetapy` to generate a `codemeta.json` (general software metadata)
+    - `somesy` to keep all important metadata continuously synchronized
+    - `reuse` to check [REUSE-compliance](https://reuse.software/spec/) (granular copyright and license metadata)
+    - `licensecheck` to scan for possible license incompatibilities in the dependencies
 
 !!! tip
     Most tools installed and used by this project are listed in the
@@ -255,50 +294,6 @@ To make this both possible as well as convenient, this project uses
     your documentation website by creating markdown files in the `docs/` directory and
     adding them to the `nav` section in `mkdocs.yml`.
 
-### Online Documentation
-
-To avoid dependence on additional services such as [readthedocs](https://readthedocs.org/),
-the project website is set up for simple deployment using
-[GitHub Pages](https://pages.github.com/) or
-[GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/).
-
-The provided CI pipeline automatically generates the documentation for the latest
-development version (i.e., current state of the `main` branch) as well as every released
-version (i.e., marked by a version tag `vX.Y.Z`).
-
-#### Setup
-
-=== "GitLab"
-    1. Create a new project access token for GitLab Pages deployment
-        * in your GitLab project, go to **Settings > Access Tokens**
-        * Add a **new token** with the following settings:
-            - **Token name:** `PAGES_DEPLOYMENT_TOKEN`
-            - **Expiration date:** *(far in the future)*
-            - **Select a role:** *Maintainer*
-            - **Select scopes:** *read_repository, write_repository*
-    2. Provide the token as a masked**(!)** variable to the CI pipeline
-        * in your GitLab project, go to **Settings > CI/CD**
-        * in the section **Variables** add a new variable with
-            - **Key:** `PAGES_TOKEN`
-            - **Value:** *(the token string, as generated in the previous step)*
-            - enable **Mask variable**, so your token will not appear in logs
-    3. Ensure that the GitLab pages URL is correct
-        * in your GitLab project, go to **Deploy > Pages**
-        * make sure that *Use unique domain* is **NOT** enabled
-        * check that under *Access pages* the URL matches the `site_url` in your `mkdocs.yml`
-
-=== "GitHub"
-    * make sure that you pushed the repository and the CI pipeline completed at least once
-    * go to your GitHub repository **Settings**
-    * go to the settings for **Pages**
-    * under **Build and deployment** pick `gh-pages` as the branch for serving documentation
-
-!!! tip
-    Should anything go wrong and you need to manually access the data of the deployed
-    website, you can find it in the `gh-pages` branch of the repository. Normally you
-    should not need to use that branch directly, though.
-
-
 ### Offline Documentation
 
 You can manually generate a local and fully offline copy of the documentation, which
@@ -316,6 +311,62 @@ open `https://localhost:8000` in your browser to see the local copy of the websi
     You probably should always check bigger website updates locally before it is publicly
     deployed. The automatic pipelines can only catch technical problems, but you still
     e.g. might want to do some proof-reading.
+
+### Online Documentation
+
+To avoid dependence on additional services such as [readthedocs](https://readthedocs.org/),
+the project website is set up for simple deployment using
+[GitHub Pages](https://pages.github.com/) or
+[GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/).
+
+The provided CI pipeline automatically generates the documentation for the latest
+development version (i.e., current state of the `main` branch) as well as every released
+version (i.e., marked by a version tag `vX.Y.Z`).
+
+Publishing the documentation to a website using GitHub or GitLab Pages needs a bit
+of configuration. Please follow the steps for your respective hosting service.
+
+=== "GitLab"
+    1. Create a new *project access token* for GitLab Pages deployment
+        - in your GitLab project, go to **Settings > Access Tokens**
+        - Add a **new token** with the following settings:
+            - **Token name:** `PAGES_DEPLOYMENT_TOKEN`
+            - **Expiration date:** *(far in the future)*
+            - **Select a role:** *Maintainer*
+            - **Select scopes:** *read_repository, write_repository*
+    2. Provide the token as a masked**(!)** variable to the CI pipeline
+        - in your GitLab project, go to **Settings > CI/CD**
+        - in the section **Variables** add a new variable with
+            - **Key:** `PAGES_TOKEN`
+            - **Value:** *(the token string, as generated in the previous step)*
+            - enable **Mask variable**, so your token will not appear in logs
+    3. Ensure that the GitLab pages URL is correct
+        - in your GitLab project, go to **Deploy > Pages**
+        - make sure that *Use unique domain* is **NOT** enabled
+        - check that under *Access pages* the URL matches the `site_url` in your `mkdocs.yml`
+
+=== "GitHub"
+    - make sure that you pushed the repository and the CI pipeline completed at least once
+    - check that a `gh-pages` branch exists (created by the CI)
+    - go to your GitHub repository **Settings** and from there to settings for **Pages**
+    - under **Build and deployment** pick `gh-pages` as the branch for serving documentation
+
+!!! warning "Important Information"
+    When adding any kind of **token** to your repository configuration,
+    which usually allows code and pipelines to access and modify your project,
+    make sure that the token is protected.
+
+    * In GitHub, tokens should be always added as [**secrets**](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
+    * In GitLab, tokens should be added as CI variables that are [**masked**](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable)
+
+    This will make sure that the token will not appear in logs of the CI pipeline runs
+    and minimize the risk of abuse for malicious purposes.
+    **NEVER save a token in a text file in your repository!**
+
+!!! tip
+    Should anything go wrong and you need to manually access the data of the deployed
+    website, you can find it in the `gh-pages` or `gl-pages` branch of the repository.
+    Normally you should not need to use that branch directly, though.
 
 ## Releases
 
@@ -346,12 +397,18 @@ The pushed version tag will trigger a pipeline that will:
 
 ### Release Targets
 
-Targets for releases can be enabled or disabled in `.github/workflows/ci.yml` and
-configured by adapting the corresponding actions in `.github/workflows/releases.yml`.
+The CI pipelines are built in such a way that features can be enabled, disabled and configured easily.
 
-#### Github Release
+=== "GitLab"
+    Targets for releases can be enabled or disabled in the `variables` section in `.gitlab-ci.yml`.
 
-By default, the release workflow will create a basic Github Release that provides
+=== "GitHub"
+    Targets for releases can be enabled or disabled in `.github/workflows/ci.yml` and
+    configured by adapting the corresponding actions in `.github/workflows/releases.yml`.
+
+#### GitHub / GitLab Release
+
+By default, the release workflow will create a basic GitHub or GitLab Release that provides
 a snapshot of the repository as a download. This requires no additional configuration.
 
 See [here](https://github.com/softprops/action-gh-release)
@@ -363,23 +420,57 @@ for information on how the Github release can be customized.
     [Zenodo](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content),
     based on the metadata provided in the `CITATION.cff` file.
 
-#### PyPI (and compatible package indices)
+#### PyPI and Compatible Indices
 
-For releases to PyPI and Test PyPI the project uses the new
-[Trusted Publishers](https://blog.pypi.org/posts/2023-04-20-introducing-trusted-publishers/)
-workflow that is both more secure and convenient to use than other authorization methods.
+The CI pipelines support automatic releases to PyPI, Test PyPI or other custom repositories,
+but in any case this requires a bit of initial configuration.
 
-Before the project can be released to PyPI or Test PyPI the first time,
-first a [pending publisher](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/)
-must be added in the PyPI account of the main project maintainer, **using
-`release.yml` as the requested _workflow name_**.
+=== "GitLab"
+    For automated releases to PyPI and Test PyPI the project uses the classic token-based workflow.
 
-!!! note
-    It is important to use the correct workflow name, otherwise the workflow will fail!
+    Before the project can be released to PyPI or Test PyPI the first time,
+    a new PyPI API token must be created in the PyPI account of the main project maintainer,
+    and added to your CI as a masked variable, and a variable updated in the `.gitlab-ci.yml`.
 
-Once this is done, set the corresponding option (`to_pypi` / `to_test_pypi`) to `true`
-in the `publish` job in `ci.yml` to enable the corresponding publication target.
+    The corresponding tokens can be added analogously to the `PAGES_TOKEN` for online documentation,
+    which was explained [here](#online-documentation).
+    
+    **PyPI:**
 
-If the old and less secure token-based authentication method is needed or
-the package should be published to a different PyPI-compatible package index, please
-adapt `release.yml` [accordingly](https://github.com/pypa/gh-action-pypi-publish).
+    - add the token as a masked CI variable called `RELEASE_TOKEN_pypi`
+    - in `.gitlab-ci.yml`, set `release_to_pypi: "true"`
+
+    **Test PyPI:**
+
+    - add the token as a masked CI variable called `RELEASE_TOKEN_testpypi`
+    - in `.gitlab-ci.yml`, set `release_to_testpypi: "true"` 
+
+    **Custom Package Index:**
+
+    - add the token as a masked CI variable called `RELEASE_TOKEN_custom`
+    - in `.gitlab-ci.yml`, set `release_to_custom: "true"`
+    - update `PKGIDX_URL` in the `release_custom_pypi` job to the correct
+        [legacy API](https://python-poetry.org/docs/repositories/#publishable-repositories) endpoint
+
+=== "GitHub"
+    For automated releases to PyPI and Test PyPI the project uses the new
+    [Trusted Publishers](https://blog.pypi.org/posts/2023-04-20-introducing-trusted-publishers/)
+    workflow that is both more secure and convenient to use than other authorization methods.
+
+    Before the project can be released to PyPI or Test PyPI the first time,
+    first a [pending publisher](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/)
+    must be added in the PyPI account of the main project maintainer, **using
+    `release.yml` as the requested _workflow name_**.
+
+    !!! note
+        It is important to use the correct workflow name, otherwise the workflow will fail!
+
+    Once this is done, set the corresponding option (`to_pypi` / `to_test_pypi`) to `true`
+    in the `publish` job in `ci.yml` to enable the corresponding publication target.
+
+    If the old and less secure token-based authentication method is needed or
+    the package should be published to a different PyPI-compatible package index, please
+    adapt `release.yml` [accordingly](https://github.com/pypa/gh-action-pypi-publish).
+
+If for some reason you do not want to use the CI for the PyPI releases, you can skip these instructions
+and manually use [`poetry publish`](https://python-poetry.org/docs/cli/#publish) to do the release.

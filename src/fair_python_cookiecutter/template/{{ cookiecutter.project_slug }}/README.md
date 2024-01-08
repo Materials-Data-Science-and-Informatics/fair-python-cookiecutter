@@ -20,17 +20,10 @@ This is a Python project generated from the
 [fair-python-cookiecutter](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter)
 template.
 
-**TODO:** To finalize the project setup, please follow the instructions in the
+**TODO:** To finalize the project setup, please carefully read and follow the instructions in the
 [developer guide](https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter/latest/dev_guide).
+A copy of the guide is included in your project in `docs/dev_guide.md`.
 
-- [ ] Inspect the generated project files and adjust them as needed
-- [ ] Take care of the TODOs in some of the files
-- [ ] Check that everything works for you locally (running tests, building documentation)
-- [ ] Create and add an empty remote repository (GitHub/GitLab) and push to it
-- [ ] Wait and check that the CI pipeline runs successfully
-    * setup the deployment of your project documentation (to GitLab/GitHub Pages)
-    * setup the deployment of your project releases (to GitLab/GitHub/PyPI)
-- [ ] Remove this section
 ----
 
 {{ cookiecutter.project_description.strip() }}
@@ -42,18 +35,17 @@ template.
 
 ## Installation
 
-**:construction: TODO: check that the installation instructions work**
+**TODO: check that the installation instructions work**
 
 This project works with Python > 3.8.
 
-```
-$ pip install git+ssh://{{ cookiecutter.project_clone_url }}
+```bash
+pip install git+ssh://{{ cookiecutter.project_clone_url }}
 ```
 
 ## Getting Started
 
-
-**:construction: TODO: provide a minimal working example**
+**TODO: provide a minimal working example**
 
 <!-- --8<-- [end:quickstart] -->
 
@@ -84,6 +76,6 @@ in the [repository]({{ cookiecutter.project_repo_url }}/blob/main/CITATION.cff).
 We kindly thank all
 [authors and contributors]({{ cookiecutter.project_pages_url }}/latest/credits).
 
-**:construction: TODO: relevant organizational acknowledgements (employers, funders)**
+**TODO: relevant organizational acknowledgements (employers, funders)**
 
 <!-- --8<-- [end:acknowledgements] -->
