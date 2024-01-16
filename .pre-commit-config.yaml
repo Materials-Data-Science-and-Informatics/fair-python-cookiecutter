@@ -1,4 +1,4 @@
-exclude: "src/fair_python_cookiecutter/template/*"  # <-- added
+exclude: "src/fair_python_cookiecutter/template/.*"  # <-- added
 # ---- copy from template below ----
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
@@ -38,7 +38,7 @@ repos:
       - id: reuse
 
   - repo: https://github.com/Materials-Data-Science-and-Informatics/somesy
-    rev: 'v0.2.1'
+    rev: 'v0.3.0'
     hooks:
       - id: somesy
 

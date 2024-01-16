@@ -35,7 +35,6 @@ maintainer = true
 
 [tool.somesy.config]
 verbose = true
-no_sync_codemeta = true
 
 [tool.poetry]
 # ---- DO NOT EDIT - core project metadata managed by somesy  ----
