@@ -1,0 +1,26 @@
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  {% if config.copyright %}
+    <div class="md-copyright__highlight">
+      {{ config.copyright }}
+    </div>
+  {% endif %}
+  {% if not config.extra.generator == false %}
+    Made with
+    <a
+      href="https://squidfunk.github.io/mkdocs-material/"
+      target="_blank" rel="noopener"
+    >
+      Material for MkDocs
+    </a>
+    <!-- added link to project template -->
+    and
+    <a
+      href="https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
+      target="_blank" rel="noopener"
+    >
+      fair-python-cookiecutter
+    </a>
+    <!-- ------------------------------ -->
+  {% endif %}
+</div>
