@@ -62,11 +62,11 @@ jobs:
     - name: Install poetry
       run: pipx install poetry
 
-    - name: Install cookiecutter
-      run: pip install cookiecutter==2.1.1
+    - name: Install fair-python-cookiecutter (from local copy)
+      run: pip install "./$FAIR_TEMPLATE_DIR"
 
     - name: Instantiate demo repository
-      run: cookiecutter $FAIR_TEMPLATE_DIR --no-input --config-file=$FAIR_TEMPLATE_CONFIG
+      run: fair-python-cookiecutter --no-input --config-file=$FAIR_TEMPLATE_CONFIG --repo-url=https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo
 
     # ----
 

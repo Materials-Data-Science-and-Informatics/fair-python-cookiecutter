@@ -96,10 +96,10 @@ def main(
         # confirm / complete values
         prompt_config(ccconf)
 
-    if not dry_run and Confirm.ask(SAVE_QUESTION, default=False):
-        # update config
-        ccconf.save()
-        print(f"\n[i]Your settings were saved in {ccconf.config_path()} ![/i]")
+        if not dry_run and Confirm.ask(SAVE_QUESTION, default=False):
+            # update config
+            ccconf.save()
+            print(f"\n[i]Your settings were saved in {ccconf.config_path()} ![/i]")
 
     # check values after all the tweaking
     ccconf.fair_python_cookiecutter.check()

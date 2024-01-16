@@ -10,7 +10,7 @@ fair_python_cookiecutter:
   project_license: "Unlicense"
   project_version: "0.1.2"
   project_description: TODO - add description
-  project_keywords: test keywords
+  project_keywords: TODO add keywords
 
   init_cli: true
   init_api: true
