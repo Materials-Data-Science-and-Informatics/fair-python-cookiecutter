@@ -64,7 +64,7 @@ def copy_template(
             shutil.copyfile(path, trg_path)
 
     # write a fresh cookiecutter.json based on user configuration
-    with open(tmp_dir / "cookiecutter.json", "w") as f:
+    with open(tmp_dir / "cookiecutter.json", "w", encoding="utf-8") as f:
         f.write(cookiecutter_json.model_dump_json(indent=2, by_alias=True))
 
     if not template_root:
