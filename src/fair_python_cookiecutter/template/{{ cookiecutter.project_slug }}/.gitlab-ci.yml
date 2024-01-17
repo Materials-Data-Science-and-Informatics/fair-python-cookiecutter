@@ -132,7 +132,8 @@ pages:
   - git config user.email $GITLAB_USER_EMAIL
   - git fetch origin $PAGES_BRANCH && git -b checkout $PAGES_BRANCH origin/$PAGES_BRANCH || git checkout $PAGES_BRANCH || echo "Pages branch not deployed yet."
   - git checkout $CI_COMMIT_SHA
-  - DOCS_TAG=${CI_COMMIT_TAG:=$CI_COMMIT_BRANCH}
+  - DOCS_TAG_RAW=${CI_COMMIT_TAG:=$CI_COMMIT_BRANCH}  # get tag (or if not present, current branch)
+  - DOCS_TAG=${DOCS_TAG_RAW//\//_}  # eliminate '/' symbols from branch (or tag) name
   - echo Deploying docs for "$DOCS_TAG"
   - mike deploy --deploy-prefix public -r $HTTPS_REMOTE -p -b $PAGES_BRANCH -u $DOCS_TAG latest
   - mike set-default --deploy-prefix public -r $HTTPS_REMOTE -p -b $PAGES_BRANCH latest
