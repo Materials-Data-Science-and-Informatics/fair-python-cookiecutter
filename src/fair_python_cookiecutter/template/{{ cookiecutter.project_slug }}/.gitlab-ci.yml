@@ -69,7 +69,17 @@ run-pre-commit:
 
 # ----
 
-# Test job template (combine with image(s) containing a specific Python version):
+# test building docs
+test-docs-build:
+  image: python:latest
+  stage: test
+  variables:
+  <<: *prepare-env
+  script:
+  - poetry install --with docs
+  - poetry run poe docs --verbose
+
+# pytest job template (combine with image(s) containing a specific Python version):
 #
 # NOTE: it is not possible to easily test against a specific operation system,
 # using GitLab CI, as this depends on the used runner (which is usually Linux-based).
@@ -84,7 +94,7 @@ run-pre-commit:
     reports:
       junit: report.xml  # for Gitlab integration of test results
 
-# Tests, instantiated with different Python versions:
+# Run tests, using different Python versions:
 run-pytest-3.8:
   image: python:3.8
   <<: *run-pytest
@@ -106,7 +116,7 @@ pages:
   image: python:latest
   stage: docs
   rules:
-    - if: "$release_docs_pages == 'true' || $release_docs_pages == '1'"
+    - if: "($release_docs_pages == 'true' || $release_docs_pages == '1') && $CI_PIPELINE_SOURCE != 'merge_request_event'"
   variables:
     PAGES_BRANCH: gl-pages
     HTTPS_REMOTE: https://gitlab-ci-token:${PAGES_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git
@@ -118,14 +128,6 @@ pages:
       exit 1
     fi
   - poetry install --with docs
-  - |
-    echo "Checking that docs build successfully for branch..."
-    if poetry run poe docs --verbose; then
-      echo "Docs built successfully, proceeding with docs deployment."
-    else
-      echo "Docs building failed! Aborting docs deployment..."
-      exit 1
-    fi
   - git config user.name $GITLAB_USER_NAME
   - git config user.email $GITLAB_USER_EMAIL
   - git fetch origin $PAGES_BRANCH && git -b checkout $PAGES_BRANCH origin/$PAGES_BRANCH || git checkout $PAGES_BRANCH || echo "Pages branch not deployed yet."
