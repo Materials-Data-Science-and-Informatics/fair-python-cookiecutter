@@ -19,7 +19,7 @@ def create_repository(
     cc_json = CookiecutterJson.from_config(conf)
     cc_args = cc_args or {}
 
-    with TempDir() as tmp_root:
+    with TempDir(keep=keep_on_fail) as tmp_root:
         copy_template(tmp_root, cookiecutter_json=cc_json)
         cookiecutter(
             template=str(tmp_root),  # copy of template
