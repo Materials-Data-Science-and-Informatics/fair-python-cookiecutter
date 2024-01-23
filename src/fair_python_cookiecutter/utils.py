@@ -1,6 +1,9 @@
 """Utilities for creation of template repository instances."""
 import json
+import platform
 import shutil
+import subprocess
+import sys
 from pathlib import Path
 from typing import Optional
 from uuid import uuid1
@@ -72,3 +75,23 @@ def copy_template(
             "Template root directory not identified, this must be a bug!"
         )
     return template_root
+
+
+def get_venv_path() -> Optional[Path]:
+    """Return path of venv, if we detect being inside one."""
+    return Path(sys.prefix) if sys.base_prefix != sys.prefix else None
+
+
+VENV_PATH: Optional[Path] = get_venv_path()
+"""If set, the path of the virtual environment this tool is running in."""
+
+
+def venv_activate_cmd(venv_path: Path):
+    if platform.system() != "Windows":
+        return "source " + str(venv_path / "bin" / "activate")
+    else:
+        return str(venv_path / "Scripts" / "activate")
+
+
+def run_cmd(cmd: str, cwd: Path = None):
+    subprocess.run(cmd.split(), cwd=cwd, check=True)  # noqa: S603

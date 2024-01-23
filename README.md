@@ -86,9 +86,12 @@ recommendations on the state of software citation in academic practice.
 
 ## Getting Started
 
+Make sure that you have a working Python interpreter in version at least 3.8,
+`git` and [`poetry`](https://python-poetry.org/docs/#installation) installed.
+
 To install the template, run `pip install fair-python-cookiecutter`.
 
-Now you can run the tool to generate a new Python project:
+Now you can use the tool to generate a new Python project:
 
 ```bash
 fair-python-cookiecutter YourProjectName
