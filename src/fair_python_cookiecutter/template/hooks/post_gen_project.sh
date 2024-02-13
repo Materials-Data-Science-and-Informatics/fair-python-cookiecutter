@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 : # Magic to deactivate current Python venv (if one is enabled) in a cross-platform way
 : # See https://stackoverflow.com/questions/17510688/single-script-to-run-in-both-windows-batch-and-linux-bash
 :<<"::CMDLITERAL"
@@ -9,7 +10,7 @@ GOTO :COMMON
 # ---- bash-specific code ----
 venv=$(python -c "import sys; print(sys.prefix if sys.base_prefix != sys.prefix else '')")
 if [[ -n "$venv" ]]; then
-    echo WARNING: deactivating currently active virtual environment "$venv"
+    echo Deactivating currently active virtual environment "$venv" ...
     source "$venv/bin/activate"  # make sure we have 'deactivate' available
     deactivate
 fi
@@ -25,6 +26,10 @@ echo "Initializing the git repository ..."
 git init
 poetry install --with docs
 poetry run poe init-dev
+
+echo "Downloading required license texts ..."
+poetry run pip install pipx
+poetry run pipx run reuse download --all
 
 echo "Creating CITATION.cff and codemeta.json using somesy ..."
 
@@ -42,7 +47,7 @@ echo "Ensuring that the default branch is called 'main' ..."
 
 git branch -M main
 
-echo "All done! Your project repository is ready :)"
+echo "-------->  All done! Your project repository is ready :)  <--------"
 
 
 : # TODO: only do following in test mode

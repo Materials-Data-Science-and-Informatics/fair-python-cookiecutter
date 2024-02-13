@@ -42,7 +42,7 @@ Orcid = Annotated[
 OrcidUrl = Annotated[str, Field(pattern=r"^https://orcid.org/(\d{4}-){3}\d{3}(\d|X)$")]
 SemVerStr = Annotated[str, Field(pattern=r"^\d+\.\d+\.\d+$")]
 SPDXLicense = Annotated[str, AfterValidator(to_spdx_license)]
-DomainName = Annotated[
+MyHttpUrl = Annotated[
     HttpUrl,
     BeforeValidator(
         lambda s: f"https://{s}" if s and not str(s).startswith("https://") else s
@@ -261,13 +261,13 @@ class FPCConfig(MyBaseModel):
         exclude=True,
     )
 
-    project_hoster: DomainName = Field(
+    project_hoster: MyHttpUrl = Field(
         None,
         description="Domain of the hosting service used for the repository (e.g. [b]github.com[/b], [b]gitlab.com[/b] or other GitLab instance).",
     )
     project_org: str = Field(
         None,
-        description="GitHub Organization, GitLab Group or Git[Hub|Lab] Username (where the remote repository is located).",
+        description="GitHub Organization, GitLab Group or Git[Hub|Lab] Username (where the remote repository is/will be located).",
     )
     project_slug: str = Field(
         None,
@@ -278,9 +278,9 @@ class FPCConfig(MyBaseModel):
         None,
         description="Domain where the GitHub/GitLab Pages are served (e.g. github.com -> [b]github.io[/b], gitlab.com -> [b]gitlab.io[/b], helmholtz.cloud -> [b]pages.hzdr.de[/b])",
     )
-    project_pages_url: HttpUrl = Field(
+    project_pages_url: MyHttpUrl = Field(
         None,
-        description="URL where the Git[Hub|Lab] Pages will be served.",
+        description="URL where the project Git[Hub|Lab] Pages will be served (if you don't know yet, enter some fake URL and change it later).",
         exclude=True,
     )
 
@@ -349,6 +349,13 @@ class FPCConfig(MyBaseModel):
             main_group, subgroups = base[0].lower(), "/".join(base[1:]).lower()
             rest_path = "" if not subgroups else f"/{subgroups}"
             self.project_pages_url = f"https://{main_group}.{self.project_pages_domain}{rest_path}/{self.project_slug}"
+
+    def infer_repo_url(self):
+        """Infer and set repo URL from other fields."""
+        url = (
+            f"https://{self.project_hoster.host}/{self.project_org}/{self.project_slug}"
+        )
+        self.project_repo_url = url
 
 
 class CookiecutterConfig(BaseModel):

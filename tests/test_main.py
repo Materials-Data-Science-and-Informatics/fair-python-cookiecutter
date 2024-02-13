@@ -23,3 +23,10 @@ def test_configured(tmp_path):
     # and the expected license (Unlicense)
     first_license_line = open(dir / "LICENSE", "r").readline()
     assert first_license_line.find("public domain") > 0
+
+
+# TODO: sanity-check after generation that all main tasks work locally:
+# poetry install --with docs
+# poetry run poe lint --all-files
+# poetry run poe test
+# poetry run poe docs

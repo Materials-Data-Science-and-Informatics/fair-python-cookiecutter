@@ -58,6 +58,9 @@ def prompt_config(ccconf: CookiecutterConfig):
         ccconf.fair_python_cookiecutter.infer_from_repo_url(repo_url)
     # go through and confirm all the other fields, with loaded + inferred values
     ccconf.fair_python_cookiecutter.prompt_fields(exclude=["project_repo_url"])
+    # infer URL from provided information if it was not given at some point
+    if not ccconf.fair_python_cookiecutter.project_repo_url:
+        ccconf.fair_python_cookiecutter.infer_repo_url()
 
 
 @app.command()

@@ -58,18 +58,22 @@ def remove_unneeded_code(proj_root: Path, conf: CookiecutterConfig):
             file.unlink()
 
 
-def download_licenses(proj_root: Path, conf: CookiecutterConfig):
+def download_licenses(
+    proj_root: Path, conf: CookiecutterConfig, *, force_download: bool = False
+):
     """Download all needed licenses and create main LICENSE file."""
-    # only install reuse/pipx if it is not found
-    reuse_cmd = "reuse --suppress-deprecation download --all"
-    if not which("reuse"):
-        reuse_cmd = "pipx run " + reuse_cmd
-        if not which("pipx"):
-            run_cmd("poetry run pip install pipx", cwd=proj_root)
-            reuse_cmd = "poetry run " + reuse_cmd
-    # download licenses
-    print(reuse_cmd, "root:", proj_root)
-    run_cmd(reuse_cmd, cwd=proj_root)
+    # download licenses if no licenses dir is in the project dir
+    if force_download or not (proj_root / "LICENSES").is_dir():
+        # only install reuse/pipx if it is not found
+        reuse_cmd = "reuse --suppress-deprecation download --all"
+        if not which("reuse"):
+            reuse_cmd = "pipx run " + reuse_cmd
+            if not which("pipx"):
+                run_cmd("poetry run pip install pipx", cwd=proj_root)
+                reuse_cmd = "poetry run " + reuse_cmd
+        # download licenses
+        run_cmd(reuse_cmd, cwd=proj_root)
+
     # copy main license over from resulting licenses directory
     license_name = conf.fair_python_cookiecutter.project_license
     license = Path(proj_root) / "LICENSE"
@@ -78,7 +82,6 @@ def download_licenses(proj_root: Path, conf: CookiecutterConfig):
 
 def finalize_repository(proj_root: Path, conf: CookiecutterConfig):
     """Finalize instantiated repository based on configuration."""
-    # remove unneeded and create needed files
     create_gl_issue_template_from_gh(proj_root)
     remove_unneeded_code(proj_root, conf)
     download_licenses(proj_root, conf)
