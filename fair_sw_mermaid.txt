@@ -1,0 +1,49 @@
+mindmap
+  root(("FAIR Software"))
+    (Development Practices)
+      (Documentation)
+        (Users)
+          (Installation)
+          (Examples)
+          (Tutorials)
+        (Developers)
+          (API Docs)
+          (Workflows)
+      (Testing)
+        (Unit Tests)
+        (Test Coverage)
+        ("..")
+      ("Maintenance /<br/>DevOps")
+        (Security Scans)
+        ci("CI/CD")
+        (Releases)
+    (General)
+      (FLOSS Licensing)
+      (Code of Conduct)
+      (Issue Templates)
+      (Project Website)
+    ("Guidelines /<br/>Standards")
+      (Development)
+        [OpenSSF]
+        [DLR]
+        [FZJ]
+      (Metadata)
+        [FAIR Principles]
+        [HMC Guidance]
+        [Citation File]
+        [CodeMeta]
+        [REUSE]
+    (Tools)
+      (General)
+        pc["pre - commit"]
+        [REUSE tool]
+        [cffconvert]
+        [codemetapy]
+        [somesy]
+      (Python)
+        [poetry]
+        [pytest]
+        [mypy]
+        [mkdocs]
+        [ruff]
+        [".."]
