@@ -18,7 +18,7 @@
   ],
   "name": "fair-python-cookiecutter",
   "description": "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "keywords": [
     "fair",
     "metadata",
@@ -47,6 +47,13 @@
       "familyName": "Pirogov",
       "email": "a.pirogov@fz-juelich.de",
       "@id": "https://orcid.org/0000-0002-5077-7497"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Mustafa",
+      "familyName": "Soylu",
+      "email": "m.soylu@fz-juelich.de",
+      "@id": "https://orcid.org/0000-0003-2637-0432"
     }
   ],
   "url": "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"

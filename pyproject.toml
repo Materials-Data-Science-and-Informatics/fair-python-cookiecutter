@@ -1,7 +1,7 @@
 [tool.poetry]
 # ---- managed by somesy, see .somesy.toml ----
 name = "fair-python-cookiecutter"
-version = "0.2.0"
+version = "0.3.0"
 description = "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata."
 authors = ["Anton Pirogov <a.pirogov@fz-juelich.de>"]
 maintainers = ["Anton Pirogov <a.pirogov@fz-juelich.de>"]

@@ -1,6 +1,6 @@
 [project]
 name = "fair-python-cookiecutter"
-version = "0.2.0"
+version = "0.3.0"
 description = "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata. "
 
 license = "MIT"
@@ -24,6 +24,15 @@ orcid = "https://orcid.org/0000-0002-5077-7497"
 
 author = true
 maintainer = true
+
+[[project.people]]
+family-names = "Soylu"
+given-names = "Mustafa"
+email = "m.soylu@fz-juelich.de"
+orcid = "https://orcid.org/0000-0003-2637-0432"
+
+contribution = "Supported implementation of Windows support and testing the template"
+contribution_types = ["code", "test"]
 
 [config]
 verbose = true

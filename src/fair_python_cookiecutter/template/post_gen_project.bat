@@ -1,16 +1,21 @@
-#!/usr/bin/env bash
 : # Magic to deactivate current Python venv (if one is enabled) in a cross-platform way
 : # See https://stackoverflow.com/questions/17510688/single-script-to-run-in-both-windows-batch-and-linux-bash
 :<<"::CMDLITERAL"
 : ----  code for cmd.exe  ----
-ECHO "TODO: cmd.exe code"
+for /f "delims=" %%a in ('python -c "import sys; print(sys.prefix if sys.base_prefix != sys.prefix else '')"') do set "VENV_PATH=%%a"
+IF NOT "%VENV_PATH%" == "" (
+    echo INFO: Deactivating currently active virtual environment "%VENV_PATH%"
+    REM Assuming the virtual environment needs to be activated first to provide the deactivate script
+    call "%VENV_PATH%\Scripts\activate.bat"
+    call "%VENV_PATH%\Scripts\deactivate.bat"
+)
 : ----------------------------
 GOTO :COMMON
 ::CMDLITERAL
 # ---- bash-specific code ----
 venv=$(python -c "import sys; print(sys.prefix if sys.base_prefix != sys.prefix else '')")
 if [[ -n "$venv" ]]; then
-    echo Deactivating currently active virtual environment "$venv" ...
+    echo INFO: Deactivating currently active virtual environment "$venv"
     source "$venv/bin/activate"  # make sure we have 'deactivate' available
     deactivate
 fi
@@ -18,6 +23,7 @@ fi
 :<<"::CMDLITERAL"
 :COMMON
 ::CMDLITERAL
+
 : #All following code must be hybrid (work for bash and cmd.exe)
 : # ------------------------------------------------------------
 
@@ -27,10 +33,6 @@ git init
 poetry install --with docs
 poetry run poe init-dev
 
-echo "Downloading required license texts ..."
-poetry run pip install pipx
-poetry run pipx run reuse download --all
-
 echo "Creating CITATION.cff and codemeta.json using somesy ..."
 
 git add .
@@ -39,21 +41,10 @@ git add .
 
 echo "Creating first commit ..."
 
-poetry run git commit \
-    -m "generated project using fair-python-cookiecutter {{ cookiecutter._fpc_version }}" \
-    -m "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
+poetry run git commit -m "generated project using fair-python-cookiecutter" -m "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
 
 echo "Ensuring that the default branch is called 'main' ..."
 
 git branch -M main
 
 echo "-------->  All done! Your project repository is ready :)  <--------"
-
-
-: # TODO: only do following in test mode
-
-: # sanity-check that main tasks all work
-: # poetry install --with docs
-: # poetry run poe lint --all-files
-: # poetry run poe test
-: # poetry run poe docs

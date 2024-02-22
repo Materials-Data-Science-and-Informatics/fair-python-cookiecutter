@@ -1,4 +1,5 @@
 """Main functions for controlling the template creation."""
+import os
 from pathlib import Path
 from shutil import which
 from typing import Any, Dict
@@ -80,11 +81,23 @@ def download_licenses(
     license.write_text((proj_root / "LICENSES" / f"{license_name}.txt").read_text())
 
 
-def finalize_repository(proj_root: Path, conf: CookiecutterConfig):
+def init_git_repo(tmp_root: Path, proj_root: Path):
+    # NOTE: script is OS-agnostic, .bat extension is for windows, bash does not care
+    post_gen_script = tmp_root / "post_gen_project.bat"
+    # rewrite newlines correctly for the OS
+    post_gen_script.write_text(post_gen_script.read_text(), encoding="utf-8")
+    if os.name != "nt":
+        run_cmd(f"bash {post_gen_script}", cwd=proj_root)
+    else:
+        run_cmd(f"{post_gen_script}", cwd=proj_root)
+
+
+def finalize_repository(tmp_root: Path, proj_root: Path, conf: CookiecutterConfig):
     """Finalize instantiated repository based on configuration."""
     create_gl_issue_template_from_gh(proj_root)
     remove_unneeded_code(proj_root, conf)
     download_licenses(proj_root, conf)
+    init_git_repo(tmp_root, proj_root)
 
 
 def create_repository(
@@ -110,6 +123,6 @@ def create_repository(
             **cc_args,
         )
         repo_dir = output_dir / cc_json.project_slug
-        finalize_repository(repo_dir, conf)
+        finalize_repository(tmp_root, repo_dir, conf)
 
         return repo_dir

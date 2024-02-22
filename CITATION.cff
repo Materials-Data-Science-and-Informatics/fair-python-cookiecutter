@@ -3,7 +3,7 @@ type: software
 message: If you use this software, please cite it using this metadata.
 
 title: "fair-python-cookiecutter"
-version: "0.2.0"
+version: "0.3.0"
 abstract: "An opinionated cookiecutter template to kickstart a modern best-practice
   Python project with FAIR metadata."
 repository-code: "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
