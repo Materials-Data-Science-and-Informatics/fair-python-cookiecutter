@@ -1,0 +1,1494 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata.">
+      
+      
+      
+        <link rel="canonical" href="https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter/v0.3.0/dev_guide/">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>Developer Guide - fair-python-cookiecutter</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_markdown_exec_pyodide.css">
+    
+      <link rel="stylesheet" href="../assets/_markdown_exec_ansi.css">
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../css/style.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#developer-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  This page is for an outdated or development version.
+  <a href="../..">
+    <strong>Click here to go to the latest stable version.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="fair-python-cookiecutter" class="md-header__button md-logo" aria-label="fair-python-cookiecutter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            fair-python-cookiecutter
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Developer Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Materials-Data-Science-and-Informatics/fair-python-cookiecutter
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href=".." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../quickstart/" class="md-tabs__link">
+          
+  
+  Usage
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../contributing/" class="md-tabs__link">
+          
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="fair-python-cookiecutter" class="md-nav__button md-logo" aria-label="fair-python-cookiecutter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    fair-python-cookiecutter
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Materials-Data-Science-and-Informatics/fair-python-cookiecutter
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changelog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../credits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Credits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Usage
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quickstart
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Development
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How To Contribute
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_of_conduct/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code of Conduct
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#todo-final-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      TODO: Final Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TODO: Final Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspect-the-generated-project-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspect the generated project files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-the-tools-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test the tools locally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Push the repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check the CI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-up-pages-and-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set up Pages and Releases
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repository Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#used-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Used Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-runner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task Runner
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI Workflows
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quality Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#offline-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Offline Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#online-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Online Documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Releases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Releases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a New Release
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#release-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Release Targets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Release Targets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-gitlab-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub / GitLab Release
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypi-and-compatible-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      PyPI and Compatible Indices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/edit/main/docs/dev_guide.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/raw/main/docs/dev_guide.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+<h1 id="developer-guide">Developer Guide<a class="headerlink" href="#developer-guide" title="Permanent link">&para;</a></h1>
+<p>This guide is targeting mainly developers, maintainers and other technical contributors
+and provides more information on how to work with this repository.</p>
+<div class="admonition warning">
+<p class="admonition-title">Important Information</p>
+<h2 id="todo-final-steps">TODO: Final Steps<a class="headerlink" href="#todo-final-steps" title="Permanent link">&para;</a></h2>
+<p>Dear project author, thank you for using <code>fair-python-cookiecutter</code>!</p>
+<p>Before diving into your actual project work, please complete the following
+steps to finalize the configuration of your project repository:</p>
+<h3 id="inspect-the-generated-project-files">Inspect the generated project files<a class="headerlink" href="#inspect-the-generated-project-files" title="Permanent link">&para;</a></h3>
+<p>We suggest that first you familiarize yourself with the generated structure and make it "your own".
+The following sections of this guide provide a high-level overview, but you might want to
+inspect the various files to get a better understanding. A few files
+contain <strong>TODO</strong> items or sections -- please complete and remove them.</p>
+<h3 id="test-the-tools-locally">Test the tools locally<a class="headerlink" href="#test-the-tools-locally" title="Permanent link">&para;</a></h3>
+<p>After having some idea about the repository structure, we suggest that you try to run
+some operations, such as linting, running tests and building the documentation on your computer.</p>
+<h3 id="push-the-repository">Push the repository<a class="headerlink" href="#push-the-repository" title="Permanent link">&para;</a></h3>
+<p>If you have not created an empty repository in your git hosting service already,
+you should create it now. Follow the instructions of your hosting service to
+<em>push an existing repository</em> (i.e. this one), which will consist of</p>
+<ol>
+<li>adding the remote repository locally (<code>git remote add ...</code>)</li>
+<li>pushing the contents to the remote (<code>git push</code>)</li>
+</ol>
+<h3 id="check-the-ci">Check the CI<a class="headerlink" href="#check-the-ci" title="Permanent link">&para;</a></h3>
+<p>Your first push should have automatically triggered the CI pipeline.
+Please check that it runs successfully.</p>
+<h3 id="set-up-pages-and-releases">Set up Pages and Releases<a class="headerlink" href="#set-up-pages-and-releases" title="Permanent link">&para;</a></h3>
+<p>For deployment of documentation pages and releases of your code, some additional
+configuration is required. Please consult the corresponding sections of this guide.</p>
+</div>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<h3 id="repository-structure">Repository Structure<a class="headerlink" href="#repository-structure" title="Permanent link">&para;</a></h3>
+<p>Here is a <em>non-exhaustive</em> list of the most important files and directories in the repository.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">General</label><label for="__tabbed_1_2">Metadata</label><label for="__tabbed_1_3">Development</label><label for="__tabbed_1_4">CI / QA</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><code>AUTHORS.md</code>: acknowledges and lists all contributors</li>
+<li><code>CHANGELOG.md</code>: summarizes the changes for each version of the software for users</li>
+<li><code>CODE_OF_CONDUCT.md</code>: defines the social standards that must be followed by contributors</li>
+<li><code>CONTRIBUTING.md</code>: explains  how others can contribute to the project</li>
+<li><code>README.md</code>: provides an overview and points to other resources</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><code>CITATION.cff</code>: metadata stating how to cite the project</li>
+<li><code>codemeta.json</code>: metadata for harvesting by other tools and services</li>
+<li><code>LICENSE</code>: the (main) license of the project</li>
+<li><code>LICENSES</code>: copies of all licenses that apply to files in the project</li>
+<li><code>.reuse/dep5</code>: granular license and copyright information for all files and directories</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><code>pyproject.toml</code>: project metadata, dependencies, development tool configurations</li>
+<li><code>poetry.lock</code>: needed for reproducible installation of the project</li>
+<li><code>src</code>: actual code provided by the project</li>
+<li><code>tests</code>: all tests for the code in the project</li>
+<li><code>mkdocs.yml</code>: configuration of the project website</li>
+<li><code>docs</code>: most contents used for the project website</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><code>.pre-commit-config.yaml</code>: quality assurance tools used in the project</li>
+<li><code>.github/workflows</code>: CI scripts for GitHub (QA, documentation and package deployment)</li>
+<li><code>.github/ISSUE_TEMPLATE</code>: templates for the GitHub issue tracker</li>
+<li><code>.gitlab-ci.yml</code>: mostly equivalent CI scripts, but for GitLab</li>
+<li><code>.gitlab/issue_templates</code>: The same issues templates, but for GitLab</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You might find various other files popping up which are generated by different tools.
+Most of these should not be committed into the repository, so they are excluded
+in the <code>.gitignore</code> file. Everything listed there is safe to delete.</p>
+</div>
+<h3 id="used-tools">Used Tools<a class="headerlink" href="#used-tools" title="Permanent link">&para;</a></h3>
+<p>Here is a <em>non-exhaustive</em> list of the most important tools used in the project.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">General</label><label for="__tabbed_2_2">Code Quality</label><label for="__tabbed_2_3">Formatting and Style</label><label for="__tabbed_2_4">FAIR metadata</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><code>poetry</code> for dependency management and packaging</li>
+<li><code>poethepoet</code> tool for running common tasks</li>
+<li><code>pre-commit</code> for orchestrating linters, formatters and other utilities</li>
+<li><code>mkdocs</code> for generating the project documentation website</li>
+<li><code>mike</code> for managing the <code>mkdocs</code>-generated documentation website</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><code>flake8</code> for general linting (using various linter plugins)</li>
+<li><code>mypy</code> for editor-independent type-checking</li>
+<li><code>pytest</code> for unit testing</li>
+<li><code>pytest-cov</code> for computing code coverage by tests</li>
+<li><code>hypothesis</code> for property-based testing</li>
+<li><code>bandit</code> for checking security issues in the code</li>
+<li><code>safety</code> for checking security issues in the current dependencies</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><code>black</code> for source-code formatting</li>
+<li><code>autoflake</code> for automatically removing unused imports</li>
+<li><code>pydocstyle</code> for checking docstring conventions</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><code>cffconvert</code> to check the <code>CITATION.cff</code> (citation metadata)</li>
+<li><code>codemetapy</code> to generate a <code>codemeta.json</code> (general software metadata)</li>
+<li><code>somesy</code> to keep all important metadata continuously synchronized</li>
+<li><code>reuse</code> to check <a href="https://reuse.software/spec/">REUSE-compliance</a> (granular copyright and license metadata)</li>
+<li><code>licensecheck</code> to scan for possible license incompatibilities in the dependencies</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Most tools installed and used by this project are listed in the
+<code>pyproject.toml</code> and <code>.pre-commit-config.yaml</code> files.</p>
+</div>
+<h2 id="basics">Basics<a class="headerlink" href="#basics" title="Permanent link">&para;</a></h2>
+<p>The project</p>
+<ul>
+<li>heavily uses <code>pyproject.toml</code>, which is a <a href="https://peps.python.org/pep-0621/">recommended standard</a></li>
+<li>adopts the <a href="https://browniebroke.com/blog/convert-existing-poetry-to-src-layout/"><code>src</code> layout</a>, to avoid <a href="https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/">common problems</a></li>
+<li>keeps the actual code (<code>src</code>) and test code (<code>tests</code>) separated</li>
+</ul>
+<p>The <code>pyproject.toml</code> is the <strong>main configuration file</strong> for the project. It contains both
+general information about the software as well as configuration for various tools.</p>
+<p>In older software, most of this information is often scattered over many little
+tool-specific configuration files and a <code>setup.py</code>, <code>setup.cfg</code> and/or <code>requirements.txt</code>
+file.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code>pyproject.toml</code> is the first place your should check
+when looking for the configuration of some development tool.</p>
+</div>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<p>The main tool needed to manage and configure the project is <a href="https://python-poetry.org">Poetry</a>.</p>
+<p><strong>Please follow its setup documentation to install it correctly.</strong> Poetry should <strong>not</strong>
+be installed with <code>pip</code> like other Python tools.</p>
+<p>Poetry performs many important tasks:</p>
+<ul>
+<li>it manages the <strong>virtual environment(s)</strong> used for the project</li>
+<li>it manages all the <strong>dependencies</strong> needed for the code to work</li>
+<li>it takes care of <strong>packaging</strong> the code into a <code>pip</code>-installable package</li>
+</ul>
+<p>You can find a cheatsheet with the most important commands
+<a href="https://vikasz.hashnode.dev/python-poetry-cheatsheet">here</a>
+and consult its official documentation for detailed information.</p>
+<p>Note that <code>poetry</code> is only needed for development of the repository.
+The <em>end-users</em> who just want to <em>install and use</em> this project
+do <strong>not need</strong> to set up or know anything about poetry.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you use <code>poetry shell</code> to activate the virtual environment of the project,
+and the project is already installed with <code>poetry install</code>, in the following you do not
+have to prepend <code>poetry run</code> in the commands you will see below.</p>
+</div>
+<h3 id="task-runner">Task Runner<a class="headerlink" href="#task-runner" title="Permanent link">&para;</a></h3>
+<p>It is a good practice to have a common way for launching different project-related tasks.
+It removes the need of remembering flags for various tools, and avoids duplication
+of the same commands in the CI pipelines. If something in a workflow needs to change,
+it can be changed in just one place, thus reducing the risk of making a mistake.</p>
+<p>Often projects use a shell script or <code>Makefile</code> for this purpose. This project uses
+<a href="https://github.com/nat-n/poethepoet">poethepoet</a>, as it integrates nicely with <code>poetry</code>.
+The tasks are defined in <code>pyproject.toml</code> and can be launched using:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>poe<span class="w"> </span>TASK_NAME
+</code></pre></div>
+<h3 id="ci-workflows">CI Workflows<a class="headerlink" href="#ci-workflows" title="Permanent link">&para;</a></h3>
+<p>The project contains CI workflows for both GitHub and GitLab.</p>
+<p>The main CI pipeline runs on each new pushed commit and will</p>
+<ol>
+<li>Run all configured code analysis tools,</li>
+<li>Run code tests with multiple versions of Python,</li>
+<li>build and deploy the online project documentation website, and</li>
+<li><em>if a new version tag was pushed,</em> launch the release workflow</li>
+</ol>
+<h2 id="quality-control">Quality Control<a class="headerlink" href="#quality-control" title="Permanent link">&para;</a></h2>
+<h3 id="static-analysis">Static Analysis<a class="headerlink" href="#static-analysis" title="Permanent link">&para;</a></h3>
+<p>Except for code testing, most tools for quality control are added to the project as
+<a href="https://pre-commit.com/"><code>pre-commit</code></a> <em>hooks</em>. The <code>pre-commit</code> tool takes care of
+installing, updating and running the tools according to the configuration in the
+<code>.pre-commit-config.yaml</code> file.</p>
+<p>For every new copy of the repository (e.g. after <code>git clone</code>), <code>pre-commit</code> first must
+be activated. This is usually done using <code>pre-commit install</code>, which also requires that
+<code>pre-commit</code> is already available. For more convenience, we simplified the procedure.</p>
+<p>In this project, you can run:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>poe<span class="w"> </span>init-dev
+</code></pre></div>
+<p>This will make sure that <code>pre-commit</code> is enabled in your repository copy.</p>
+<p>Once enabled,
+<strong>every time</strong> you try to <code>git commit</code> some <strong>changed files</strong>
+various tools will run on those (and only those) files.</p>
+<p>This means that (with some exceptions) <code>pre-commit</code> by default will run only
+on the changed files that were added to the next commit
+(i.e., files in the git <em>staging area</em>).
+These files are usually colored in <em>green</em> when running <code>git status</code>.</p>
+<ul>
+<li>Some tools only <em>report</em> the problems they detected</li>
+<li>Some tools actively <em>modify</em> files (e.g., fix formatting)</li>
+</ul>
+<p>In any case, the <code>git commit</code> will <strong>fail</strong> if a file was modified by a tool, or some
+problems were reported. In order to complete the commit, you need to</p>
+<ul>
+<li>resolve all problems (by fixing them or marking them as false alarm), and</li>
+<li><code>git add</code> all changed files <strong>again</strong> (to update the files in the <em>staging area</em>).</li>
+</ul>
+<p>After doing that, you can retry to <code>git commit</code> your changes.</p>
+<p>To avoid having to deal with many issues at once, it is a good habit to run
+<code>pre-commit</code> by hand from time to time. In this project, this can be done with:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>poe<span class="w"> </span>lint<span class="w"> </span>--all-files
+</code></pre></div>
+<h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h3>
+<p><a href="https://docs.pytest.org/en/7.3.x/">pytest</a> is used as the main framework for testing.</p>
+<p>The project uses the <a href="https://pytest-cov.readthedocs.io/en/latest/"><code>pytest-cov</code></a> plugin
+to integrate <code>pytest</code> with
+<a href="https://coverage.readthedocs.io/en/latest/"><code>coverage</code></a>, which
+collects and reports test coverage information.</p>
+<p>In addition to writing regular unit tests with <code>pytest</code>, consider using
+<a href="https://hypothesis.readthedocs.io/en/latest/index.html">hypothesis</a>,
+which integrates nicely with <code>pytest</code> and implements <em>property-based testing</em> - which
+involves automatic generation of randomized inputs for test cases. This can help to find
+bugs often found for various edge cases that are easy to overlook in ad-hoc manual tests.
+Such randomized tests can be a good addition to hand-crafted tests and inputs.</p>
+<p>To run all tests, either invoke <code>pytest</code> directly, or use the provided task:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>run<span class="w"> </span>poe<span class="w"> </span><span class="nb">test</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Add the flag <code>--cov</code> to enable the test coverage tracking and get a table with
+results after the tests are completed.</p>
+</div>
+<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
+<p>The project uses <a href="https://www.mkdocs.org/"><code>mkdocs</code></a> with the popular and excellent
+<a href="https://squidfunk.github.io/mkdocs-material/"><code>mkdocs-material</code></a>
+theme to generate the project documentation website, which provides both <strong>user and
+developer documentation</strong>.</p>
+<p><code>mkdocs</code> is configured in the <code>mkdocs.yml</code> file, which we prepared in a way that there is</p>
+<ul>
+<li><strong>no need to duplicate sections</strong> from files in other places (such as <code>README.md</code>)</li>
+<li>fully <strong>automatic API documentation</strong> pages based on Python docstrings in the code</li>
+<li>a detailed <strong>test coverage report</strong> is included in the website</li>
+</ul>
+<p>The first point is important, because avoiding duplication means avoiding errors
+whenever text or examples are updated.
+The second point is convenient, as modules and functions do not need to
+be added by hand, which is easy to forget.
+The third point removes the need to use an external service such as
+<a href="https://about.codecov.io/">CodeCov</a> to store and present code coverage information.</p>
+<p>As software changes over time and users cannot always keep up with the latest developments,
+each new version of the software should provide version-specific documentation.
+To make this both possible as well as convenient, this project uses
+<a href="https://github.com/jimporter/mike"><code>mike</code></a> to generate and manage the <code>mkdocs</code>
+<strong>documentation for different versions</strong> of the software.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can easily add new pages (e.g. extended tutorials or topic-specific guides) to
+your documentation website by creating markdown files in the <code>docs/</code> directory and
+adding them to the <code>nav</code> section in <code>mkdocs.yml</code>.</p>
+</div>
+<h3 id="offline-documentation">Offline Documentation<a class="headerlink" href="#offline-documentation" title="Permanent link">&para;</a></h3>
+<p>You can manually generate a local and fully offline copy of the documentation, which
+can be useful for e.g. previewing the results during active work on the documentation:</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>install<span class="w"> </span>--with<span class="w"> </span>docs
+poetry<span class="w"> </span>run<span class="w"> </span>poe<span class="w"> </span>docs
+</code></pre></div>
+<p>Once the documentation site is built, run <code>mkdocs serve</code> and
+open <code>https://localhost:8000</code> in your browser to see the local copy of the website.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You probably should always check bigger website updates locally before it is publicly
+deployed. The automatic pipelines can only catch technical problems, but you still
+e.g. might want to do some proof-reading.</p>
+</div>
+<h3 id="online-documentation">Online Documentation<a class="headerlink" href="#online-documentation" title="Permanent link">&para;</a></h3>
+<p>To avoid dependence on additional services such as <a href="https://readthedocs.org/">readthedocs</a>,
+the project website is set up for simple deployment using
+<a href="https://pages.github.com/">GitHub Pages</a> or
+<a href="https://docs.gitlab.com/ee/user/project/pages/">GitLab Pages</a>.</p>
+<p>The provided CI pipeline automatically generates the documentation for the latest
+development version (i.e., current state of the <code>main</code> branch) as well as every released
+version (i.e., marked by a version tag <code>vX.Y.Z</code>).</p>
+<p>Publishing the documentation to a website using GitHub or GitLab Pages needs a bit
+of configuration. Please follow the steps for your respective hosting service.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">GitLab</label><label for="__tabbed_3_2">GitHub</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Create a new <em>project access token</em> for GitLab Pages deployment<ul>
+<li>in your GitLab project, go to <strong>Settings &gt; Access Tokens</strong></li>
+<li>Add a <strong>new token</strong> with the following settings:<ul>
+<li><strong>Token name:</strong> <code>PAGES_DEPLOYMENT_TOKEN</code></li>
+<li><strong>Expiration date:</strong> <em>(far in the future)</em></li>
+<li><strong>Select a role:</strong> <em>Maintainer</em></li>
+<li><strong>Select scopes:</strong> <em>read_repository, write_repository</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Provide the token as a masked<strong>(!)</strong> variable to the CI pipeline<ul>
+<li>in your GitLab project, go to <strong>Settings &gt; CI/CD</strong></li>
+<li>in the section <strong>Variables</strong> add a new variable with<ul>
+<li><strong>Key:</strong> <code>PAGES_TOKEN</code></li>
+<li><strong>Value:</strong> <em>(the token string, as generated in the previous step)</em></li>
+<li>enable <strong>Mask variable</strong>, so your token will not appear in logs</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Ensure that the GitLab pages URL is correct<ul>
+<li>in your GitLab project, go to <strong>Deploy &gt; Pages</strong></li>
+<li>make sure that <em>Use unique domain</em> is <strong>NOT</strong> enabled</li>
+<li>check that under <em>Access pages</em> the URL matches the <code>site_url</code> in your <code>mkdocs.yml</code></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>make sure that you pushed the repository and the CI pipeline completed at least once</li>
+<li>check that a <code>gh-pages</code> branch exists (created by the CI)</li>
+<li>go to your GitHub repository <strong>Settings</strong> and from there to settings for <strong>Pages</strong></li>
+<li>under <strong>Build and deployment</strong> pick <code>gh-pages</code> as the branch for serving documentation</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Important Information</p>
+<p>When adding any kind of <strong>token</strong> to your repository configuration,
+which usually allows code and pipelines to access and modify your project,
+make sure that the token is protected.</p>
+<ul>
+<li>In GitHub, tokens should be always added as <a href="https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions"><strong>secrets</strong></a></li>
+<li>In GitLab, tokens should be added as CI variables that are <a href="https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable"><strong>masked</strong></a></li>
+</ul>
+<p>This will make sure that the token will not appear in logs of the CI pipeline runs
+and minimize the risk of abuse for malicious purposes.
+<strong>NEVER save a token in a text file in your repository!</strong></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Should anything go wrong and you need to manually access the data of the deployed
+website, you can find it in the <code>gh-pages</code> or <code>gl-pages</code> branch of the repository.
+Normally you should not need to use that branch directly, though.</p>
+</div>
+<h2 id="releases">Releases<a class="headerlink" href="#releases" title="Permanent link">&para;</a></h2>
+<p>From time to time the project is ready for a new <strong>release</strong> for users.</p>
+<h3 id="creating-a-new-release">Creating a New Release<a class="headerlink" href="#creating-a-new-release" title="Permanent link">&para;</a></h3>
+<p>Before releasing a new version, push the commit the new release should be based on
+to the upstream repository, and make sure that:</p>
+<ul>
+<li>the CI pipeline completes successfully</li>
+<li>the version number in <code>pyproject.toml</code> is updated, in particular:</li>
+<li>it must be larger than the previous released version</li>
+<li>it should adequately reflect the <a href="https://semver.org">severity of changes</a></li>
+<li>the provided user and developer documentation is up-to-date, including:</li>
+<li>a new section in the <code>CHANGELOG.md</code> file summarizing changes in the new version</li>
+<li>possibly revised information about contributors and/or maintainers</li>
+</ul>
+<p>If this is the case, proceed with the release by:</p>
+<ul>
+<li>creating a new tag that matches the version in the <code>pyproject.toml</code>: <code>git tag vX.Y.Z</code></li>
+<li>pushing the new tag to the upstream repository: <code>git push origin vX.Y.Z</code></li>
+</ul>
+<p>The pushed version tag will trigger a pipeline that will:</p>
+<ul>
+<li>build and deploy the documentation website for the specific version</li>
+<li>publish the package to enabled targets (see below)</li>
+</ul>
+<h3 id="release-targets">Release Targets<a class="headerlink" href="#release-targets" title="Permanent link">&para;</a></h3>
+<p>The CI pipelines are built in such a way that features can be enabled, disabled and configured easily.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">GitLab</label><label for="__tabbed_4_2">GitHub</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Targets for releases can be enabled or disabled in the <code>variables</code> section in <code>.gitlab-ci.yml</code>.</p>
+</div>
+<div class="tabbed-block">
+<p>Targets for releases can be enabled or disabled in <code>.github/workflows/ci.yml</code> and
+configured by adapting the corresponding actions in <code>.github/workflows/releases.yml</code>.</p>
+</div>
+</div>
+</div>
+<h4 id="github-gitlab-release">GitHub / GitLab Release<a class="headerlink" href="#github-gitlab-release" title="Permanent link">&para;</a></h4>
+<p>By default, the release workflow will create a basic GitHub or GitLab Release that provides
+a snapshot of the repository as a download. This requires no additional configuration.</p>
+<p>See <a href="https://github.com/softprops/action-gh-release">here</a>
+for information on how the Github release can be customized.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Github Release can be used to trigger automated software publication of your
+released versions to
+<a href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content">Zenodo</a>,
+based on the metadata provided in the <code>CITATION.cff</code> file.</p>
+</div>
+<h4 id="pypi-and-compatible-indices">PyPI and Compatible Indices<a class="headerlink" href="#pypi-and-compatible-indices" title="Permanent link">&para;</a></h4>
+<p>The CI pipelines support automatic releases to PyPI, Test PyPI or other custom repositories,
+but in any case this requires a bit of initial configuration.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">GitLab</label><label for="__tabbed_5_2">GitHub</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>For automated releases to PyPI and Test PyPI the project uses the classic token-based workflow.</p>
+<p>Before the project can be released to PyPI or Test PyPI the first time,
+a new PyPI API token must be created in the PyPI account of the main project maintainer,
+and added to your CI as a masked variable, and a variable updated in the <code>.gitlab-ci.yml</code>.</p>
+<p>The corresponding tokens can be added analogously to the <code>PAGES_TOKEN</code> for online documentation,
+which was explained <a href="#online-documentation">here</a>.</p>
+<p><strong>PyPI:</strong></p>
+<ul>
+<li>add the token as a masked CI variable called <code>RELEASE_TOKEN_pypi</code></li>
+<li>in <code>.gitlab-ci.yml</code>, set <code>release_to_pypi: "true"</code></li>
+</ul>
+<p><strong>Test PyPI:</strong></p>
+<ul>
+<li>add the token as a masked CI variable called <code>RELEASE_TOKEN_testpypi</code></li>
+<li>in <code>.gitlab-ci.yml</code>, set <code>release_to_testpypi: "true"</code></li>
+</ul>
+<p><strong>Custom Package Index:</strong></p>
+<ul>
+<li>add the token as a masked CI variable called <code>RELEASE_TOKEN_custom</code></li>
+<li>in <code>.gitlab-ci.yml</code>, set <code>release_to_custom: "true"</code></li>
+<li>update <code>PKGIDX_URL</code> in the <code>release_custom_pypi</code> job to the correct
+    <a href="https://python-poetry.org/docs/repositories/#publishable-repositories">legacy API</a> endpoint</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>For automated releases to PyPI and Test PyPI the project uses the new
+<a href="https://blog.pypi.org/posts/2023-04-20-introducing-trusted-publishers/">Trusted Publishers</a>
+workflow that is both more secure and convenient to use than other authorization methods.</p>
+<p>Before the project can be released to PyPI or Test PyPI the first time,
+first a <a href="https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/">pending publisher</a>
+must be added in the PyPI account of the main project maintainer, <strong>using
+<code>release.yml</code> as the requested <em>workflow name</em></strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is important to use the correct workflow name, otherwise the workflow will fail!</p>
+</div>
+<p>Once this is done, set the corresponding option (<code>to_pypi</code> / <code>to_test_pypi</code>) to <code>true</code>
+in the <code>publish</code> job in <code>ci.yml</code> to enable the corresponding publication target.</p>
+<p>If the old and less secure token-based authentication method is needed or
+the package should be published to a different PyPI-compatible package index, please
+adapt <code>release.yml</code> <a href="https://github.com/pypa/gh-action-pypi-publish">accordingly</a>.</p>
+</div>
+</div>
+</div>
+<p>If for some reason you do not want to use the CI for the PyPI releases, you can skip these instructions
+and manually use <a href="https://python-poetry.org/docs/cli/#publish"><code>poetry publish</code></a> to do the release.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+  
+    Made with
+    <a
+      href="https://squidfunk.github.io/mkdocs-material/"
+      target="_blank" rel="noopener"
+    >
+      Material for MkDocs
+    </a>
+    <!-- added link to project template -->
+    and
+    <a
+      href="https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
+      target="_blank" rel="noopener"
+    >
+      fair-python-cookiecutter
+    </a>
+    <!-- ------------------------------ -->
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Materials-Data-Science-and-Informatics" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Materials-Data-Science-and-Informatics" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.4c2.2 20.4 3.3 41.8 3.3 64zm28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 20.9 58.2 27 94.7zm-209 0H18.6c30-74.1 93.6-130.9 172-151.6-25.5 34.2-45.3 87.7-55.3 151.6zM8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zm186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6-78.4-20.7-142-77.5-172-151.6h116.7zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.6z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "header.autohide", "navigation.footer", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+        <script src="../assets/_markdown_exec_pyodide.js"></script>
+      
+    
+  </body>
+</html>
