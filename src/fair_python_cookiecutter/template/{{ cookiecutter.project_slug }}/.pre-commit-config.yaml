@@ -3,22 +3,22 @@
 repos:
   # GH Actions
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: '0.22.0'
+    rev: "0.28.6"
     hooks:
-    - id: check-github-workflows
+      - id: check-github-workflows
 
   # Quality
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.6
+    rev: v0.5.0
     hooks:
       - id: ruff
-        types_or: [ python, pyi, jupyter ]
-        args: [ --fix ]
+        types_or: [python, pyi, jupyter]
+        args: [--fix]
       - id: ruff-format
-        types_or: [ python, pyi, jupyter ]
+        types_or: [python, pyi, jupyter]
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: 'v1.1.1'
+    rev: "v1.10.1"
     hooks:
       - id: mypy
         args: [--no-strict-optional, --ignore-missing-imports]
@@ -27,37 +27,37 @@ repos:
 
   # License Metadata
   - repo: https://github.com/citation-file-format/cff-converter-python
-    rev: '44e8fc9'
+    rev: "054bda51dbe278b3e86f27c890e3f3ac877d616c"
     hooks:
       - id: validate-cff
   - repo: https://github.com/fsfe/reuse-tool
-    rev: 'v1.1.2'
+    rev: "v3.0.2"
     hooks:
       - id: reuse
 
   # Project Metadata
   - repo: https://github.com/Materials-Data-Science-and-Informatics/somesy
-    rev: 'v0.3.0'
+    rev: "v0.4.2"
     hooks:
       - id: somesy
 
   # Various general + format-specific helpers
   # (run last to fix general syntactic defects)
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.6.0
     hooks:
-    # - id: mixed-line-ending
-    #   args: [--fix=lf]
-    - id: check-symlinks
-    - id: trailing-whitespace
-      exclude: 'CITATION.cff'
-    - id: check-yaml
-      exclude: 'mkdocs.yml'
-    - id: check-toml
-    - id: check-json
-    - id: check-ast
-    - id: debug-statements
-    - id: check-merge-conflict
-    - id: check-shebang-scripts-are-executable
-    - id: check-added-large-files
-      args: [--maxkb=10000]
+      # - id: mixed-line-ending
+      #   args: [--fix=lf]
+      - id: check-symlinks
+      - id: trailing-whitespace
+        exclude: "CITATION.cff"
+      - id: check-yaml
+        exclude: "mkdocs.yml"
+      - id: check-toml
+      - id: check-json
+      - id: check-ast
+      - id: debug-statements
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-added-large-files
+        args: [--maxkb=10000]
