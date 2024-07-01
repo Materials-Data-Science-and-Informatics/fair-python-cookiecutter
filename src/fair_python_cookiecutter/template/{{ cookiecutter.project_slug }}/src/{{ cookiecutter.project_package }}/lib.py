@@ -3,6 +3,7 @@
 This module can be used directly, or the functionality can be
 exposed using some other interface, such as CLI, GUI or an API.
 """
+
 from enum import Enum
 
 

@@ -1,4 +1,5 @@
 """Mkdocs hook to run tests with coverage collection and generate a badge."""
+
 import logging
 from io import StringIO
 from pathlib import Path

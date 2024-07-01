@@ -1,4 +1,5 @@
 """Test for core library."""
+
 import pytest
 from hypothesis import assume, given
 from hypothesis import strategies as st
