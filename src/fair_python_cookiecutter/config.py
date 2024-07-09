@@ -1,4 +1,5 @@
 """Configuration data model and related utilities."""
+
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Union

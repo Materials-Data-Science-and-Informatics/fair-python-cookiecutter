@@ -1,4 +1,5 @@
 """Utilities for creation of template repository instances."""
+
 import json
 import platform
 import shutil

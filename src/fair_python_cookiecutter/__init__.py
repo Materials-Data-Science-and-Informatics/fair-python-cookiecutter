@@ -1,4 +1,5 @@
 """somesy package."""
+
 from typing import Final
 
 import importlib_metadata
