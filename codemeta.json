@@ -14,11 +14,18 @@
       "familyName": "Pirogov",
       "email": "a.pirogov@fz-juelich.de",
       "@id": "https://orcid.org/0000-0002-5077-7497"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Mustafa",
+      "familyName": "Soylu",
+      "email": "m.soylu@fz-juelich.de",
+      "@id": "https://orcid.org/0000-0003-2637-0432"
     }
   ],
   "name": "fair-python-cookiecutter",
   "description": "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "keywords": [
     "fair",
     "metadata",
@@ -29,10 +36,10 @@
   "maintainer": [
     {
       "@type": "Person",
-      "givenName": "Anton",
-      "familyName": "Pirogov",
-      "email": "a.pirogov@fz-juelich.de",
-      "@id": "https://orcid.org/0000-0002-5077-7497"
+      "givenName": "Mustafa",
+      "familyName": "Soylu",
+      "email": "m.soylu@fz-juelich.de",
+      "@id": "https://orcid.org/0000-0003-2637-0432"
     }
   ],
   "license": [
@@ -40,21 +47,6 @@
   ],
   "softwareHelp": "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter",
   "codeRepository": "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter",
-  "contributor": [
-    {
-      "@type": "Person",
-      "givenName": "Anton",
-      "familyName": "Pirogov",
-      "email": "a.pirogov@fz-juelich.de",
-      "@id": "https://orcid.org/0000-0002-5077-7497"
-    },
-    {
-      "@type": "Person",
-      "givenName": "Mustafa",
-      "familyName": "Soylu",
-      "email": "m.soylu@fz-juelich.de",
-      "@id": "https://orcid.org/0000-0003-2637-0432"
-    }
-  ],
+  "buildInstructions": "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter",
   "url": "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
 }

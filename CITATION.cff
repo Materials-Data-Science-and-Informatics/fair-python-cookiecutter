@@ -3,7 +3,7 @@ type: software
 message: If you use this software, please cite it using this metadata.
 
 title: "fair-python-cookiecutter"
-version: "0.3.0"
+version: "0.3.1"
 abstract: "An opinionated cookiecutter template to kickstart a modern best-practice
   Python project with FAIR metadata."
 repository-code: "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
@@ -21,10 +21,14 @@ authors:
   orcid: https://orcid.org/0000-0002-5077-7497
   affiliation: Forschungszentrum Jülich GmbH - Institute for Materials Data Science
     and Informatics (IAS9)
+- email: m.soylu@fz-juelich.de
+  family-names: Soylu
+  given-names: Mustafa
+  orcid: https://orcid.org/0000-0003-2637-0432
 contact:
-- orcid: https://orcid.org/0000-0002-5077-7497
-  given-names: Anton
-  family-names: Pirogov
-  email: a.pirogov@fz-juelich.de
+- given-names: Mustafa
+  orcid: https://orcid.org/0000-0003-2637-0432
+  email: m.soylu@fz-juelich.de
+  family-names: Soylu
 url: 
   https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter

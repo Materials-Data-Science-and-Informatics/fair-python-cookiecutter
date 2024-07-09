@@ -1,4 +1,5 @@
 """Main functions for controlling the template creation."""
+
 import os
 from pathlib import Path
 from shutil import which
