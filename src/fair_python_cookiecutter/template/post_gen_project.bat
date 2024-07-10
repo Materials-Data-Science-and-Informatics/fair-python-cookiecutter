@@ -39,6 +39,11 @@ git add .
 poetry run pre-commit run somesy
 git add .
 
+echo "Running all other hooks ..."
+
+poetry run pre-commit run --all
+git add .
+
 echo "Creating first commit ..."
 
 poetry run git commit -m "generated project using fair-python-cookiecutter" -m "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
