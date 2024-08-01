@@ -10,6 +10,7 @@ Please consult the changelog to inform yourself about breaking changes and secur
 -   updated project and template dependencies
 -   fixed python file imports
 -   updated readme with example code
+-   updated Contributing document issue
 
 ## [v0.3.1](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/tree/v0.3.1) <small>(2024-07-10)</small> { id="0.3.1" }
 
