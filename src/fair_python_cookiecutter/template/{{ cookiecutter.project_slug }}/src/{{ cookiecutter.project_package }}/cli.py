@@ -2,7 +2,7 @@
 
 import typer
 
-from .lib import CalcOperation, calculate
+from {{ cookiecutter.project_package }}.lib import CalcOperation, calculate
 
 # create subcommand app
 say = typer.Typer()

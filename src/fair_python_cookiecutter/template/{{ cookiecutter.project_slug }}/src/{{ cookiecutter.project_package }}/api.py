@@ -1,7 +1,7 @@
 """API of {{ cookiecutter.project_slug }}."""
 from fastapi import FastAPI, HTTPException
 
-from .lib import CalcOperation, calculate
+from {{ cookiecutter.project_package }}.lib import CalcOperation, calculate
 
 app = FastAPI()
 
@@ -18,3 +18,7 @@ def calc(op: CalcOperation, x: int, y: int = 0):
         else:
             err = str(e)
         raise HTTPException(status_code=422, detail=err)
+
+def run():
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)

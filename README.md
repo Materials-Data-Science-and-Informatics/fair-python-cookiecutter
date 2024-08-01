@@ -20,11 +20,12 @@ An opinionated cookiecutter template to kickstart a modern best-practice Python 
 
 <!-- NOTE: For technical reasons, it is much easier to use GitHub
      for hosting the mindmap than adding it to the repository -->
+
 ![FAIR Software Mindmap](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter/assets/371708/ef566ee1-8965-4d58-9ede-18eeb49a476e)
 
-*Check out the
+_Check out the
 [demo repository](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo)
-generated from this template!*
+generated from this template!_
 
 ## Overview
 
@@ -57,25 +58,25 @@ You can use it as is, adapt it, or at least get some inspiration for your projec
 
 This template sets up a skeleton for a Python project that:
 
-* uses modern state-of-the-art development tools
-* provides a baseline for professional development and maintenance
-* helps following best practices for code and metadata quality
-* contains detailed documentation on how to work with it
+-   uses modern state-of-the-art development tools
+-   provides a baseline for professional development and maintenance
+-   helps following best practices for code and metadata quality
+-   contains detailed documentation on how to work with it
 
 It is built to help you adopting good practices
 and follow recommendations such as:
 
-* [DLR Software Engineering Guidelines](https://rse.dlr.de/guidelines/00_dlr-se-guidelines_en.html)
-* [OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/en/criteria/0)
-* [Netherlands eScience Center](https://fair-software.eu)
-* innumerable other resources that can be found online
+-   [DLR Software Engineering Guidelines](https://rse.dlr.de/guidelines/00_dlr-se-guidelines_en.html)
+-   [OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/en/criteria/0)
+-   [Netherlands eScience Center](https://fair-software.eu)
+-   innumerable other resources that can be found online
 
 Furthermore, it implements emerging standards with the goal to improve
 software metadata and make it more [FAIR](https://www.go-fair.org/fair-principles/):
 
-* [REUSE](https://reuse.software/)
-* [CITATION.cff](https://citation-file-format.github.io/)
-* [CodeMeta](https://codemeta.github.io/)
+-   [REUSE](https://reuse.software/)
+-   [CITATION.cff](https://citation-file-format.github.io/)
+-   [CodeMeta](https://codemeta.github.io/)
 
 Also see [this paper](https://doi.org/10.48550/arXiv.1905.08674) for an overview and
 recommendations on the state of software citation in academic practice.
@@ -123,6 +124,39 @@ project contributors.
 
 You can find a demo repository generated from this template [here](https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter-demo).
 
+### Example Code
+
+When you are creating your project, you are asked for several inputs. You can have an example CLI(Command Line Interface) and/or API(Application Programming interface) code within your new project.
+
+Lets assume your project name is `my-awesome-project`.
+
+You can run the CLI App with below command. For further usage, please check typer documentation.
+
+```bash
+poetry shell
+
+# Run your CLI App
+my-awesome-project-cli calculate add 5 2
+```
+
+You can run the API App with below command.
+
+```bash
+poetry shell
+
+# Run the API program, it will be open for connection
+my-awesome-project-api
+```
+
+Now, you can a tool to send a HTTP request for the API. You can open another terminal and run this command
+
+```
+# send a request that does the same thing as the CLI
+curl 'http://localhost:8000/calculate/add?x=5&y=2'
+```
+
+For further usage of the API, please check fastAPI documentation.
+
 ## Configuring the Template
 
 If you intend to use the template a lot, e.g. if you want to use (an adaptation of)
@@ -132,14 +166,14 @@ Here is an example cookiecutter configuration:
 
 ```yaml
 fair_python_cookiecutter:
-  last_name: "Carberry"
-  first_name: "Josiah"
-  project_keywords: "psychoceramics analytics"
-  email: "josiah.carberry@brown.edu"
-  orcid: "0000-0002-1825-0097"
-  affiliation: "Brown University"
-  copyright_holder: "Brown University"
-  license: "MIT"
+    last_name: 'Carberry'
+    first_name: 'Josiah'
+    project_keywords: 'psychoceramics analytics'
+    email: 'josiah.carberry@brown.edu'
+    orcid: '0000-0002-1825-0097'
+    affiliation: 'Brown University'
+    copyright_holder: 'Brown University'
+    license: 'MIT'
 ```
 
 This information will be already pre-filled when you use the template,
@@ -176,9 +210,9 @@ moved into the `YOUR_PROJECT/src/YOUR_PACKAGE` subdirectory.
 On the other hand, if you already have a working setup that you do not wish to replace
 completely, you can take a look at
 
-* the `.pre-commit-config.yaml` file to adopt some of the quality assurance tools listed there
-* the CI pipelines defined in `.github/workflows` or `.gitlab-ci.yml` for automated tests and releases
-* the `mkdocs.yml` and `docs/` subdirectory to see how the project website works
+-   the `.pre-commit-config.yaml` file to adopt some of the quality assurance tools listed there
+-   the CI pipelines defined in `.github/workflows` or `.gitlab-ci.yml` for automated tests and releases
+-   the `mkdocs.yml` and `docs/` subdirectory to see how the project website works
 
 <!-- --8<-- [end:quickstart] -->
 

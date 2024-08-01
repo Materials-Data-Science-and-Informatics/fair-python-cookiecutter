@@ -35,39 +35,39 @@ include = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-cookiecutter = "^2.1.1"
-typer = {extras = ["all"], version = "^0.9.0"}
-pydantic = "^2.5.2"
-typing-extensions = "^4.8.0"
-pydantic-yaml = "^1.2.0"
+cookiecutter = "^2.6.0"
+typer = {extras = ["all"], version = "^0.12.3"}
+pydantic = "^2.8.2"
+typing-extensions = "^4.12.2"
+pydantic-yaml = "^1.3.0"
 spdx-lookup = "^0.3.3"
-platformdirs = "^4.1.0"
-importlib-resources = "^6.1.1"
+platformdirs = "^4.2.2"
+importlib-resources = "^6.4.0"
 
 [tool.poetry.group.dev.dependencies]
-poethepoet = "^0.18.1"
-pre-commit = "^3.1.1"
-pytest = "^7.2.2"
+poethepoet = "^0.27.0"
+pre-commit = "^3.5.0"
+pytest = "^8.3.2"
 
 [tool.poetry.group.docs]
 optional = true
 
 [tool.poetry.group.docs.dependencies]
-mkdocs = "^1.4.2"
-mkdocstrings = {extras = ["python"], version = "^0.24.0"}
-mkdocs-material = "^9.4"
+mkdocs = "^1.6.0"
+mkdocstrings = {extras = ["python"], version = "^0.25.2"}
+mkdocs-material = "^9.5.30"
 mkdocs-gen-files = "^0.5.0"
-mkdocs-literate-nav = "^0.6.0"
-mkdocs-section-index = "^0.3.5"
-mkdocs-macros-plugin = "^0.7.0"
+mkdocs-literate-nav = "^0.6.1"
+mkdocs-section-index = "^0.3.9"
+mkdocs-macros-plugin = "^1.0.5"
 markdown-include = "^0.8.1"
-pymdown-extensions = "^10.2"
-markdown-exec = {extras = ["ansi"], version = "^1.6.0"}
-mkdocs-coverage = "^1.0.0"
-mike = "^2.0.0"
+pymdown-extensions = "^10.9"
+markdown-exec = {extras = ["ansi"], version = "^1.9.3"}
+mkdocs-coverage = "^1.1.0"
+mike = "^2.1.2"
 anybadge = "^1.14.0"
-interrogate = "^1.5.0"
-black = "^23.3.0"
+interrogate = "^1.7.0"
+black = "^24.4.2"
 
 [tool.poetry.scripts]
 fair-python-cookiecutter = "fair_python_cookiecutter.cli:app"
