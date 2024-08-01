@@ -25,7 +25,7 @@
   ],
   "name": "fair-python-cookiecutter",
   "description": "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata.",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "keywords": [
     "fair",
     "metadata",
