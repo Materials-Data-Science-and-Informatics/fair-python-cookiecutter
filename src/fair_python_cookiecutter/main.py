@@ -66,6 +66,9 @@ def download_licenses(
     """Download all needed licenses and create main LICENSE file."""
     # download licenses if no licenses dir is in the project dir
     if force_download or not (proj_root / "LICENSES").is_dir():
+        # first rename temp-REUSE.toml to REUSE.toml
+        if (proj_root / "temp-REUSE.toml").is_file():
+            (proj_root / "temp-REUSE.toml").rename(proj_root / "REUSE.toml")
         # only install reuse/pipx if it is not found
         reuse_cmd = "reuse --suppress-deprecation download --all"
         if not which("reuse"):

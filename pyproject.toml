@@ -12,8 +12,6 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Intended Audience :: Developers",
 ]
-authors = [{name = "Anton Pirogov", email = "a.pirogov@fz-juelich.de"}, {name = "Mustafa Soylu", email = "m.soylu@fz-juelich.de"}]
-maintainers = [{name = "Mustafa Soylu", email = "m.soylu@fz-juelich.de"}]
 requires-python = ">=3.9"
 dependencies = [
     "cookiecutter>=2.6.0",
@@ -26,6 +24,8 @@ dependencies = [
     "importlib-resources>=6.4.0",
     "importlib-metadata (>=8.6.1,<9.0.0)"
 ]
+authors = [{name = "Anton Pirogov", email = "a.pirogov@fz-juelich.de"}, {name = "Mustafa Soylu", email = "m.soylu@fz-juelich.de"}]
+maintainers = [{name = "Mustafa Soylu", email = "m.soylu@fz-juelich.de"}]
 [project.urls]
 homepage = "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
 repository = "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
