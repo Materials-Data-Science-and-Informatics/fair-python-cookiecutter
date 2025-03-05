@@ -33,12 +33,12 @@ repos:
       hooks:
           - id: validate-cff
     - repo: https://github.com/fsfe/reuse-tool
-      rev: 'v3.0.2'
+      rev: 'v5.0.2'
       hooks:
           - id: reuse
 
     - repo: https://github.com/Materials-Data-Science-and-Informatics/somesy
-      rev: 'v0.4.3'
+      rev: 'v0.7.0'
       hooks:
           - id: somesy
 

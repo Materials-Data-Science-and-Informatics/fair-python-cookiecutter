@@ -1,0 +1,16 @@
+version = 1
+SPDX-PackageName = "{{ cookiecutter.project_slug }}"
+SPDX-PackageSupplier = "{{ cookiecutter.author_name_email }}"
+SPDX-PackageDownloadLocation = "{{ cookiecutter.project_repo_url }}"
+
+[[annotations]]
+path = [".gitignore", "pyproject.toml", "poetry.lock", ".pre-commit-config.yaml", "codemeta.json", "CITATION.cff", "README.md", "RELEASE_NOTES.md", "CHANGELOG.md", "CODE_OF_CONDUCT.md", "AUTHORS.md", "CONTRIBUTING.md", ".gitlab-ci.yml", ".gitlab/**", ".github/**", "mkdocs.yml", "docs/**", "somesy.toml"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "{{ cookiecutter.copyright_text }}"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["src/{{ cookiecutter.project_package }}/**", "tests/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "{{ cookiecutter.copyright_text }}"
+SPDX-License-Identifier = "{{ cookiecutter.project_license }}"
