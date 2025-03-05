@@ -1,17 +1,10 @@
-[tool.poetry]
 # ---- managed by somesy, see .somesy.toml ----
+[project]
 name = "fair-python-cookiecutter"
 version = "0.3.2"
 description = "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata."
-authors = ["Anton Pirogov <a.pirogov@fz-juelich.de>", "Mustafa Soylu <m.soylu@fz-juelich.de>"]
-maintainers = ["Mustafa Soylu <m.soylu@fz-juelich.de>"]
 license = "MIT"
-
 readme = "README.md"
-repository = "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
-homepage = "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
-documentation = "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
-
 keywords = ["fair", "metadata", "python", "cookiecutter", "template"]
 # ---- managed by somesy, see .somesy.toml ----
 
@@ -19,7 +12,26 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Intended Audience :: Developers",
 ]
+authors = [{name = "Anton Pirogov", email = "a.pirogov@fz-juelich.de"}, {name = "Mustafa Soylu", email = "m.soylu@fz-juelich.de"}]
+maintainers = [{name = "Mustafa Soylu", email = "m.soylu@fz-juelich.de"}]
+requires-python = ">=3.9"
+dependencies = [
+    "cookiecutter>=2.6.0",
+    "typer[all]>=0.12.3",
+    "pydantic>=2.8.2",
+    "typing-extensions>=4.12.2",
+    "pydantic-yaml>=1.3.0",
+    "spdx-lookup>=0.3.3",
+    "platformdirs>=4.2.2",
+    "importlib-resources>=6.4.0",
+    "importlib-metadata (>=8.6.1,<9.0.0)"
+]
+[project.urls]
+homepage = "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
+repository = "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
+documentation = "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
 
+[tool.poetry]
 # the Python packages that will be included in a built distribution:
 packages = [{include = "fair_python_cookiecutter", from = "src"}]
 
@@ -33,19 +45,8 @@ include = [
   { path = "tests", format = "sdist" },
 ]
 
-[tool.poetry.dependencies]
-python = "^3.8"
-cookiecutter = "^2.6.0"
-typer = {extras = ["all"], version = "^0.12.3"}
-pydantic = "^2.8.2"
-typing-extensions = "^4.12.2"
-pydantic-yaml = "^1.3.0"
-spdx-lookup = "^0.3.3"
-platformdirs = "^4.2.2"
-importlib-resources = "^6.4.0"
-
 [tool.poetry.group.dev.dependencies]
-poethepoet = "^0.27.0"
+poethepoet = "^0.32.2"
 pre-commit = "^3.5.0"
 pytest = "^8.3.2"
 
@@ -69,7 +70,7 @@ anybadge = "^1.14.0"
 interrogate = "^1.7.0"
 black = "^24.4.2"
 
-[tool.poetry.scripts]
+[project.scripts]
 fair-python-cookiecutter = "fair_python_cookiecutter.cli:app"
 
 [build-system]
@@ -125,3 +126,4 @@ ignore = ["D203", "D213", "D407", "B008", "S101", "D102", "D103"]
 
 [tool.ruff.lint.per-file-ignores]
 "**/{tests,docs}/*" = ["ALL"]
+
