@@ -138,12 +138,13 @@ exclude_lines = [
     "@(abc\\.)?abstractmethod",
 ]
 
-[tool.flake8]
-ignore = ["W503"]
-max-line-length = 88
-
-[tool.pydocstyle]
-convention = "google"
+[tool.ruff.lint]
+# see here: https://docs.astral.sh/ruff/rules/
+# ruff by default works like a mix of flake8, autoflake and black
+# we extend default linter rules to substitute:
+# flake8-bugbear, pydocstyle, isort, flake8-bandit
+extend-select = ["B", "D", "I", "S"]
+ignore = ["D203", "D213", "D407", "B008", "S101", "D102", "D103"]
 
 [tool.bandit]
 exclude_dirs = ["tests", "scripts"]
