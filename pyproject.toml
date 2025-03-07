@@ -26,7 +26,7 @@ dependencies = [
     "spdx-lookup>=0.3.3",
     "platformdirs>=4.2.2",
     "importlib-resources>=6.4.0",
-    "importlib-metadata (>=8.6.1,<9.0.0)"
+    "importlib-metadata (>=8.6.1,<9.0.0)",
 ]
 authors = [
     {name = "Anton Pirogov",email = "a.pirogov@fz-juelich.de"},
@@ -50,7 +50,7 @@ packages = [{include = "fair_python_cookiecutter", from = "src"}]
 # always include basic info for humans and core metadata in the distribution,
 # include files related to test and documentation only in sdist:
 include = [
-  "*.md", "LICENSE", "LICENSES", ".reuse/dep5", "CITATION.cff", "codemeta.json",
+  "*.md", "LICENSE", "LICENSES", "REUSE.toml", "CITATION.cff", "codemeta.json",
   "mkdocs.yml", "docs", "tests",
   { path = "mkdocs.yml", format = "sdist" },
   { path = "docs", format = "sdist" },
@@ -66,13 +66,14 @@ pytest = "^8.3.2"
 optional = true
 
 [tool.poetry.group.docs.dependencies]
-mkdocs = "^1.6.0"
+mkdocs = "^1.6.1"
 mkdocstrings = {extras = ["python"], version = "^0.25.2"}
 mkdocs-material = "^9.5.30"
 mkdocs-gen-files = "^0.5.0"
 mkdocs-literate-nav = "^0.6.1"
 mkdocs-section-index = "^0.3.9"
 mkdocs-macros-plugin = "^1.0.5"
+mkdocs-autorefs = "^1.4.0"
 markdown-include = "^0.8.1"
 pymdown-extensions = "^10.9"
 markdown-exec = {extras = ["ansi"], version = "^1.9.3"}
