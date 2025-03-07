@@ -95,9 +95,6 @@ test-docs-build:
       junit: report.xml  # for Gitlab integration of test results
 
 # Run tests, using different Python versions:
-run-pytest-3.8:
-  image: python:3.8
-  <<: *run-pytest
 run-pytest-3.9:
   image: python:3.9
   <<: *run-pytest
@@ -106,6 +103,12 @@ run-pytest-3.10:
   <<: *run-pytest
 run-pytest-3.11:
   image: python:3.11
+  <<: *run-pytest
+run-pytest-3.12:
+  image: python:3.12
+  <<: *run-pytest
+run-pytest-3.13:
+  image: python:3.13
   <<: *run-pytest
 
 # ----
