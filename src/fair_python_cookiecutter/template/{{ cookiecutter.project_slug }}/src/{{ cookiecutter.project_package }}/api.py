@@ -17,7 +17,7 @@ def calc(op: CalcOperation, x: int, y: int = 0):
             err = f"Cannot divide x={x} by y=0!"
         else:
             err = str(e)
-        raise HTTPException(status_code=422, detail=err)
+        raise HTTPException(status_code=422, detail=err) from e
 
 def run():
     import uvicorn
