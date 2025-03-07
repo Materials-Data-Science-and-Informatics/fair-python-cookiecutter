@@ -14,11 +14,11 @@ requires-python = ">=3.9"
 keywords = {{ cookiecutter.project_keywords.split() | jsonify }}
 dependencies = [
 {%- if cookiecutter.init_cli %}
-  "typer[all]>=0.12.3"
+  "typer[all]>=0.12.3",
 {%- endif %}
 {%- if cookiecutter.init_api %}
-  "fastapi>=0.111.1"
-  "uvicorn>=0.30.4"
+  "fastapi>=0.111.1",
+  "uvicorn>=0.30.4",
 {%- endif %}
 ]
 
