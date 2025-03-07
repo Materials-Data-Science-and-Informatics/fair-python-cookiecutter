@@ -87,7 +87,7 @@ recommendations on the state of software citation in academic practice.
 
 ## Getting Started
 
-Make sure that you have a working Python interpreter in version at least 3.8,
+Make sure that you have a working Python interpreter in version at least 3.9,
 `git` and [`poetry`](https://python-poetry.org/docs/#installation) installed.
 
 To install the template, run `pip install fair-python-cookiecutter`.

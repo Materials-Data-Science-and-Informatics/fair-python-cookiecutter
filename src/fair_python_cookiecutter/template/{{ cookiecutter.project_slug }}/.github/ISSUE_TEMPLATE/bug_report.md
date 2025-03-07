@@ -28,7 +28,7 @@ If applicable, provide a Python stack trace or JavaScript console log from the b
 **Environment**
 Provide information about versions of relevant software packages.
 
- - Python Version (e.g. 3.8.10)
+ - Python Version (e.g. 3.9.10)
  - poetry version (e.g. 1.2.1)
  - Browser [e.g. chrome, safari] + Version
 
