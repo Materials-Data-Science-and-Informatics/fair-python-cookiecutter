@@ -1,12 +1,16 @@
 # ---- managed by somesy, see .somesy.toml ----
 [project]
 name = "fair-python-cookiecutter"
-version = "0.3.2"
+version = "1.0.0"
 description = "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata."
-license = "MIT"
 readme = "README.md"
-keywords = ["fair", "metadata", "python", "cookiecutter", "template"]
-# ---- managed by somesy, see .somesy.toml ----
+keywords = [
+    "fair",
+    "metadata",
+    "python",
+    "cookiecutter",
+    "template",
+]
 
 classifiers = [
     "Intended Audience :: Science/Research",
@@ -24,8 +28,16 @@ dependencies = [
     "importlib-resources>=6.4.0",
     "importlib-metadata (>=8.6.1,<9.0.0)"
 ]
-authors = [{name = "Anton Pirogov", email = "a.pirogov@fz-juelich.de"}, {name = "Mustafa Soylu", email = "m.soylu@fz-juelich.de"}]
-maintainers = [{name = "Mustafa Soylu", email = "m.soylu@fz-juelich.de"}]
+authors = [
+    {name = "Anton Pirogov",email = "a.pirogov@fz-juelich.de"},
+    {name = "Mustafa Soylu",email = "m.soylu@fz-juelich.de"},
+]
+maintainers = [
+    {name = "Mustafa Soylu",email = "m.soylu@fz-juelich.de"},
+]
+
+license = {text = "MIT"}
+
 [project.urls]
 homepage = "https://materials-data-science-and-informatics.github.io/fair-python-cookiecutter"
 repository = "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
@@ -74,7 +86,7 @@ black = "^24.4.2"
 fair-python-cookiecutter = "fair_python_cookiecutter.cli:app"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0"]
 build-backend = "poetry.core.masonry.api"
 
 # NOTE: You can run the following with "poetry poe TASK"

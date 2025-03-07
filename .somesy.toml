@@ -1,6 +1,6 @@
 [project]
 name = "fair-python-cookiecutter"
-version = "0.3.2"
+version = "1.0.0"
 description = "An opinionated cookiecutter template to kickstart a modern best-practice Python project with FAIR metadata. "
 
 license = "MIT"
