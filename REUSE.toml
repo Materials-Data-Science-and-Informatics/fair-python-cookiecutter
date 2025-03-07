@@ -1,0 +1,22 @@
+version = 1
+SPDX-PackageName = "fair-python-cookiecutter"
+SPDX-PackageSupplier = "Anton Pirogov <a.pirogov@fz-juelich.de>"
+SPDX-PackageDownloadLocation = "https://github.com/Materials-Data-Science-and-Informatics/fair-python-cookiecutter"
+
+[[annotations]]
+path = ["{{ cookiecutter**"]
+precedence = "override"
+SPDX-FileCopyrightText = "2023 Forschungszentrum Jülich GmbH - Institute for Materials Data Science and Informatics (IAS9) - Stefan Sandfeld <s.sandfeld@fz-juelich.de>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = [".gitignore", "pyproject.toml", "poetry.lock", ".pre-commit-config.yaml", ".somesy.toml", "codemeta.json", "CITATION.cff", "README.md", "RELEASE_NOTES.md", "CHANGELOG.md", "CODE_OF_CONDUCT.md", "AUTHORS.md", "CONTRIBUTING.md", ".github/**", "mkdocs.yml", "**.txt", "docs/**", "REUSE.toml", "somesy.toml"]
+precedence = "override"
+SPDX-FileCopyrightText = "2023 Forschungszentrum Jülich GmbH - Institute for Materials Data Science and Informatics (IAS9) - Stefan Sandfeld <s.sandfeld@fz-juelich.de>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["src/**", "tests/**", "hooks/**"]
+precedence = "override"
+SPDX-FileCopyrightText = "2023 Forschungszentrum Jülich GmbH - Institute for Materials Data Science and Informatics (IAS9) - Stefan Sandfeld <s.sandfeld@fz-juelich.de>"
+SPDX-License-Identifier = "MIT"

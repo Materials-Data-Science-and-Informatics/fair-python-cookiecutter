@@ -1,57 +1,27 @@
-# NOTE: this repository uses the tool somesy to help you easily maintain
-# and synchronize all the high-level project metadata across multiple files.
-# To see which other metadata can be added, check out the somesy documentation
-# https://materials-data-science-and-informatics.github.io/somesy/main/
-[tool.somesy.project]
-name = "{{ cookiecutter.project_slug }}"
-version = "{{ cookiecutter.project_version }}"
-description = "{{ cookiecutter.project_description }}"
-license = "{{ cookiecutter.project_license }}"
-
-keywords = {{ cookiecutter.project_keywords.split() | jsonify }}
-repository = "{{ cookiecutter.project_repo_url }}"
-homepage = "{{ cookiecutter.project_pages_url }}"
-documentation = "{{ cookiecutter.project_pages_url }}"
-
-[[tool.somesy.project.people]]
-given-names = "{{ cookiecutter.author_first_name }}"
-family-names = "{{ cookiecutter.author_last_name }}"
-email = "{{ cookiecutter.author_email }}"
-{%- if cookiecutter.author_orcid_url %}
-orcid = "{{ cookiecutter.author_orcid_url }}"
-{%- else %}
-# orcid = "https://orcid.org/your-orcid"
-{%- endif %}
-author = true
-maintainer = true
-
-# You also can add more authors, maintainers or contributors here:
-# [[tool.somesy.project.people]]
-# given-names = "Another"
-# family-names = "Contributor"
-# email = "contributor@email.com"
-# orcid = "https://orcid.org/0123-4567-8910-1112"
-# ...
-
-[tool.somesy.config]
-verbose = true
-
-[tool.poetry]
+[project]
 # ---- DO NOT EDIT - core project metadata managed by somesy  ----
 # to update, edit values in [tool.somesy.project] section
 # and run somesy: poetry run somesy
 name = "{{ cookiecutter.project_slug }}"
 version = "{{ cookiecutter.project_version }}"
 description = "{{ cookiecutter.project_description }}"
-license = "{{ cookiecutter.project_license }}"
+license = {text = "{{ cookiecutter.project_license }}"}
 
-authors = ["{{ cookiecutter.author_name_email }}"]
-maintainers = ["{{ cookiecutter.author_name_email }}"]
+authors = [{name = "{{ cookiecutter.author_first_name }} {{ cookiecutter.author_last_name }}", email = "{{ cookiecutter.author_email }}"}]
+maintainers = [{name = "{{ cookiecutter.author_first_name }} {{ cookiecutter.author_last_name }}", email = "{{ cookiecutter.author_email }}"}]
 
+requires-python = ">=3.9"
 keywords = {{ cookiecutter.project_keywords.split() | jsonify }}
-repository = "{{ cookiecutter.project_repo_url }}"
-homepage = "{{ cookiecutter.project_pages_url }}"
-documentation = "{{ cookiecutter.project_pages_url }}"
+dependencies = [
+{%- if cookiecutter.init_cli %}
+  "typer[all]>=0.12.3"
+{%- endif %}
+{%- if cookiecutter.init_api %}
+  "fastapi>=0.111.1"
+  "uvicorn>=0.30.4"
+{%- endif %}
+]
+
 # ----------------------------------------------------------------
 
 # Python- and Poetry-specific metadata
@@ -65,27 +35,27 @@ classifiers = [
     "Intended Audience :: Developers",
 ]
 
+# ---- managed by somesy, see .somesy.toml ----
+[project.urls]
+repository = "{{ cookiecutter.project_repo_url }}"
+homepage = "{{ cookiecutter.project_pages_url }}"
+documentation = "{{ cookiecutter.project_pages_url }}"
+
+[tool.poetry]
 # the Python packages that will be included in a built distribution:
 packages = [{include = "{{ cookiecutter.project_package }}", from = "src"}]
 
 # always include basic info for humans and core metadata in the distribution,
 # include files related to test and documentation only in sdist:
 include = [
-  "*.md", "LICENSE", "LICENSES", ".reuse/dep5", "CITATION.cff", "codemeta.json",
+  "*.md", "LICENSE", "LICENSES", "REUSE.toml", "CITATION.cff", "codemeta.json",
   { path = "mkdocs.yml", format = "sdist" },
   { path = "docs", format = "sdist" },
   { path = "tests", format = "sdist" },
 ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-{%- if cookiecutter.init_cli %}
-typer = "^0.12.3"
-{%- endif %}
-{%- if cookiecutter.init_api %}
-fastapi = "^0.111.1"
-uvicorn = "^0.30.4"
-{%- endif %}
+python = ">=3.9,<4.0"
 
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.27.0"
@@ -118,7 +88,7 @@ anybadge = "^1.14.0"
 interrogate = "^1.7.0"
 black = "^24.4.2"
 
-[tool.poetry.scripts]
+[project.scripts]
 # put your script entrypoints here
 # some-script = 'module.submodule:some_object'
 {%- if cookiecutter.init_cli %}
@@ -129,7 +99,7 @@ black = "^24.4.2"
 {%- endif %}
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0"]
 build-backend = "poetry.core.masonry.api"
 
 # NOTE: You can run the following with "poetry poe TASK"
@@ -168,12 +138,13 @@ exclude_lines = [
     "@(abc\\.)?abstractmethod",
 ]
 
-[tool.flake8]
-ignore = ["W503"]
-max-line-length = 88
-
-[tool.pydocstyle]
-convention = "google"
+[tool.ruff.lint]
+# see here: https://docs.astral.sh/ruff/rules/
+# ruff by default works like a mix of flake8, autoflake and black
+# we extend default linter rules to substitute:
+# flake8-bugbear, pydocstyle, isort, flake8-bandit
+extend-select = ["B", "D", "I", "S"]
+ignore = ["D203", "D213", "D407", "B008", "S101", "D102", "D103"]
 
 [tool.bandit]
 exclude_dirs = ["tests", "scripts"]

@@ -37,7 +37,7 @@ A copy of the guide is included in your project in `docs/dev_guide.md`.
 
 **TODO: check that the installation instructions work**
 
-This project works with Python > 3.8.
+This project works with Python > 3.9.
 
 ```bash
 pip install git+ssh://{{ cookiecutter.project_clone_url }}

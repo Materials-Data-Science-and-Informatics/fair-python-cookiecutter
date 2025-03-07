@@ -1,0 +1,37 @@
+# NOTE: this repository uses the tool somesy to help you easily maintain
+# and synchronize all the high-level project metadata across multiple files.
+# To see which other metadata can be added, check out the somesy documentation
+# https://materials-data-science-and-informatics.github.io/somesy/main/
+[project]
+name = "{{ cookiecutter.project_slug }}"
+version = "{{ cookiecutter.project_version }}"
+description = "{{ cookiecutter.project_description }}"
+license = "{{ cookiecutter.project_license }}"
+
+keywords = {{ cookiecutter.project_keywords.split() | jsonify }}
+repository = "{{ cookiecutter.project_repo_url }}"
+homepage = "{{ cookiecutter.project_pages_url }}"
+documentation = "{{ cookiecutter.project_pages_url }}"
+
+[[project.people]]
+given-names = "{{ cookiecutter.author_first_name }}"
+family-names = "{{ cookiecutter.author_last_name }}"
+email = "{{ cookiecutter.author_email }}"
+{%- if cookiecutter.author_orcid_url %}
+orcid = "{{ cookiecutter.author_orcid_url }}"
+{%- else %}
+# orcid = "https://orcid.org/your-orcid"
+{%- endif %}
+author = true
+maintainer = true
+
+# You also can add more authors, maintainers or contributors here:
+# [[project.people]]
+# given-names = "Another"
+# family-names = "Contributor"
+# email = "contributor@email.com"
+# orcid = "https://orcid.org/0123-4567-8910-1112"
+# ...
+
+[config]
+verbose = true

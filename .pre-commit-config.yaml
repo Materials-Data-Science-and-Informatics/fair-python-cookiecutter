@@ -5,13 +5,13 @@ exclude: 'src/fair_python_cookiecutter/template/.*' # <-- added
 repos:
     # GH Actions
     - repo: https://github.com/python-jsonschema/check-jsonschema
-      rev: '0.28.6'
+      rev: '0.31.2'
       hooks:
           - id: check-github-workflows
 
     # Code Quality
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: v0.5.0
+      rev: v0.9.9
       hooks:
           - id: ruff
             types_or: [python, pyi, jupyter]
@@ -20,7 +20,7 @@ repos:
             types_or: [python, pyi, jupyter]
 
     - repo: https://github.com/pre-commit/mirrors-mypy
-      rev: 'v1.10.1'
+      rev: 'v1.15.0'
       hooks:
           - id: mypy
             args: [--no-strict-optional, --ignore-missing-imports]
@@ -33,18 +33,18 @@ repos:
       hooks:
           - id: validate-cff
     - repo: https://github.com/fsfe/reuse-tool
-      rev: 'v3.0.2'
+      rev: 'v5.0.2'
       hooks:
           - id: reuse
 
     - repo: https://github.com/Materials-Data-Science-and-Informatics/somesy
-      rev: 'v0.4.3'
+      rev: 'v0.7.1'
       hooks:
           - id: somesy
 
     # Various general + format-specific helpers
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.6.0
+      rev: v5.0.0
       hooks:
           - id: check-symlinks
           - id: trailing-whitespace
