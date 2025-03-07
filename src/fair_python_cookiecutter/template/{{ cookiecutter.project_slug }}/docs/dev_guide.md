@@ -60,7 +60,7 @@ Here is a *non-exhaustive* list of the most important files and directories in t
     - `codemeta.json`: metadata for harvesting by other tools and services
     - `LICENSE`: the (main) license of the project
     - `LICENSES`: copies of all licenses that apply to files in the project
-    - `.reuse/dep5`: granular license and copyright information for all files and directories
+    - `REUSE.toml`: granular license and copyright information for all files and directories
 
 === "Development"
     - `pyproject.toml`: project metadata, dependencies, development tool configurations
