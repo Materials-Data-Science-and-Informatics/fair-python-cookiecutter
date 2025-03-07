@@ -5,7 +5,7 @@
 name = "{{ cookiecutter.project_slug }}"
 version = "{{ cookiecutter.project_version }}"
 description = "{{ cookiecutter.project_description }}"
-license = "{{ cookiecutter.project_license }}"
+license = {text = "{{ cookiecutter.project_license }}"}
 
 authors = [{name = "{{ cookiecutter.author_first_name }} {{ cookiecutter.author_last_name }}", email = "{{ cookiecutter.author_email }}"}]
 maintainers = [{name = "{{ cookiecutter.author_first_name }} {{ cookiecutter.author_last_name }}", email = "{{ cookiecutter.author_email }}"}]
@@ -99,7 +99,7 @@ black = "^24.4.2"
 {%- endif %}
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0"]
 build-backend = "poetry.core.masonry.api"
 
 # NOTE: You can run the following with "poetry poe TASK"
